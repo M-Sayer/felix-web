@@ -1,4 +1,8 @@
 export default {
-  API_ENDPOINT: 'http://localhost:8000/api',
-  TOKEN_KEY:'sometoken' 
+  // Deployment automation script
+  API_ENDPOINT: (process.env.REACT_APP_ENV === 'production')
+    ? 'http://localhost:8000/api' // Awaiting deployed server endpoint
+    : 'http://localhost:8000/api',
+
+  TOKEN_KEY: process.env.REACT_APP_TOKEN_KEY || 'felix-felicis' // Temporary
 }
