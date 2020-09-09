@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import UserContext from '../../contexts/UserContext';
-// import UserService from '../../services/user-services';
+// import AuthService from '../../services/auth-services';
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
@@ -25,12 +25,12 @@ const LoginForm = (props) => {
     // Instead of depending on state
     // Store username in local storage (if coming from signup)
     // So if page refreshes, the following logic will not run
-    // Since user is now {}
+    // Since user in state is now {}
     
     if(!user.email) {
       async function postOldUser() {
         try {
-          // const response = await UserService.postOldUser(oldUser);
+          // const response = await AuthService.postOldUser(oldUser);
           // Push to previous page (if not coming from signup)
           console.log('postOldUser');
         }
@@ -40,7 +40,6 @@ const LoginForm = (props) => {
       }
       postOldUser();
     }
-    console.log(user);
   })
 
   return (

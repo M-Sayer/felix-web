@@ -1,6 +1,6 @@
 import config from '../config';
 
-const UserService = {
+const AuthService = {
   async postNewUser(newUser) {
 
     // Expected input: newUser = {
@@ -57,4 +57,4 @@ const UserService = {
   }
 }
 
-export default UserService;
+export default AuthService;

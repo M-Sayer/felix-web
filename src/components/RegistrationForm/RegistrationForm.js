@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import UserContext from '../../contexts/UserContext';
-// import UserService from '../../services/user-services';
+// import AuthService from '../../services/auth-services';
 
 import './RegistrationForm.css';
 
@@ -109,7 +109,7 @@ const RegistrationForm = (props) => {
       </label>
       <input
         id='password'
-        type='text' // Change to type='password'
+        type='password'
         required
       />
 
