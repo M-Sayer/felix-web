@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import UserContext from '../../contexts/UserContext';
-// import UserService from '../../services/user-services';
+// import AuthService from '../../services/auth-services';
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
@@ -27,7 +27,7 @@ const RegistrationForm = (props) => {
     if(Object.keys(user).length) {
       async function postNewUser() {
         try {
-          // const response = await UserService.postNewUser(newUser);
+          // const response = await AuthService.postNewUser(newUser);
           // Push to login page
           console.log('postNewUser');
         }
