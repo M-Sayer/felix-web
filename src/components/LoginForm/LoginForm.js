@@ -40,7 +40,6 @@ const LoginForm = (props) => {
       }
       postOldUser();
     }
-    console.log(user);
   })
 
   return (

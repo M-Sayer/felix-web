@@ -18,7 +18,7 @@ const App = () => {
         <Switch >
           <PrivateRoute
             exact
-            path={'/'}
+            path={'/dashboard'}
             comp={DashboardRoute}
           />
 

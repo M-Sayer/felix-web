@@ -4,7 +4,6 @@ import TokenService from '../../services/token-services';
 
 function PrivateRoute(props) {
   const { path: currentPath, comp: Component } = props;
-  console.log(TokenService.hasAuthToken())
 
   return (
     <Route
@@ -15,7 +14,7 @@ function PrivateRoute(props) {
           : (
               <Redirect
                 to={{
-                  pathName: '/login',
+                  pathname: '/register',
                   state: { from: currentPath },
                 }}
               />

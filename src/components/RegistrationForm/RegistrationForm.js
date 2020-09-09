@@ -37,7 +37,6 @@ const RegistrationForm = (props) => {
       }
       postNewUser();
     }
-    console.log(user);
   }, [user]);
 
   return (
