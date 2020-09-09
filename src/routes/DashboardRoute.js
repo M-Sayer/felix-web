@@ -1,10 +1,18 @@
 import React from 'react';
+import UserOverview from '../components/Overview/UserOverview';
+import TransactionsOverview from '../components/Overview/TransactionsOverview';
 
 const DashboardRoute = () => {
   return (
-    <div>
-      Dashboard Route
-    </div>
+    <>
+      <section>
+        <UserOverview />
+      </section>
+
+      <section>
+        <TransactionsOverview />
+      </section>
+    </>
   );
 }
 
