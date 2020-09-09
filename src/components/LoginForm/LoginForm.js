@@ -5,7 +5,7 @@ import UserContext from '../../contexts/UserContext';
 // Validation
 // Integrate with Formik as soon as logic has been implemented
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const { user, setUser } = useContext(UserContext);
 
   const handleUserLogin = (e) => {
@@ -40,7 +40,7 @@ const LoginForm = () => {
       }
       postOldUser();
     }
-    console.log(user)
+    console.log(user);
   })
 
   return (

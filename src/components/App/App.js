@@ -1,9 +1,13 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 // Components
 import Header from '../Header/Header';
 import RegistrationRoute from '../../routes/RegistrationRoute';
+import LoginRoute from '../../routes/LoginRoute';
+import DashboardRoute from '../../routes/DashboardRoute';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 
 const App = () => {
   return (
@@ -12,10 +16,22 @@ const App = () => {
       <div className='App'>
         felix
         <Switch >
-          <Route 
+          <PrivateRoute
+            exact
             path={'/'}
-            component={RegistrationRoute}
+            comp={DashboardRoute}
           />
+
+          <PublicOnlyRoute
+            path={'/login'}
+            comp={LoginRoute}
+          />
+
+          <PublicOnlyRoute
+            path={'/register'}
+            comp={RegistrationRoute}
+          />
+
         </Switch>
       </div>
     </>
