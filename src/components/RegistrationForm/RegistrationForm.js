@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import UserContext from '../../contexts/UserContext';
 // import UserService from '../../services/user-services';
 
+import './RegistrationForm.css';
+
 // Validation
 // Integrate with Formik as soon as logic has been implemented
 
@@ -10,17 +12,23 @@ const RegistrationForm = (props) => {
 
   const handleUserRegistration = (e) => {
     e.preventDefault();
+    const first_name = e.target['first_name'].value;
+    const last_name = e.target['last_name'].value;
     const username = e.target['username'].value;
     const email = e.target['email'].value;
     const password = e.target['password'].value;
 
     const newUser = {
+      first_name,
+      last_name,
       username,
       email,
       password,
     }
 
-    setUser(newUser);
+    //setUser(newUser);
+    console.log('submit button works');
+    console.log(newUser);
   }
   
   useEffect(() => {
@@ -29,21 +37,46 @@ const RegistrationForm = (props) => {
         try {
           // const response = await UserService.postNewUser(newUser);
           // Push to login page
-          console.log('postNewUser');
+          //console.log('postNewUser');
         }
         catch(error) {
-          console.log(error);
+          //console.log(error);
         }
       }
       postNewUser();
     }
-    console.log(user);
+    //console.log(user);
   }, [user]);
 
   return (
     <form 
+      className='RegistrationForm'
       onSubmit={(e) => handleUserRegistration(e)}
     >
+
+      <label
+        htmlFor='first_name'
+      >
+        First Name
+      </label>
+      <input
+        id='first_name'
+        type='text'
+        required
+      />
+
+
+      <label
+        htmlFor='last_name'
+      >
+        Last Name
+      </label>
+      <input
+        id='last_name'
+        type='text'
+        required
+      />
+
 
       <label
         htmlFor='username'
@@ -53,7 +86,9 @@ const RegistrationForm = (props) => {
       <input
         id='username'
         type='text'
+        required
       />
+
 
       <label
         htmlFor='email'
@@ -63,7 +98,9 @@ const RegistrationForm = (props) => {
       <input
         id='email'
         type='text'
+        required
       />
+
 
       <label
         htmlFor='password'
@@ -73,9 +110,11 @@ const RegistrationForm = (props) => {
       <input
         id='password'
         type='text' // Change to type='password'
+        required
       />
 
       <button
+        className='submit-button'
         type='submit'
       >
         Submit
