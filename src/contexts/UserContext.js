@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 
 const UserContext = React.createContext({
-  userCredentials: {},
-  setUserCredentials: () => {},
+  user: {},
+  setUser: () => {},
 });
 
 export default UserContext;
 
 export const UserProvider = (props) => {
-  const [userCredentials, setUserCredentials] = useState({});
+  const [user, setUser] = useState({});
 
   return (
     <UserContext.Provider 
       value={{ 
-        userCredentials,
-        setUserCredentials,
+        user,
+        setUser,
       }}>
       {props.children}
     </UserContext.Provider>

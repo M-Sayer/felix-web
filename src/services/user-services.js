@@ -1,42 +1,37 @@
 import config from '../config';
 
 const UserService = {
+  async postNewUser(newUser) {
 
-  // Temporary names
-  // Transform to async-await
-
-  postUserSignupCreds(signupCredentials) {
-
-    // Expected input: signupCredentials = {
+    // Expected input: newUser = {
     //   username: '',
     //   password: '',
     //   email: '',
     // }
 
-    // Expected output: JWT
+    // Expected output: JWT (Seems redundant)
 
     const settings = {
       'method': 'POST',
       'headers': {
         'Content-Type' : 'application/json'
       },
-      'body': JSON.stringify(signupCredentials)
+      'body': JSON.stringify(newUser)
     }
 
-    return fetch(`${config.API_ENDPOINT}/users/register`, settings)
-      .then(response => {
-        if(!response.ok) {
-          return response.json().then(e => Promise.reject(e));
-        }
-        return response.json();
-      })
+    const response = await fetch(`${config.API_ENDPOINT}/users/register`, settings);
+
+    if(!response.ok) {
+      const error = await response.json();
+      return Promise.reject(error);
+    }
+
+    return response.json();
   },
 
-  // Login
+  async postOldUser(oldUser) {
 
-  postUserLoginCreds(loginCredentials) {
-
-    // Expected input: signupCredentials = {
+    // Expected input: oldUserCreds = {
     //   username: '',
     //   password: '',
     // }
@@ -48,16 +43,17 @@ const UserService = {
       'headers': {
         'Content-Type' : 'application/json'
       },
-      'body': JSON.stringify(loginCredentials)
+      'body': JSON.stringify(oldUser)
     }
 
-    return fetch(`${config.API_ENDPOINT}/users/login`, settings)
-      .then(response => {
-        if(!response.ok) {
-          return response.json().then(e => Promise.reject(e));
-        }
-        return response.json();
-    })
+    const response = await fetch(`${config.API_ENDPOINT}/users/login`, settings);
+
+    if(!response.ok) {
+      const error = await response.json();
+      return Promise.reject(error);
+    }
+
+    return response.json();
   }
 }
 

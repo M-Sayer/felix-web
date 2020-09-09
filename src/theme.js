@@ -2,7 +2,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   palette: {
-    primary: { light: '#2D2D35'},
+    // Changed from primary to main
+    // React told me so
+    main: { light: '#2D2D35'},
   },
 });
 
