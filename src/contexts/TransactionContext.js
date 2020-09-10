@@ -1,35 +1,20 @@
 import React from 'react';
 
-const nullIncomeInfo = {
-    
-        "id": null,
-        "user_id": null,
-        "name": null,
-        "income_amount": null,
-        "transaction_category": null,
-        "date_created": null
-    
-};
-
-const nullExpensesInfo = {
-    "id": null,
-    "user_id": null,
-    "name": null,
-    "expense_amount": null,
-    "expense_category": null,
-    "date_created": null
-};
+const nullTransaction = {
+    "id" : null,
+    "name" : null,
+    "date_created" : null,
+    "amount" : null,
+    "subType" : null
+}
 
 const TransactionContext = React.createContext({
     error : null,
-    incomeInfo : nullIncomeInfo,
-    expensesInfo : nullExpensesInfo,
+    transactionInfo : nullTransaction,
     clearError : () => {},
     setError : () => {},
-    setIncomeState : () => {},
-    clearIncomeState : () => {},
-    setExpensesInfo : () => {},
-    clearExpensesInfo : () => {},
+    setTransactionInfo : () => {},
+    clearTransactionInfo : () => {},
 })
 
 export default TransactionContext;
@@ -37,8 +22,7 @@ export default TransactionContext;
 export class TransactionProvider extends React.Component{
     state = {
         error : null,
-        incomeInfo : nullIncomeInfo,
-        expensesInfo : nullExpensesInfo,
+        transactionInfo : nullTransaction,
     }
     
     setError = error => {
@@ -48,26 +32,18 @@ export class TransactionProvider extends React.Component{
 
     clearError = () => this.setState({error : null});
 
-    setIncomeState = incomeInfo => this.setState({incomeInfo});
+    setTransactionInfo = transactionInfo => this.setState({ transactionInfo }) 
 
-    clearIncomeState = () => this.setState({ incomeInfo : nullIncomeInfo });
-
-    setExpensesInfo = expensesInfo => this.setState({ expensesInfo });
-
-    clearExpensesInfo = () => this.setState({ expensesInfo : nullExpensesInfo })
-
+    clearTransactionInfo = () => this.setState({transactionInfo : nullTransaction})
 
     render(){
         const value = {
             error : this.state.error,
-            incomeInfo : this.state.incomeInfo,
-            expensesInfo : this.state.expensesInfo,
+            transactionInfo : this.state.transactionInfo,
             setError : this.setError,
             clearError : this.clearError,
-            setIncomeState : this.setIncomeState,
-            clearIncomeState : this.clearIncomeState,
-            setExpensesInfo : this.setExpensesInfo,
-            clearExpensesInfo : this.clearExpensesInfo
+            setTransactionInfo : this.setTransactionInfo,
+            clearTransactionInfo : this.clearTransactionInfo, 
         }
 
         return(
