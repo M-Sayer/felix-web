@@ -14,9 +14,9 @@ export const TransactionsProvider = (props) => {
   const [transaction, setTransaction] = useState([]);
   const [transactions, setTransactions] = useState([]);
 
-  // Filter transactions by property
-  const filterTransactions = (transactions, property, filter) => {
-    return transactions.filter(trx => trx[property] === filter);
+  // Filter transactions by property and value
+  const filterTransactions = (transactions, property, value) => {
+    return transactions.filter(trx => trx[property] === value);
   }
 
   // Sort transactions by property
@@ -32,7 +32,7 @@ export const TransactionsProvider = (props) => {
       value={{ 
         transaction,
         transactions,
-        
+
         setTransaction,
         setTransactions,
 
