@@ -24,7 +24,10 @@ class RegistrationForm extends React.Component {
     }
 
     this.setState({error: null}) //any errors with registration will display on page
-
+    
+    setUser(newUser);
+  }
+  
     AuthService.postNewUser(newUser)
       .then(() => {
         first_name.value = ''

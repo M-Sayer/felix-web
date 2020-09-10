@@ -10,7 +10,7 @@ function PrivateRoute(props) {
     <Route
       {...props}
       render={(props) => 
-        (TokenService.hasAuthToken())
+        (!TokenService.hasAuthToken())
           ? <Component {...props} />
           : (
               <Redirect

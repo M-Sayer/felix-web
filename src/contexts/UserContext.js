@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// Refactor later
 const UserContext = React.createContext({
   user: {},
   setUser: () => {},

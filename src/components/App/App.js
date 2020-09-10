@@ -1,13 +1,16 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Components
 import Header from '../Header/Header';
-import RegistrationRoute from '../../routes/RegistrationRoute';
-import LoginRoute from '../../routes/LoginRoute';
-import DashboardRoute from '../../routes/DashboardRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
+import DashboardRoute from '../../routes/DashboardRoute';
+import AllTransactionsRoute from '../../routes/AllTransactionsRoute';
+import SingleTransactionsRoute from '../../routes/SingleTransactionRoute';
+import LoginRoute from '../../routes/LoginRoute';
+import RegistrationRoute from '../../routes/RegistrationRoute';
+import LandingRoute from '../../routes/LandingRoute';
 
 const App = () => {
   return (
@@ -15,11 +18,22 @@ const App = () => {
       <Header />
       <div className='App'>
         felix
+
         <Switch >
           <PrivateRoute
             exact
-            path={'/'}
+            path={'/dashboard'}
             comp={DashboardRoute}
+          />
+
+          <PrivateRoute
+            path={'/transactions'}
+            comp={AllTransactionsRoute}
+          />
+
+          <PrivateRoute
+            path={'/transaction'}
+            comp={SingleTransactionsRoute}
           />
 
           <PublicOnlyRoute
@@ -32,6 +46,10 @@ const App = () => {
             comp={RegistrationRoute}
           />
 
+          <Route
+            path={'/'}
+            component={LandingRoute}
+          />
         </Switch>
       </div>
     </>
