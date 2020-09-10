@@ -1,27 +1,27 @@
 import config from '../config';
 
 const TokenService = {
-    makeAuthToken(user_name, password) {
-        return window.btoa(`${user_name}:${password}`);
-    },
+  makeAuthToken(user_name, password) {
+    return window.btoa(`${user_name}:${password}`);
+  },
 
-    getAuthToken() {
-        return window.localStorage.getItem(config.API_TOKEN)
-    },
+  getAuthToken() {
+    return window.localStorage.getItem(config.TOKEN_KEY)
+  },
 
-    hasAuthToken() {
-        // return !!TokenService.getItem(config.API_TOKEN)
-        return window.localStorage.getItem(config.API_TOKEN) ? true : false;
-    },
+  hasAuthToken() {
+    // return !!TokenService.getItem(config.TOKEN_KEY)
+    return window.localStorage.getItem(config.TOKEN_KEY) ? true : false;
+  },
 
-    saveAuthToken(token) {
-        window.localStorage.setItem(config.API_TOKEN, token)
-    },
+  saveAuthToken(token) {
+    window.localStorage.setItem(config.TOKEN_KEY, token)
+  },
 
-    clearAuthToken() {
-        window.localStorage.removeItem(config.API_TOKEN);
-        window.localStorage.removeItem('username');
-    },
-};
+  clearAuthToken() {
+    window.localStorage.removeItem(config.TOKEN_KEY);
+    window.localStorage.removeItem('username');
+  },
+}
 
 export default TokenService;
