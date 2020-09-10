@@ -13,7 +13,7 @@ import App from './components/App/App';
 ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <CSSBaseline />
         <TransactionsProvider>
           <TransactionProvider>
             <UserProvider>
