@@ -5,6 +5,12 @@ import './RegistrationForm.css';
 //Code for RegistrationForm is working...
 class RegistrationForm extends React.Component {
 
+  static defaultProps = {
+    onRegSuccess: () => {}
+  }
+
+  state = {error: null} //any errors with registration will display on page
+
   handleUserRegistration = (e) => {
     e.preventDefault();
     const { first_name, last_name, username, email, password } = e.target
@@ -17,6 +23,8 @@ class RegistrationForm extends React.Component {
       password: password.value        
     }
 
+    this.setState({error: null}) //any errors with registration will display on page
+
     AuthService.postNewUser(newUser)
       .then(() => {
         first_name.value = ''
@@ -27,78 +35,88 @@ class RegistrationForm extends React.Component {
 
       })
       .catch(res => {
-        alert(res.error)  
-        //throws an 'alert' for errors in registration submission
+        //any errors with registration will display on page
+        this.setState({error: res.error})
+
+        //ALTERNATIVE: throws an 'alert' for errors in registration submission
+        //alert(res.error)  
+        
       })
   }
 
   render() {
+    const {error} = this.state
+
     return (
       <form 
         className='RegistrationForm'
         onSubmit={this.handleUserRegistration}
       >
-      <label
-        htmlFor='first_name'
-      >
-        First Name
-      </label>
-      <input
-        id='first_name'
-        type='text'
-        required
-      />
-  
-      <label
-        htmlFor='last_name'
-      >
-        Last Name
-      </label>
-      <input
-        id='last_name'
-        type='text'
-        required
-      />
-  
-      <label
-        htmlFor='username'
-      >
-        Username
-      </label>
-      <input
-        id='username'
-        type='text'
-        required
-      />
-  
-      <label
-        htmlFor='email'
-      >
-        Email
-      </label>
-      <input
-        id='email'
-        type='text'
-        required
-      />
-  
-      <label
-        htmlFor='password'
-      >
-        Password
-      </label>
-      <input
-        id='password'
-        type='password'
-        required
-      />
-  
-      <button
-        className='submit-button'
-        type='submit'
-      >
-        Submit
-      </button>
+        <div role='alert'>
+          {error && <p className='error-alert'>{error}</p>}
+        </div>
+
+        <label
+          htmlFor='first_name'
+        >
+          First Name
+        </label>
+        <input
+          id='first_name'
+          type='text'
+          required
+        />
+    
+        <label
+          htmlFor='last_name'
+        >
+          Last Name
+        </label>
+        <input
+          id='last_name'
+          type='text'
+          required
+        />
+    
+        <label
+          htmlFor='username'
+        >
+          Username
+        </label>
+        <input
+          id='username'
+          type='text'
+          required
+        />
+    
+        <label
+          htmlFor='email'
+        >
+          Email
+        </label>
+        <input
+          id='email'
+          type='text'
+          required
+        />
+    
+        <label
+          htmlFor='password'
+        >
+          Password
+        </label>
+        <input
+          id='password'
+          type='password'
+          required
+        />
+    
+        <button
+          className='submit-button'
+          type='submit'
+        >
+          Submit
+        </button>
       </form>
     )
   }   
