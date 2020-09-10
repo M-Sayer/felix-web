@@ -24,6 +24,12 @@ const TransactionContext = React.createContext({
     error : null,
     incomeInfo : nullIncomeInfo,
     expensesInfo : nullExpensesInfo,
+    clearError : () => {},
+    setError : () => {},
+    setIncomeState : () => {},
+    clearIncomeState : () => {},
+    setExpensesInfo : () => {},
+    clearExpensesInfo : () => {},
 })
 
 export default TransactionContext;
@@ -34,6 +40,21 @@ export class TransactionProvider extends React.Component{
         incomeInfo : nullIncomeInfo,
         expensesInfo : nullExpensesInfo,
     }
+    
+    setError = error => {
+        console.error(error);
+        this.setState({ error });
+    };
+
+    clearError = () => this.setState({error : null});
+
+    setIncomeState = incomeInfo => this.setState({incomeInfo});
+
+    clearIncomeState = () => this.setState({ incomeInfo : nullIncomeInfo });
+
+    setExpensesInfo = expensesInfo => this.setState({ expensesInfo });
+
+    clearExpensesInfo = () => this.setState({ expensesInfo : nullExpensesInfo })
 
 
     render(){
@@ -41,6 +62,12 @@ export class TransactionProvider extends React.Component{
             error : this.state.error,
             incomeInfo : this.state.incomeInfo,
             expensesInfo : this.state.expensesInfo,
+            setError : this.setError,
+            clearError : this.clearError,
+            setIncomeState : this.setIncomeState,
+            clearIncomeState : this.clearIncomeState,
+            setExpensesInfo : this.setExpensesInfo,
+            clearExpensesInfo : this.clearExpensesInfo
         }
 
         return(
