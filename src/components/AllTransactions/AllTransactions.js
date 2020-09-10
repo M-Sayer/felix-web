@@ -2,22 +2,34 @@ import React, { useContext, useEffect } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import UserService from '../../services/user-service';
 
-const TransactionsOverview = (props) => {
+const AllTransactions = (props) => {
   const { 
     transactions = [],
+    setTransaction,
     setTransactions,
     sortTransactions,
   } = useContext(TransactionsContext);
 
-  // Show only first 3
   const renderTransactions = (transactions) => {
     return transactions.map((trx, i) => {
       return (
         <li 
           key={i}
         >
-            {trx.transaction_category || trx.expense_category}
-            {trx.income_amount || trx.expense_amount}
+          {trx.transaction_category || trx.expense_category}
+          {trx.income_amount || trx.expense_amount}
+          <button
+            onClick={() => {
+              // Instead of setting transaction state object
+              // That resets on page refresh
+              // Have some unique id/name as params
+              // Or some other solid solution
+              setTransaction(trx);
+              props.history.push(`/transaction`)
+              }}
+          >
+            See More Details
+          </button>
         </li>
       );
     });
@@ -42,7 +54,7 @@ const TransactionsOverview = (props) => {
   return (
     <>
       <h2>
-        Transactions Overview
+        All Transactions
       </h2>
       <ul>
         {
@@ -51,15 +63,8 @@ const TransactionsOverview = (props) => {
             : ''
         }
       </ul>
-      <button
-        onClick={() =>
-          props.history.push('/transactions')}
-          type='click'
-      >
-        See All Transactions
-      </button>
     </>
   );
 }
 
-export default TransactionsOverview;
+export default AllTransactions;

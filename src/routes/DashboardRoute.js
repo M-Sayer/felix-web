@@ -2,7 +2,7 @@ import React from 'react';
 import UserOverview from '../components/Overview/UserOverview';
 import TransactionsOverview from '../components/Overview/TransactionsOverview';
 
-const DashboardRoute = () => {
+const DashboardRoute = (props) => {
   return (
     <>
       <section>
@@ -10,7 +10,9 @@ const DashboardRoute = () => {
       </section>
 
       <section>
-        <TransactionsOverview />
+        <TransactionsOverview
+          {...props}
+        />
       </section>
     </>
   );

@@ -44,7 +44,8 @@ const LoginForm = (props) => {
 
   return (
     <form 
-      onSubmit={(e) => handleUserLogin(e)}
+      onSubmit={(e) => 
+        handleUserLogin(e)}
     >
 
       <label
