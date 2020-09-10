@@ -10,19 +10,27 @@ function UserOverview(props) {
     async function getUser() {
       try {
         const response = await UserService.getUser();
-        console.log(response);
+        setUser(response);
       }
       catch(error) {
         console.log(error)
       }
     }
     getUser();
-  });
+  }, [setUser]);
 
   return (
-    <>
-      User Overview
-    </>
+    <article>
+      <h2>
+        User Overview
+      </h2>
+      <p>
+        Balance: {user.balance}
+      </p>
+      <p>
+        Allowance: {user.allowance}
+      </p>
+    </article>
   );
 }
 
