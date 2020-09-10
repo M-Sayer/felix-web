@@ -1,16 +1,7 @@
 import config from '../config';
 
 const AuthService = {
-  async postNewUser(newUser) {
-
-    // Expected input: newUser = {
-    //   username: '',
-    //   password: '',
-    //   email: '',
-    // }
-
-    // Expected output: JWT (Seems redundant)
-
+  async postNewUser(newUser) {   
     const settings = {
       'method': 'POST',
       'headers': {
@@ -19,18 +10,17 @@ const AuthService = {
       'body': JSON.stringify(newUser)
     }
 
-    const response = await fetch(`${config.API_ENDPOINT}/users/register`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/user/register`, settings);
 
     if(!response.ok) {
       const error = await response.json();
       return Promise.reject(error);
     }
-
-    return response.json();
+    return response.json(); //returns {authToken: 'JWTString'}
   },
 
-  async postOldUser(oldUser) {
 
+  async postOldUser(oldUser) {
     // Expected input: oldUserCreds = {
     //   username: '',
     //   password: '',

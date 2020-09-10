@@ -1,59 +1,43 @@
-import React, { useContext, useEffect } from 'react';
-import UserContext from '../../contexts/UserContext';
-// import AuthService from '../../services/auth-services';
-
+import React from 'react';
+import AuthService from '../../services/auth-services';
 import './RegistrationForm.css';
 
-// Validation
-// Integrate with Formik as soon as logic has been implemented
+//Code for RegistrationForm is working...
+class RegistrationForm extends React.Component {
 
-const RegistrationForm = (props) => {
-  const { user, setUser } = useContext(UserContext);
-
-  const handleUserRegistration = (e) => {
+  handleUserRegistration = (e) => {
     e.preventDefault();
-    const first_name = e.target['first_name'].value;
-    const last_name = e.target['last_name'].value;
-    const username = e.target['username'].value;
-    const email = e.target['email'].value;
-    const password = e.target['password'].value;
+    const { first_name, last_name, username, email, password } = e.target
 
     const newUser = {
-      first_name,
-      last_name,
-      username,
-      email,
-      password,
+      first_name: first_name.value,
+      last_name: last_name.value,
+      username: username.value,
+      email: email.value,
+      password: password.value        
     }
 
-    //setUser(newUser);
-    console.log('submit button works');
-    console.log(newUser);
+    AuthService.postNewUser(newUser)
+      .then(() => {
+        first_name.value = ''
+        last_name.value = ''
+        username.value = ''
+        email.value = ''
+        password.value = ''
+
+      })
+      .catch(res => {
+        alert(res.error)  
+        //throws an 'alert' for errors in registration submission
+      })
   }
-  
-  useEffect(() => {
-    if(Object.keys(user).length) {
-      async function postNewUser() {
-        try {
-          // const response = await UserService.postNewUser(newUser);
-          // Push to login page
-          //console.log('postNewUser');
-        }
-        catch(error) {
-          //console.log(error);
-        }
-      }
-      postNewUser();
-    }
-    //console.log(user);
-  }, [user]);
 
-  return (
-    <form 
-      className='RegistrationForm'
-      onSubmit={(e) => handleUserRegistration(e)}
-    >
-
+  render() {
+    return (
+      <form 
+        className='RegistrationForm'
+        onSubmit={this.handleUserRegistration}
+      >
       <label
         htmlFor='first_name'
       >
@@ -64,8 +48,7 @@ const RegistrationForm = (props) => {
         type='text'
         required
       />
-
-
+  
       <label
         htmlFor='last_name'
       >
@@ -76,8 +59,7 @@ const RegistrationForm = (props) => {
         type='text'
         required
       />
-
-
+  
       <label
         htmlFor='username'
       >
@@ -88,8 +70,7 @@ const RegistrationForm = (props) => {
         type='text'
         required
       />
-
-
+  
       <label
         htmlFor='email'
       >
@@ -100,8 +81,7 @@ const RegistrationForm = (props) => {
         type='text'
         required
       />
-
-
+  
       <label
         htmlFor='password'
       >
@@ -112,16 +92,16 @@ const RegistrationForm = (props) => {
         type='password'
         required
       />
-
+  
       <button
         className='submit-button'
         type='submit'
       >
         Submit
       </button>
-
-    </form>
-  )
+      </form>
+    )
+  }   
 }
 
 export default RegistrationForm;
