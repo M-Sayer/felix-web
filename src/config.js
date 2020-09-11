@@ -4,7 +4,6 @@ export default {
     ? 'http://localhost:8000/api' 
     : 'http://localhost:8000/api',
 
-
   TOKEN_KEY: process.env.REACT_APP_TOKEN_KEY || 'felix-felicis' // Temporary
 }
 

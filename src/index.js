@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
-import { TransactionProvider } from './contexts/TransactionContext'
 import { TransactionsProvider } from './contexts/TransactionsContext';
 
 import CSSBaseline from '@material-ui/core/CssBaseline';
@@ -16,11 +15,9 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <CSSBaseline />
         <TransactionsProvider>
-          <TransactionProvider>
-            <UserProvider>
-              <App />
-            </UserProvider>
-          </TransactionProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
         </TransactionsProvider>
     </ThemeProvider>
   </BrowserRouter>,

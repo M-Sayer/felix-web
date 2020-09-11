@@ -1,7 +1,7 @@
 import config from '../config'
 import TokenService from './token-service'
 
-const TransactionService = {
+const TransactionsService = {
   async getSingleTransaction(type,id) {
     const settings = {
       'method': 'GET',
@@ -42,4 +42,4 @@ const TransactionService = {
 };
 
 
-export default TransactionService;
+export default TransactionsService;

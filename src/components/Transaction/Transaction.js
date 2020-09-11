@@ -1,16 +1,17 @@
 import React from 'react';
-import TransactionContext from '../../contexts/TransactionContext';
+import TransactionsContext from '../../contexts/TransactionsContext';
 
 import { Button } from '../Miscellaneous/Misc';
-export default class TransactionDetails extends React.Component {  
-  static contextType = TransactionContext;
+
+export default class Transaction extends React.Component {  
+  static contextType = TransactionsContext;
     
   render(){
     const {
       name,
       date_created,
       amount,
-      subType } = this.context.transactionInfo;
+      subType } = this.context.transaction;
 
     return (
       <div
