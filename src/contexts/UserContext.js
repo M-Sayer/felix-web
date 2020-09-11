@@ -42,5 +42,5 @@ export class UserProvider extends Component {
 //       }}>
 //       {props.children}
 //     </UserContext.Provider>
-//   )
+//   );
 // }

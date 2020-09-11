@@ -77,10 +77,8 @@ export class TransactionsProvider extends Component {
         }}>
         {this.props.children}
     </TransactionsContext.Provider>
-    )
+    );
   }
-
-
 }
 
 // export const TransactionsProvider = (props) => {
