@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
-import AuthService from '../../services/auth-services';
+import AuthService from '../../services/auth-service';
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
@@ -153,4 +153,4 @@ class LoginForm extends Component {
 //   )
 // }
 
-// export default LoginForm;
+export default LoginForm;
