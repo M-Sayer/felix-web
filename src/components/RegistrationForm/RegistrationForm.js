@@ -1,19 +1,26 @@
 import React from 'react';
-import AuthService from '../../services/auth-services';
+import AuthService from '../../services/auth-service';
 import './RegistrationForm.css';
 
-//Code for RegistrationForm is working...
+// Code for RegistrationForm is working...
 class RegistrationForm extends React.Component {
 
   static defaultProps = {
     onRegSuccess: () => {}
   }
 
-  state = {error: null} //any errors with registration will display on page
+  state = {
+    error: null
+  } // Any errors with registration will display on page
 
   handleUserRegistration = (e) => {
     e.preventDefault();
-    const { first_name, last_name, username, email, password } = e.target
+    const {
+      first_name,
+      last_name,
+      username,
+      email,
+      password } = e.target
 
     const newUser = {
       first_name: first_name.value,
@@ -23,7 +30,7 @@ class RegistrationForm extends React.Component {
       password: password.value        
     }
 
-    this.setState({error: null}) //any errors with registration will display on page
+    this.setState({error: null}) // Any errors with registration will display on page
       
     AuthService.postNewUser(newUser)
       .then(() => {
@@ -35,11 +42,11 @@ class RegistrationForm extends React.Component {
 
       })
       .catch(res => {
-        //any errors with registration will display on page
+        // Any errors with registration will display on page
         this.setState({error: res.error})
 
-        //ALTERNATIVE: throws an 'alert' for errors in registration submission
-        //alert(res.error)  
+        // Alternatively, throws an 'alert' for errors in registration submission
+        // alert(res.error)  
         
       })
   }

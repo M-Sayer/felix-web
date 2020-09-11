@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import UserService from '../../services/user-service';
 
 const TransactionsOverview = (props) => {
   const { 
-    transactions = [],
-    setTransactions,
+    // transactions = [],
+    // setTransactions,
     sortTransactions,
   } = useContext(TransactionsContext);
+
+  const [transactions, setTransactions] = useState([]);
 
   // Show only first 3
   const renderTransactions = (transactions) => {

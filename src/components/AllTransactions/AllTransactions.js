@@ -1,14 +1,25 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import UserService from '../../services/user-service';
 
 const AllTransactions = (props) => {
   const { 
-    transactions = [],
-    setTransaction,
-    setTransactions,
+    // transaction,
+    // transactions = [],
+    // setTransaction,
+    // setTransactions,
     sortTransactions,
   } = useContext(TransactionsContext);
+
+  const [ transactions, setTransactions ] = useState({})
+
+  const renderTransactionParams = (transaction) => {
+    if('income_amount' in transaction) {
+      return `/transaction/income/${transaction.id}`;
+    }
+
+    return `transaction/expenses/${transaction.id}`;
+  }
 
   const renderTransactions = (transactions) => {
     return transactions.map((trx, i) => {
@@ -20,12 +31,8 @@ const AllTransactions = (props) => {
           {trx.income_amount || trx.expense_amount}
           <button
             onClick={() => {
-              // Instead of setting transaction state object
-              // That resets on page refresh
-              // Have some unique id/name as params
-              // Or some other solid solution
-              setTransaction(trx);
-              props.history.push(`/transaction`)
+              // setTransaction(trx);
+              props.history.push(renderTransactionParams(trx))
               }}
           >
             See More Details
@@ -36,20 +43,20 @@ const AllTransactions = (props) => {
   }
 
   useEffect(() => {
-    async function getUserTransactions() {
+    async function getAllTransactions() {
       try {
         const { income, expenses } = await UserService.getUserTransactions();
-
         const sortedTransactions = sortTransactions([...income, ...expenses], 'date_created');
-
         setTransactions(sortedTransactions);
       }
       catch(error) {
         console.log(error);
       }
     }
-    getUserTransactions();
+    getAllTransactions();
   }, [setTransactions, sortTransactions]);
+
+
 
   return (
     <>

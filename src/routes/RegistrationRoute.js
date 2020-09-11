@@ -17,11 +17,12 @@ class RegistrationRoute extends React.Component {
   render() {
     return (
       <>
-        <RegistrationForm onRegSuccess={this.handleRegSuccess}/>
+        <RegistrationForm
+          onRegSuccess={this.handleRegSuccess}
+        />
       </>
     )
   }
-
 }
 
 export default RegistrationRoute;

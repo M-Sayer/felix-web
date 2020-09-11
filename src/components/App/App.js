@@ -7,10 +7,10 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import DashboardRoute from '../../routes/DashboardRoute';
 import AllTransactionsRoute from '../../routes/AllTransactionsRoute';
-import SingleTransactionsRoute from '../../routes/SingleTransactionRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 import LandingRoute from '../../routes/LandingRoute';
+import TransactionFullInfo from '../../routes/TransactionFullInfo';
 
 const App = () => {
   return (
@@ -32,8 +32,8 @@ const App = () => {
           />
 
           <PrivateRoute
-            path={'/transaction'}
-            comp={SingleTransactionsRoute}
+            path={'/transaction/:type/:id'}
+            comp={TransactionFullInfo}
           />
 
           <PublicOnlyRoute
