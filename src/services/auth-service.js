@@ -39,7 +39,7 @@ const AuthService = {
       'body': JSON.stringify(oldUser)
     }
 
-    const response = await fetch(`${config.API_ENDPOINT}/users/login`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/user/login`, settings);
 
     if(!response.ok) {
       const error = await response.json();

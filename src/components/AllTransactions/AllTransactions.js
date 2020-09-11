@@ -56,8 +56,6 @@ const AllTransactions = (props) => {
     getAllTransactions();
   }, [setTransactions, sortTransactions]);
 
-
-
   return (
     <>
       <h2>

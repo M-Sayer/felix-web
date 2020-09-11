@@ -11,7 +11,7 @@ const UserService = {
       },
     }
 
-    const response = await fetch(`${config.API_ENDPOINT}/users/user/:id`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/transaction/user/:id`, settings);
 
     if(!response.ok) {
       const error = await response.json();
@@ -32,7 +32,7 @@ const UserService = {
       },
     }
 
-    const response = await fetch(`${config.API_ENDPOINT}/users/transactions`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/transaction`, settings);
 
     if(!response.ok) {
       const error = await response.json();

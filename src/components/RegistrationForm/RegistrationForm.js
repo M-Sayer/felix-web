@@ -4,7 +4,6 @@ import './RegistrationForm.css';
 
 // Code for RegistrationForm is working...
 class RegistrationForm extends React.Component {
-
   static defaultProps = {
     onRegSuccess: () => {}
   }
