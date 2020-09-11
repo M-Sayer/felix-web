@@ -41,7 +41,7 @@ const AllTransactions = (props) => {
         const { income, expenses } = await UserService.getUserTransactions();
 
         const sortedTransactions = sortTransactions([...income, ...expenses], 'date_created');
-
+        console.log('Meow')
         setTransactions(sortedTransactions);
       }
       catch(error) {
@@ -49,7 +49,7 @@ const AllTransactions = (props) => {
       }
     }
     getUserTransactions();
-  }, [setTransactions, sortTransactions]);
+  }, []);
 
   return (
     <>
