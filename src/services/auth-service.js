@@ -2,7 +2,6 @@ import config from '../config';
 
 const AuthService = {
   async postNewUser(newUser) {   
-
     const settings = {
       'method': 'POST',
       'headers': {
@@ -21,16 +20,7 @@ const AuthService = {
     return response.json(); //returns {authToken: 'JWTString'}
   },
 
-
   async postOldUser(oldUser) {
-
-    // Expected input: oldUserCreds = {
-    //   username: '',
-    //   password: '',
-    // }
-
-    // Expected output: JWT
-
     const settings = {
       'method': 'POST',
       'headers': {

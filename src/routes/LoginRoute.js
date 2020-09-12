@@ -1,14 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm/LoginForm';
 
-const LoginRoute = (props) => {
+class LoginRoute extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {},
+    }
+  }
+
+  onLogSuccess = () => {
+    const { history } = this.props;
+    history.push('/dashboard');
+  }
   // Redirect logic here
 
-  return (
-    <>
-      <LoginForm />
-    </>
-  );
+  render() {
+    return (
+      <>
+        <LoginForm
+          onLogSuccess={this.onLogSuccess} />
+      </>
+    );
+  }
 }
 
 export default LoginRoute;

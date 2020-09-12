@@ -1,10 +1,9 @@
 import React from 'react';
 import TransactionsContext from '../contexts/TransactionsContext';
-import Transaction from '../components/Transaction/Transaction';
 import TransactionsService from '../services/transactions-service';
+import Transaction from '../components/Transaction/Transaction';
 
-export default class TransactionFullInfo extends React.Component{
-    
+export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
 
   componentDidMount = async () => {

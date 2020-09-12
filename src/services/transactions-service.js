@@ -2,7 +2,7 @@ import config from '../config'
 import TokenService from './token-service'
 
 const TransactionsService = {
-  async getSingleTransaction(type,id) {
+  async getSingleTransaction(type, id) {
     const settings = {
       'method': 'GET',
       'headers': {
@@ -39,7 +39,7 @@ const TransactionsService = {
 
     return response.json();
   },
-};
+}
 
 
 export default TransactionsService;

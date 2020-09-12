@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import UserService from '../../services/user-service';
 
-
 class TransactionsOverview extends Component {
   static contextType = TransactionsContext;
 
@@ -12,7 +11,7 @@ class TransactionsOverview extends Component {
         <li 
           key={i}
         >
-            {trx.transaction_category || trx.expense_category}
+            {trx.transaction_category || trx.expense_category}: 
             {trx.income_amount || trx.expense_amount}
         </li>
       );

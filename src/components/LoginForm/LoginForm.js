@@ -8,6 +8,10 @@ import AuthService from '../../services/auth-service';
 class LoginForm extends Component {
   static contextType = UserContext;
 
+  static defaultProps = {
+    onLogSuccess: () => {}
+  }
+
   handleUserLogin = async(e) => {
     e.preventDefault();
     const username = e.target['username'].value;
@@ -21,6 +25,7 @@ class LoginForm extends Component {
     try {
       const user = await AuthService.postOldUser(oldUser);
       this.context.setUser(user);
+      this.props.onLogSuccess();
     }
     catch(error) {
       // For now
