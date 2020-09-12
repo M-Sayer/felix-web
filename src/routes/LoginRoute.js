@@ -8,7 +8,8 @@ class LoginRoute extends Component {
     }
   }
 
-  onLogSuccess = () => {
+  onLoginSuccess = () => {
+    // Add logic to redirect user to last private page visited
     const { history } = this.props;
     history.push('/dashboard');
   }
@@ -18,7 +19,7 @@ class LoginRoute extends Component {
     return (
       <>
         <LoginForm
-          onLogSuccess={this.onLogSuccess} />
+          onLoginSuccess={this.onLoginSuccess} />
       </>
     );
   }

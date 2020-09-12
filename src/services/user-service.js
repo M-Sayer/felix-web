@@ -3,6 +3,7 @@ import TokenService from './token-service';
 
 // User service object strictly for getting user information
 // Not for user authentication and signup!
+// config.API_ENDPOINT = http://localhost:8000/api
 const UserService = {
   async getUser() {
     const settings = {
@@ -13,7 +14,7 @@ const UserService = {
       },
     }
 
-    const response = await fetch(`${config.API_ENDPOINT}/transaction/user/:id`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/transaction/user/${6}`, settings);
 
     if(!response.ok) {
       const error = await response.json();

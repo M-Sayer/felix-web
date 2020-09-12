@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 // Components
 import Header from '../Header/Header';
@@ -10,7 +10,7 @@ import AllTransactionsRoute from '../../routes/AllTransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
-import LandingRoute from '../../routes/LandingRoute';
+// import LandingRoute from '../../routes/LandingRoute';
 
 const App = () => {
   return (
@@ -20,6 +20,12 @@ const App = () => {
         felix
 
         <Switch >
+          <PrivateRoute
+            exact
+            path={'/'}
+            comp={DashboardRoute}
+          />
+
           <PrivateRoute
             exact
             path={'/dashboard'}
@@ -46,10 +52,10 @@ const App = () => {
             comp={RegistrationRoute}
           />
 
-          <Route
+          {/* <Route
             path={'/'}
             component={LandingRoute}
-          />
+          /> */}
         </Switch>
       </div>
     </>

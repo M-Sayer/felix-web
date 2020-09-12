@@ -1,5 +1,6 @@
 import config from '../config';
 
+// config.API_ENDPOINT = http://localhost:8000/api
 const AuthService = {
   async postNewUser(newUser) {   
     const settings = {
@@ -10,6 +11,7 @@ const AuthService = {
       'body': JSON.stringify(newUser)
     }
 
+    // http://localhost:8000/api/users/register
     const response = await fetch(`${config.API_ENDPOINT}/user/register`, settings);
 
     if(!response.ok) {
@@ -29,6 +31,7 @@ const AuthService = {
       'body': JSON.stringify(oldUser)
     }
 
+    // http://localhost:8000/api/users/login
     const response = await fetch(`${config.API_ENDPOINT}/user/login`, settings);
 
     if(!response.ok) {

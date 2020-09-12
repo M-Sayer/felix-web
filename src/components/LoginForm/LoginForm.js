@@ -1,40 +1,52 @@
 import React, { Component } from 'react';
-import UserContext from '../../contexts/UserContext';
+// import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
+import TokenService from '../../services/token-service';
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
 
 class LoginForm extends Component {
-  static contextType = UserContext;
+  // static contextType = UserContext;
 
   static defaultProps = {
-    onLogSuccess: () => {}
+    onLoginSuccess: () => {}
   }
 
-  handleUserLogin = async(e) => {
-    e.preventDefault();
-    const username = e.target['username'].value;
-    const password = e.target['password'].value;
+  state = {
+    error: null,
+  }
 
-    const oldUser = {
+  async handleUserLogin(e) {
+    e.preventDefault();
+    const {
       username,
       password,
+    } = e.target;
+
+    const oldUser = {
+      username: username.value,
+      password: password.value,
     }
 
+    username.value = '';
+    password.value = '';
+
+    this.setState({error: null});
+
     try {
-      const user = await AuthService.postOldUser(oldUser);
-      this.context.setUser(user);
-      this.props.onLogSuccess();
+      const { authToken } = await AuthService.postOldUser(oldUser);
+      TokenService.saveAuthToken(authToken);
+      this.props.onLoginSuccess();
     }
     catch(error) {
-      // For now
       console.log(error);
+      this.setState({...error});
     }
   }
     
   render() {
-    const { user } = this.context;
+    // const { user } = this.context;
 
     return (
       <form 
@@ -50,12 +62,6 @@ class LoginForm extends Component {
         <input
           id='username'
           type='text'
-          defaultValue=
-            {
-              user.email
-                ? user.email
-                : ''
-            }
         />
   
         <label
