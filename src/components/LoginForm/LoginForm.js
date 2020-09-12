@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-// import UserContext from '../../contexts/UserContext';
+import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
-import TokenService from '../../services/token-service';
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
 
 class LoginForm extends Component {
-  // static contextType = UserContext;
+  static contextType = UserContext;
 
   static defaultProps = {
     onLoginSuccess: () => {}
@@ -36,7 +35,7 @@ class LoginForm extends Component {
 
     try {
       const { authToken } = await AuthService.postOldUser(oldUser);
-      TokenService.saveAuthToken(authToken);
+      this.context.handleUserLog(authToken)
       this.props.onLoginSuccess();
     }
     catch(error) {

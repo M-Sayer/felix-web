@@ -21,7 +21,6 @@ const App = () => {
     <>
       <Header />
       <div className='App'>
-        felix
 
         <Switch >
           <PrivateRoute

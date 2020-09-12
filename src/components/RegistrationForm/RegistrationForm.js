@@ -1,10 +1,12 @@
 import React from 'react';
 import AuthService from '../../services/auth-service';
-import TokenService from '../../services/token-service';
+import UserContext from '../../contexts/UserContext';
 import './RegistrationForm.css';
 
 // Code for RegistrationForm is working...
 class RegistrationForm extends React.Component {
+  static contextType = UserContext;
+
   static defaultProps = {
     onRegSuccess: () => {},
   }
@@ -40,8 +42,8 @@ class RegistrationForm extends React.Component {
     this.setState({error: null}) // Any errors with registration will display on page
 
     try {
-      const { auth } = await AuthService.postNewUser(newUser);
-      TokenService.saveAuthToken(auth);
+      const { authToken } = await AuthService.postNewUser(newUser);
+      this.context.handleUserLog(authToken);
       this.props.onRegSuccess();
     }
     catch(error) {
