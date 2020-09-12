@@ -1,13 +1,17 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
-// Components
+// Util Components
 import Header from '../Header/Header';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
+
+// Main Components
 import DashboardRoute from '../../routes/DashboardRoute';
-import AllTransactionsRoute from '../../routes/AllTransactionsRoute';
+import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
+
+// Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
@@ -34,7 +38,7 @@ const App = () => {
 
           <PrivateRoute
             path={'/transactions'}
-            comp={AllTransactionsRoute}
+            comp={TransactionsRoute}
           />
 
           <PrivateRoute
