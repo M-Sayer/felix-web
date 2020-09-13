@@ -4,6 +4,7 @@ import TokenService from './token-service';
 // User service object strictly for getting user information
 // Not for user authentication and signup!
 // config.API_ENDPOINT = http://localhost:8000/api
+
 const UserService = {
   async getUser() {
     const settings = {
@@ -14,7 +15,12 @@ const UserService = {
       },
     }
 
-    const response = await fetch(`${config.API_ENDPOINT}/transaction/user/${6}`, settings);
+    // Prior to making this call
+    // There is no way I am getting user id in advance
+    // Possible solutions:
+    // (1) Send user id with authToken?
+    // (2) Have token parsed to get user id from payload on client side
+    const response = await fetch(`${config.API_ENDPOINT}/transactions/user/${6}`, settings);
 
     if(!response.ok) {
       const error = await response.json();

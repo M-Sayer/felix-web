@@ -35,7 +35,7 @@ class LoginForm extends Component {
 
     try {
       const { authToken } = await AuthService.postOldUser(oldUser);
-      this.context.handleUserLog(authToken)
+      this.context.handleUserLog(authToken);
       this.props.onLoginSuccess();
     }
     catch(error) {

@@ -12,7 +12,7 @@ const TransactionsService = {
       },
     }
     // http://localhost:8000/api/transactions/:type/:id
-    const response = await fetch(`${config.API_ENDPOINT}/transaction/${type}/${id}`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`, settings);
 
     if(!response.ok) {
       const error = await response.json();
@@ -32,7 +32,7 @@ const TransactionsService = {
     }
 
     // http://localhost:8000/api/transactions/
-    const response = await fetch(`${config.API_ENDPOINT}/transaction`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/transactions`, settings);
 
     if(!response.ok) {
       const error = await response.json();

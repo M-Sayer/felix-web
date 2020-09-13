@@ -12,7 +12,7 @@ const AuthService = {
     }
 
     // http://localhost:8000/api/users/register
-    const response = await fetch(`${config.API_ENDPOINT}/user/register`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/users/register`, settings);
 
     if(!response.ok) {
       const error = await response.json();
@@ -32,7 +32,7 @@ const AuthService = {
     }
 
     // http://localhost:8000/api/users/login
-    const response = await fetch(`${config.API_ENDPOINT}/user/login`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/users/login`, settings);
 
     if(!response.ok) {
       const error = await response.json();
