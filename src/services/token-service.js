@@ -6,7 +6,7 @@ const TokenService = {
   },
 
   getAuthToken() {
-    return window.localStorage.getItem(config.TOKEN_KEY)
+    return window.localStorage.getItem(config.TOKEN_KEY);
   },
 
   hasAuthToken() {
@@ -15,7 +15,7 @@ const TokenService = {
   },
 
   saveAuthToken(token) {
-    window.localStorage.setItem(config.TOKEN_KEY, token)
+    window.localStorage.setItem(config.TOKEN_KEY, token);
   },
 
   clearAuthToken() {

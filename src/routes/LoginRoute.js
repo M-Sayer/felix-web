@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm/LoginForm';
 
-const LoginRoute = (props) => {
+class LoginRoute extends Component {
+  static defaultProps = {
+    history: {
+      push: () => {},
+    }
+  }
+
+  onLoginSuccess = () => {
+    // Add logic to redirect user to last private page visited
+    const { history } = this.props;
+    history.push('/dashboard');
+  }
   // Redirect logic here
 
-  return (
-    <>
-      <LoginForm />
-    </>
-  );
+  render() {
+    return (
+      <>
+        <LoginForm
+          onLoginSuccess={this.onLoginSuccess} />
+      </>
+    );
+  }
 }
 
 export default LoginRoute;

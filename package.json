@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^5.1.0"
+    "cypress": "^5.1.0",
+    "eslint-plugin-react-hooks": "^4.1.1"
   }
 }

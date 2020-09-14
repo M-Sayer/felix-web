@@ -9,11 +9,8 @@ export default class TransactionFullInfo extends React.Component{
     static contextType =TransactionContext;
 
     componentDidMount = () => {
-        //need to know how im getting type and id
-        //props?
-        //context ? :c 
-        let type; // <========= placeholder
-        let id;   // <========= placeholder
+        const {type, id} = (this.props.match.params)
+
         TransactionApiService.getSingleTransaction(type, id)
         .then(res => this.context.setTransactionInfo(res))
         .catch(error => this.context.setError(error))
@@ -23,15 +20,22 @@ export default class TransactionFullInfo extends React.Component{
         this.context.clearTransaction();
         this.context.clearError();
     }
+    renderedError = (error) =>{
+        return (
+            <h3>{error}</h3>
+        )
+    }
 
 
     render(){
+        const {error} = this.context;
+        console.log(error)
         return(
             <section>
                 <header>
                    <h2>Transaction</h2> 
                 </header>
-                {this.context.error && <h3>{this.context.error}</h3>}
+                {error && this.renderedError(error)}
                 <TransactionDetails/>
             </section>
         );

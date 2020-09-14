@@ -2,17 +2,31 @@ import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 
-class TransactionsOverview extends Component {
+class Transactions extends Component {
   static contextType = TransactionsContext;
 
+  renderTransactionParams(transaction) {
+    if('income_amount' in transaction) {
+      return `/transaction/income/${transaction.id}`;
+    }
+
+    return `transaction/expenses/${transaction.id}`;
+  }
+
   renderTransactions(transactions) {
-    console.log(transactions)
     return transactions.map((trx, i) => {
       return (
         <li 
           key={i}
         >
-            {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount}
+          {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount} 
+          <button
+            onClick={() =>
+              this.props.history.push(this.renderTransactionParams(trx))
+            }
+          >
+            See More Details
+          </button>
         </li>
       );
     });
@@ -25,7 +39,6 @@ class TransactionsOverview extends Component {
       this.context.setTransactions(sortedTransactions);
     }
     catch(error) {
-      // For now
       console.log(error);
     }
   }
@@ -36,7 +49,7 @@ class TransactionsOverview extends Component {
     return (
       <>
         <h2>
-          Transactions Overview
+          All Transactions
         </h2>
         <ul>
           {
@@ -45,62 +58,68 @@ class TransactionsOverview extends Component {
               : ''
           }
         </ul>
-        <button
-          onClick={() =>
-            this.props.history.push('/transactions')}
-            type='click'
-        >
-          See All Transactions
-        </button>
       </>
     );
   }
-
 }
 
-// const TransactionsOverview = (props) => {
+// const AllTransactions = (props) => {
 //   const { 
+//     // transaction,
 //     // transactions = [],
+//     // setTransaction,
 //     // setTransactions,
 //     sortTransactions,
 //   } = useContext(TransactionsContext);
 
-//   const [transactions, setTransactions] = useState([]);
+//   const [ transactions, setTransactions ] = useState({});
 
-//   // Show only first 3
+//   const renderTransactionParams = (transaction) => {
+//     if('income_amount' in transaction) {
+//       return `/transaction/income/${transaction.id}`;
+//     }
+
+//     return `transaction/expenses/${transaction.id}`;
+//   }
+
 //   const renderTransactions = (transactions) => {
 //     return transactions.map((trx, i) => {
 //       return (
 //         <li 
 //           key={i}
 //         >
-//             {trx.transaction_category || trx.expense_category}
-//             {trx.income_amount || trx.expense_amount}
+//           {trx.transaction_category || trx.expense_category}: {trx.income_amount || trx.expense_amount}
+//           <button
+//             onClick={() => {
+//               // setTransaction(trx);
+//               props.history.push(renderTransactionParams(trx))
+//               }}
+//           >
+//             See More Details
+//           </button>
 //         </li>
 //       );
 //     });
 //   }
 
 //   useEffect(() => {
-//     async function getUserTransactions() {
+//     async function getAllTransactions() {
 //       try {
-//         const { income, expenses } = await UserService.getUserTransactions();
-
+//         const { income, expenses } = await TransactionsService.getAllTransactions();
 //         const sortedTransactions = sortTransactions([...income, ...expenses], 'date_created');
-
 //         setTransactions(sortedTransactions);
 //       }
 //       catch(error) {
 //         console.log(error);
 //       }
 //     }
-//     getUserTransactions();
+//     getAllTransactions();
 //   }, [setTransactions, sortTransactions]);
 
 //   return (
 //     <>
 //       <h2>
-//         Transactions Overview
+//         All Transactions
 //       </h2>
 //       <ul>
 //         {
@@ -109,15 +128,8 @@ class TransactionsOverview extends Component {
 //             : ''
 //         }
 //       </ul>
-//       <button
-//         onClick={() =>
-//           props.history.push('/transactions')}
-//           type='click'
-//       >
-//         See All Transactions
-//       </button>
 //     </>
 //   );
 // }
 
-export default TransactionsOverview;
+export default Transactions;

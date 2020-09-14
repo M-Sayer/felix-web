@@ -1,59 +1,50 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
-// Components
+// Util Components
 import Header from '../Header/Header';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
+
+// Main Components
 import DashboardRoute from '../../routes/DashboardRoute';
-import AllTransactionsRoute from '../../routes/AllTransactionsRoute';
-import SingleTransactionsRoute from '../../routes/SingleTransactionRoute';
+import TransactionsRoute from '../../routes/TransactionsRoute';
+import TransactionRoute from '../../routes/TransactionRoute';
+
+// Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
-import LandingRoute from '../../routes/LandingRoute';
+// import LandingRoute from '../../routes/LandingRoute';
 
 const App = () => {
   return (
     <>
       <Header />
       <div className='App'>
-        felix
+        <Switch>
+          <PrivateRoute exact path={'/'} comp={DashboardRoute} />
 
-        <Switch >
-          <PrivateRoute
-            exact
-            path={'/dashboard'}
-            comp={DashboardRoute}
-          />
+          <PrivateRoute exact path={'/dashboard'} comp={DashboardRoute} />
+
+          <PrivateRoute path={'/transactions'} comp={TransactionsRoute} />
 
           <PrivateRoute
-            path={'/transactions'}
-            comp={AllTransactionsRoute}
+            path={'/transaction/:type/:id'}
+            comp={TransactionRoute}
           />
 
-          <PrivateRoute
-            path={'/transaction'}
-            comp={SingleTransactionsRoute}
-          />
+          <PublicOnlyRoute path={'/login'} comp={LoginRoute} />
 
-          <PublicOnlyRoute
-            path={'/login'}
-            comp={LoginRoute}
-          />
+          <PublicOnlyRoute path={'/register'} comp={RegistrationRoute} />
 
-          <PublicOnlyRoute
-            path={'/register'}
-            comp={RegistrationRoute}
-          />
-
-          <Route
+          {/* <Route
             path={'/'}
             component={LandingRoute}
-          />
+          /> */}
         </Switch>
       </div>
     </>
   );
-}
+};
 
 export default App;
