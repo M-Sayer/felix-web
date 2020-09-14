@@ -21,39 +21,21 @@ const App = () => {
     <>
       <Header />
       <div className='App'>
+        <Switch>
+          <PrivateRoute exact path={'/'} comp={DashboardRoute} />
 
-        <Switch >
-          <PrivateRoute
-            exact
-            path={'/'}
-            comp={DashboardRoute}
-          />
+          <PrivateRoute exact path={'/dashboard'} comp={DashboardRoute} />
 
-          <PrivateRoute
-            exact
-            path={'/dashboard'}
-            comp={DashboardRoute}
-          />
-
-          <PrivateRoute
-            path={'/transactions'}
-            comp={TransactionsRoute}
-          />
+          <PrivateRoute path={'/transactions'} comp={TransactionsRoute} />
 
           <PrivateRoute
             path={'/transaction/:type/:id'}
             comp={TransactionRoute}
           />
 
-          <PublicOnlyRoute
-            path={'/login'}
-            comp={LoginRoute}
-          />
+          <PublicOnlyRoute path={'/login'} comp={LoginRoute} />
 
-          <PublicOnlyRoute
-            path={'/register'}
-            comp={RegistrationRoute}
-          />
+          <PublicOnlyRoute path={'/register'} comp={RegistrationRoute} />
 
           {/* <Route
             path={'/'}
@@ -63,6 +45,6 @@ const App = () => {
       </div>
     </>
   );
-}
+};
 
 export default App;
