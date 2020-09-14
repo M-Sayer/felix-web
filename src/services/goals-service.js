@@ -1,9 +1,10 @@
 import config from '../config';
 import TokenService from './token-service';
 
-// config.API_ENDPOINT = http://localhost:8000/api
-const TransactionsService = {
-  async getSingleTransaction(type, id) {
+// Tentative/Temporary
+
+const GoalsService = {
+  async getSingleGoal(id) {
     const settings = {
       'method': 'GET',
       'headers': {
@@ -11,8 +12,9 @@ const TransactionsService = {
         'Content-Type' : 'application/json'
       },
     }
-    // http://localhost:8000/api/transactions/:type/:id
-    const response = await fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`, settings);
+
+    // http://localhost:8000/api/goals
+    const response = await fetch(`${config.API_ENDPOINT}/goals/${id}`, settings);
 
     if(!response.ok) {
       const error = await response.json();
@@ -22,7 +24,7 @@ const TransactionsService = {
     return response.json();
   },
 
-  async getAllTransactions() {
+  async getAllGoals() {
     const settings = {
       'method': 'GET',
       'headers': {
@@ -30,9 +32,9 @@ const TransactionsService = {
         'Content-Type' : 'application/json'
       },
     }
-
-    // http://localhost:8000/api/transactions/
-    const response = await fetch(`${config.API_ENDPOINT}/transactions`, settings);
+    
+    // http://localhost:8000/api/goals
+    const response = await fetch(`${config.API_ENDPOINT}/goals/`, settings);
 
     if(!response.ok) {
       const error = await response.json();
@@ -43,4 +45,4 @@ const TransactionsService = {
   },
 }
 
-export default TransactionsService;
+export default GoalsService;
