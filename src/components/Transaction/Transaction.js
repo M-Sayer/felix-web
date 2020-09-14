@@ -1,7 +1,7 @@
 import React from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 
-import { Button } from '../Miscellaneous/Misc';
+import { Button } from '../Misc/Misc';
 
 export default class Transaction extends React.Component {  
   static contextType = TransactionsContext;
