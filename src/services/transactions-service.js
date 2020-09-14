@@ -7,7 +7,7 @@ const TransactionsService = {
     const settings = {
       'method': 'GET',
       'headers': {
-        'Authorization': `Basic ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
+        'Authorization': `Bearer ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
         'Content-Type' : 'application/json'
       },
     }
@@ -26,7 +26,7 @@ const TransactionsService = {
     const settings = {
       'method': 'GET',
       'headers': {
-        'Authorization': `Basic ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
+        'Authorization': `Bearer ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
         'Content-Type' : 'application/json'
       },
     }
