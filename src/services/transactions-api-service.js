@@ -1,5 +1,4 @@
 import config from '../config'
-import TokenService from './token-services'
 
 const TransactionApiService = {
     getSingleTransaction(type,id){
