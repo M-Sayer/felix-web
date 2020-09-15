@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Util Components
 import Header from '../Header/Header';
@@ -16,6 +16,8 @@ import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
+import Goals from '../Goals/Goals';
+
 const App = () => {
   return (
     <>
@@ -24,10 +26,17 @@ const App = () => {
         <Switch>
           {/* This is just a placeholder.
           Should there be a landing route? */}
-          <PrivateRoute
+
+          <Route
+            exact
+            path={'/'}
+            component={Goals}
+          />
+
+          {/* <PrivateRoute
             exact path={'/'}
             comp={DashboardRoute} 
-          />
+          /> */}
 
           <PrivateRoute
             exact path={'/dashboard'}
