@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import TokenService from '../../services/token-service';
 
+import '../../styles-wip/Header-ALT.css';
+
 const Header = () => {
   const { isUserLoggedIn, handleUserLog } = useContext(UserContext);
 
@@ -12,7 +14,7 @@ const Header = () => {
   // When isUserLoggedIn in UserContext is true
   const renderLoggedInNav = () => {
     return (
-      <nav>
+      <nav className='headerNav'>
         <Link
           onClick={() => {
             handleUserLog();
@@ -29,7 +31,7 @@ const Header = () => {
   // When isUserLoggedIn in UserContext is false
   const renderLoggedOutNav = () => {
     return (
-      <nav>
+      <nav className='headerNav'>
         <Link
           to='/login'
         >
@@ -46,8 +48,9 @@ const Header = () => {
 
   return (
     <>
-      <header className='header-main'>
-        <h1>felix</h1>
+      <header className='headerMain'>
+        <h1 className='mainTitle'>felix</h1>
+        <h2 className='mainSubtitle'>Personal Finance Assistant</h2>
         {
           (isUserLoggedIn || TokenService.hasAuthToken())
             ? renderLoggedInNav()

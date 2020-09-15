@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* 
+font-family: 'MuseoModerno', sans-serif;
+font-family: 'Roboto', sans-serif; 
+*/
+
+header, .App {
+    text-align: center;
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.LoginForm>input {
+    text-align: center;
+    text-transform: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.275em;
+    font-weight: 400;
+    color: white;
+    width: 195px;
+    padding: 5px;
+    margin: 10px 0 9px 0;
+    border-radius: 4px;
+    border: .105em solid rgb(128, 128, 128);
+    background: none;
+}
+.LoginForm>input::placeholder {
+    text-transform: lowercase;
+}
+.LoginForm>input:focus, .RegistrationForm>input:hover {
+    border: .115em solid rgb(71, 220, 193);
+    outline: none;
+}
+
+.login-button {
+    margin: 20px 0 -2px 0;
+    padding: 8px 10px;
+    font-family: 'Roboto', sans-serif; 
+    font-size: 1.125em;
+    font-weight: 900;
+    text-transform: uppercase;
+    width: 150px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(109, 253, 114);
+    color:  rgb(11, 47, 41);
+    outline: none;
+}
+.login-button:hover, .login-button:focus {
+    background-color: rgb(101, 244, 236);
+}
+.login-button:active {
+    background-color: rgb(244, 198, 83);
+}
+
+.error-alert {
+    color: red;
+    font-size: 1.15em;
+}
+
+
