@@ -37,7 +37,7 @@ const GoalsService = {
     }
     
     // http://localhost:8000/api/goals
-    const response = await fetch(`${config.API_ENDPOINT}/transactions`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/goals`, settings);
 
     if(!response.ok) {
       const error = await response.json();

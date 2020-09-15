@@ -2,23 +2,60 @@
 import React, { useEffect, useState } from 'react'; 
 import GoalsService from '../services/goals-service';
 
-// const nullGoal = {
-//   'id' : null,
-//   'name' : null,
-//   'date_created' : null,
-//   'amount' : null,
-//   'subType' : null
-// }
+const nullGoal = {
+  'id' : null,
+  'user_id' : null,
+  'goal_amount' : null,
+  'contribution_amount' : null,
+  'current_amount' : null,
+  'end_date' : null
+}
 
 // Refactor later
 const GoalsContext = React.createContext({
-  goal: {},
+  goal: nullGoal,
   goals: [],
   setGoal: () => {},
   setGoals: () => {},
 });
 
 export default GoalsContext;
+
+export const GoalsProvider = (props) => {
+  const [error, setError] = useState(null);
+  const [goal, setGoal] = useState(nullGoal);
+
+  const [goals, setGoals] = useState([]);
+  useEffect(() => {
+    async function getUserGoals() {
+      try {
+        // const userGoals = await GoalsService.getGoals();
+        const { goals } = await GoalsService.getGoals();
+        setGoals(goals);
+      }
+      catch(error) {
+        console.log(error);
+      }
+    }
+    getUserGoals();
+  }, []);
+
+  return (
+    <GoalsContext.Provider 
+      value={{ 
+        goal,
+        goals,
+
+        setGoal,
+        setGoals,
+
+        error,
+        setError
+      }}>
+      {props.children}
+    </GoalsContext.Provider>
+  )
+}
 
 // export class GoalsProvider extends Component {
 //   state = {
@@ -68,41 +105,3 @@ export default GoalsContext;
 //     );
 //   }
 // }
-
-export const GoalsProvider = (props) => {
-  const [goal, setGoal] = useState({});
-  const [goals, setGoals] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function getUserGoal() {
-      try {
-        // const userGoals = await GoalsService.getGoals();
-        const { goals } = await GoalsService.getGoals();
-
-        console.log(goals);
-        setGoals(goals);
-      }
-      catch(error) {
-        console.log(error);
-      }
-    }
-    getUserGoal();
-  }, []);
-
-  return (
-    <GoalsContext.Provider 
-      value={{ 
-        goal,
-        goals,
-
-        setGoal,
-        setGoals,
-
-        error,
-        setError
-      }}>
-      {props.children}
-    </GoalsContext.Provider>
-  )
-}
