@@ -16,8 +16,6 @@ import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
-import TransactionsService from '../../services/transactions-service.js';
-
 const App = () => {
 
   return (
