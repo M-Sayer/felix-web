@@ -20,6 +20,7 @@ export default class TransactionForm extends React.Component {
 
     handleSubmit = ev => {
         ev.preventDefault();
+        this.context.setTransaction(this.context.transactionForm)
         console.log(this.context.transactionForm)
     }
 
@@ -33,7 +34,7 @@ export default class TransactionForm extends React.Component {
 
     handleCancel = ev => {
         ev.preventDefault();
-        this.context.setTransactionForm();
+        this.context.toggleEdit();
     }
 
     renderOptions = arr =>{
@@ -98,7 +99,9 @@ export default class TransactionForm extends React.Component {
                     className='transaction_submit'>
                       Submit
                     </Button>
-                    <Button className='transaction_form_cancel'>
+                    <Button
+                    onClick={this.handleCancel} 
+                    className='transaction_form_cancel'>
                         Cancel
                     </Button>
                 </form>

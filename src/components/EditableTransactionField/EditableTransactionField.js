@@ -7,10 +7,6 @@ import TransactionForm from '../TransactionForm/TransactionForm';
 
 export default class RenderEditableTextFields extends React.Component {
 
-    state = {
-        edit : false
-    }
-
 
     static contextType = TransactionsContext;
 
@@ -18,7 +14,7 @@ export default class RenderEditableTextFields extends React.Component {
     render(){
         const {name, date_created, amount, category, description } = this.context.transaction;
         return(
-          !this.state.edit ?
+          !this.context.edit ?
           (
           <>
             <div className='transaction_notes'>
@@ -31,8 +27,8 @@ export default class RenderEditableTextFields extends React.Component {
               <p className='amount'>{amount}</p>
             </div>
             <Button
-              onClick={()=> this.setState({edit : true}) }
-             className='transaction_edit'>
+            onClick={this.context.toggleEdit}
+            className='transaction_edit'>
               Edit
             </Button>
           </>

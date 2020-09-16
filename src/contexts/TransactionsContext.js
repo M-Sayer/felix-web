@@ -22,6 +22,7 @@ const TransactionsContext = React.createContext({
   transaction: nullTransaction,
   transactions: [],
   type: null,
+  edit: false, 
   transactionForm : emptyTransactionForm,
   setTransaction : ()=>{},
   setTransactions : ()=>{},
@@ -32,6 +33,7 @@ const TransactionsContext = React.createContext({
   clearTransactions : ()=>{},
   clearTransactionForm : () => {},
   clearType: ()=>{},
+  toggleEdit: ()=>{},
   filterTransactions : ()=>{},
   sortTransactions : ()=>{},
   setError : () => {},
@@ -44,6 +46,7 @@ export class TransactionsProvider extends Component {
     transaction: nullTransaction,
     transactions: [],
     transactionForm : emptyTransactionForm,
+    edit : false,
     type : null,
     error: null
   }
@@ -85,6 +88,8 @@ export class TransactionsProvider extends Component {
 
   clearType = () => this.setState({type : null})
 
+  toggleEdit = () => this.setState({edit : !this.state.edit})
+
   filterTransactions = (transactions, property, value) => {
     return transactions.filter(trx => trx[property] === value);
   }
@@ -109,6 +114,7 @@ export class TransactionsProvider extends Component {
           transactions: this.state.transactions,
           transactionForm : this.state.transactionForm,
           type : this.state.type,
+          edit : this.state.edit,
 
           setTransaction: this.setTransaction,
           setTransactions: this.setTransactions,
@@ -119,6 +125,7 @@ export class TransactionsProvider extends Component {
           clearTransactions: this.clearTransactions,
           clearTransactionForm : this.clearTransactionForm,
           clearType: this.clearType,
+          toggleEdit: this.toggleEdit,
 
           filterTransactions: this.filterTransactions,
           sortTransactions: this.sortTransactions,
