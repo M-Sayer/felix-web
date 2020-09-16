@@ -21,7 +21,8 @@
     "start:dev": "env REACT_APP_ENV=development npm start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "env REACT_APP_ENV=production vercel deploy --prod"
   },
   "eslintConfig": {
     "extends": "react-app"
