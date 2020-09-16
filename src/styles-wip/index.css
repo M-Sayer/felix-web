@@ -1,0 +1,89 @@
+/* BASE STYLES FOR ENTIRE APP */
+
+/* FONT STACK: MuseoModerno , Roboto 
+(available from GoogeleFonts) */
+
+/* HTML LINK (if needed) ------------------------------
+<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
+---------------------------------------------------*/
+
+/*------------------------------------- 
+font-family: 'MuseoModerno', sans-serif;
+font-family: 'Roboto', sans-serif; 
+--------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+
+/**************************************************/
+/* APPLIED TO ENTIRE APP */
+* {
+    box-sizing: border-box;
+}
+/**************************************************/
+
+
+/**************************************************/
+/* must add "<body class='body'>" in "index.html" to work */
+.body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(35, 39, 43);
+}
+/**************************************************/
+
+
+/**************************************************/
+/* ALL LIST ITEMS */
+li {
+    list-style: none;
+}
+/**************************************************/
+
+
+/**************************************************/
+/* CENTER ELEMENTS*/
+.centered {
+    text-align: center;
+    margin: 0 auto;    
+}
+/**************************************************/
+
+
+/**************************************************/
+/* USER DATA FROM THE DATABASE */
+.userData {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2em;
+    margin: -10px 0 10px 0;
+}
+/**************************************************/
+
+
+
+/*****************************************************************************/
+/*****************************************************************************/
+/******** NOTE TO SELF (JAMES) ************/
+/* IS THIS GETTING UTILIZED ??? */
+/* .error-alert {
+    color: red;
+    font-size: 1.15em;
+} */
+
+/*********** STILL NEED TO FIX THESE AS A STANDARDIZED STYLE *************/
+/* requires <span className='transactionItem'> to work*/
+/* .transactionItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 25px 0 -35px;
+    padding: 5px 0;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.35em;
+} */
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/
