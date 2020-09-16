@@ -1,68 +1,46 @@
 import React from 'react';
 import {Button} from '../Misc/Misc'
-/**
- * @todo 1:> hook up api
- *       2:> make sure that it can work for both single transaction AND new transaction
- */
-
- /**
-  * @todo
-  * transaction form object needs to be a prop
-  * event handlers need to be props
-  * 
-  *     formObj : {
-  *         name : '',
-  *         description: '',
-  *         type : '' ,
-  *         category : '' ,
-  *         amount : 00,
-  *         }
-  *     event props : 
-  *     handleSubmit : () => {},
-  *     handleCancel : () => {},
-  *     handleChange : () => {},
-  *  
-  */
 
 export default class TransactionForm extends React.Component {
 
-
-    static defaultProps = {
-        handleCancel : () => {},
-        handleChange : () => {},
-        handleSubmit : () => {},
-        editing : false, 
-        transactionFormField : {
-            name : '',
-            description: '',
-            type : '' ,
-            category : '' ,
-            amount : 0,
-        }
-    } 
-
-    renderOptions = arr =>{
-        if(arr.length){
-            return arr.map((item, i) => {
-                return (
-                    <option
-                    key={i}
-                    name={item}
-                    value={item}
-                    >
-                    {item}
-                    </option>
-                )
-            })
-        }
+  static defaultProps = {
+    handleCancel : () => {},
+    handleChange : () => {},
+    handleSubmit : () => {},
+    editing : false, 
+    transaction : {
+      name : '',
+      description: '',
+      type : '' ,
+      category : '' ,
+      amount : 0,
     }
+  } 
+
+  renderOptions = arr =>{
+    if(arr.length){
+      return arr.map((item, i) => {
+        return (
+          <option
+          key={i}
+          name={item}
+          value={item}
+          >
+          {item}
+          </option>
+        )
+      })
+    }
+  }
+
+
 
     render(){
        console.log(this.props)
-       const {name, description, amount, category} = this.props.transactionFormField
+       const {name, description, amount, category, type } = this.props.transaction
         
        const optionForType = 
-        this.props.transactionFormField.type === 'income'
+        type === 'income'
         ?
         ['paycheck', 'freelance', 'side_gig', 'other']
         :
@@ -72,10 +50,9 @@ export default class TransactionForm extends React.Component {
         return(
             <div className='transaction_form_wrapper'>
                 <form
-                onSubmit={this.props.handleSubmit}
-                onChange={this.props.handleChanges}
+                  onSubmit={this.props.handleSubmit}
+                  onChange={this.props.handleChange}
                 >
-
                     <div className='transaction_notes'>
 
                     {
@@ -89,7 +66,9 @@ export default class TransactionForm extends React.Component {
                         </>
 
                     }
-                      <input name='name' defaultValue={name} placeholder='name'></input>
+
+                    
+                      <input name='name' value={name} placeholder='name'></input>
                       <select name='category' defaultValue={category}>
                           {this.renderOptions(optionForType)}
                       </select>

@@ -6,15 +6,33 @@ import Transaction from '../components/Transaction/Transaction';
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
 
+  //amount
+  //desc
+  //id
+  //name
+  //category
+  //date
+  state = {
+    transaction: {},
+  }
 
+  handleChange = e => {
+    e.preventDefault();
+    const {name , value} = e.target;
+    this.setState({
+      transaction: { 
+        ...this.state.transaction,
+        [name]: value }
+    })
+  }
     componentDidMount = () => {
-        const {type, id} = (this.props.match.params)
+      const {type, id} = this.props.match.params;
 
-        this.context.setType(type)
-
-        TransactionsService.getSingleTransaction(type, id)
-        .then(res => this.context.setTransaction(res))
-        .catch(error => this.context.setError(error))
+      TransactionsService.getSingleTransaction(type, id)
+      .then(res => this.setState({
+        transaction: {...res, type: type}
+      }))
+      .catch(error => this.context.setError(error))
     }
 
     componentWillUnmount = () => {
@@ -28,7 +46,7 @@ export default class TransactionRoute extends React.Component{
         <h2>
           Transaction
         </h2> 
-        <Transaction/>
+        <Transaction handleChange={this.handleChange} transaction={this.state.transaction}/>
       </section>
     );
   }

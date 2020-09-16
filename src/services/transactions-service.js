@@ -11,19 +11,14 @@ const TransactionsService = {
                 :res.json()
                 )
     },
-    updateSingleTransaction( type, id, content){
-        return fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`, {
+    updateSingleTransaction(transaction){
+        return fetch(`${config.API_ENDPOINT}/transactions/${transaction.type}/${transaction.id}`, {
             method : 'PATCH',
             headers : {
                 'Content-Type' : 'application/json'
             },
-            body : JSON.stringify(content)
+            body : JSON.stringify(transaction)
         })
-        .then(res => 
-            (!res.ok)
-            ?res.json().then(e => Promise.reject(e))
-            :res.json()
-            )
     },
   async getAllTransactions() {
     const settings = {
