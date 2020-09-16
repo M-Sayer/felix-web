@@ -24,6 +24,7 @@ export default class TransactionForm extends React.Component {
     }
 
     handleChanges = ev =>{
+        ev.preventDefault();
         console.log(this.context.transactionForm)
         const {name , value} = ev.target;
         console.log('name',name, 'value', value) 
@@ -65,6 +66,7 @@ export default class TransactionForm extends React.Component {
         return(
             <div className='transaction_form_wrapper'>
                 <form
+                onSubmit={this.handleSubmit}
                 onChange={this.handleChanges}
                 >
 
@@ -82,8 +84,7 @@ export default class TransactionForm extends React.Component {
 
                     }
                       <input name='name' value={name} placeholder='name'></input>
-                      <input name='category' value={category} placeholder='category'></input>
-                      <select name='category'>
+                      <select name='category' defaultValue={category}>
                           {this.renderOptions(optionForType)}
                       </select>
                       <textarea name='description' value={description}placeholder='description'></textarea>
@@ -93,7 +94,7 @@ export default class TransactionForm extends React.Component {
                       <input name='amount' value={amount} className='amount' placeholder='amount'></input>
                     </div>
                     <Button
-                    onSubmit={this.handleSubmit} 
+                    type='submit' 
                     className='transaction_submit'>
                       Submit
                     </Button>
