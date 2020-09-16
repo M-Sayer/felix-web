@@ -3,25 +3,28 @@ import TokenService from './token-service'
 
 // config.API_ENDPOINT = http://localhost:8000/api
 const TransactionsService = {
-  async getSingleTransaction(type, id) {
-    const settings = {
-      'method': 'GET',
-      'headers': {
-        'Authorization': `Bearer ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
-        'Content-Type' : 'application/json'
-      },
-    }
-    // http://localhost:8000/api/transactions/:type/:id
-    const response = await fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`, settings);
-
-    if(!response.ok) {
-      const error = await response.json();
-      return Promise.reject(error);
-    }
-
-    return response.json();
-  },
-
+      getSingleTransaction(type,id){
+        return fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`)
+            .then(res =>        
+                (!res.ok)
+                ?res.json().then(e => Promise.reject(e))
+                :res.json()
+                )
+    },
+    updateSingleTransaction( type, id, content){
+        return fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`, {
+            method : 'PATCH',
+            headers : {
+                'Content-Type' : 'application/json'
+            },
+            body : JSON.stringify(content)
+        })
+        .then(res => 
+            (!res.ok)
+            ?res.json().then(e => Promise.reject(e))
+            :res.json()
+            )
+    },
   async getAllTransactions() {
     const settings = {
       'method': 'GET',

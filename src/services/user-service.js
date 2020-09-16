@@ -20,7 +20,7 @@ const UserService = {
     // Possible solutions:
     // (1) Send user id with authToken?
     // (2) Have token parsed to get user id from payload on client side
-    const response = await fetch(`${config.API_ENDPOINT}/transactions/user/${6}`, settings);
+    const response = await fetch(`${config.API_ENDPOINT}/transactions/users/${6}`, settings);
 
     if(!response.ok) {
       const error = await response.json();

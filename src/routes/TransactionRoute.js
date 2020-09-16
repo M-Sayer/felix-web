@@ -6,17 +6,21 @@ import Transaction from '../components/Transaction/Transaction';
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
 
-  componentDidMount = async () => {
-    try {
-      const { type, id } = this.props.match.params;
-      const transaction = await TransactionsService.getSingleTransaction(type, id);
-      this.context.setTransaction(transaction);
+
+    componentDidMount = () => {
+        const {type, id} = (this.props.match.params)
+
+        this.context.setType(type)
+
+        TransactionsService.getSingleTransaction(type, id)
+        .then(res => this.context.setTransaction(res))
+        .catch(error => this.context.setError(error))
     }
-    catch(error) {
-      // For now!
-      console.log(error)
+
+    componentWillUnmount = () => {
+        this.context.clearTransaction();
+        this.context.clearError();
     }
-  }
 
   render(){
     return(
@@ -24,7 +28,7 @@ export default class TransactionRoute extends React.Component{
         <h2>
           Transaction
         </h2> 
-        <Transaction />
+        <Transaction/>
       </section>
     );
   }

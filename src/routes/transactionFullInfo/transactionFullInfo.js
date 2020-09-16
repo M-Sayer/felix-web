@@ -10,6 +10,8 @@ export default class TransactionFullInfo extends React.Component{
 
     componentDidMount = () => {
         const {type, id} = (this.props.match.params)
+        
+        
 
         TransactionApiService.getSingleTransaction(type, id)
         .then(res => this.context.setTransactionInfo(res))
@@ -19,6 +21,7 @@ export default class TransactionFullInfo extends React.Component{
     componentWillUnmount = () => {
         this.context.clearTransaction();
         this.context.clearError();
+        this.context.clearType();
     }
     renderedError = (error) =>{
         return (
