@@ -33,6 +33,7 @@ const TransactionsContext = React.createContext({
   clearTransactions : ()=>{},
   clearTransactionForm : () => {},
   clearType: ()=>{},
+  clearError: ()=>{},
   toggleEdit: ()=>{},
   filterTransactions : ()=>{},
   sortTransactions : ()=>{},
@@ -87,6 +88,8 @@ export class TransactionsProvider extends Component {
 
   clearType = () => this.setState({type : null})
 
+  clearError = () => this.setError({error : null})
+
   toggleEdit = () => this.setState({edit : !this.state.edit})
 
   filterTransactions = (transactions, property, value) => {
@@ -124,6 +127,7 @@ export class TransactionsProvider extends Component {
           clearTransactions: this.clearTransactions,
           clearTransactionForm : this.clearTransactionForm,
           clearType: this.clearType,
+          clearError: this.clearError,
           toggleEdit: this.toggleEdit,
 
           filterTransactions: this.filterTransactions,

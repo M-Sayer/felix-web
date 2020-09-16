@@ -32,7 +32,7 @@ export default class TransactionForm extends React.Component {
         handleChange : () => {},
         handleSubmit : () => {},
         editing : false, 
-        transactionForm : {
+        transactionFormField : {
             name : '',
             description: '',
             type : '' ,
@@ -58,10 +58,11 @@ export default class TransactionForm extends React.Component {
     }
 
     render(){
-       const {name, description, amount, category} = this.props.transactionForm
+       console.log(this.props)
+       const {name, description, amount, category} = this.props.transactionFormField
         
        const optionForType = 
-        this.props.transactionForm.type === 'income'
+        this.props.transactionFormField.type === 'income'
         ?
         ['paycheck', 'freelance', 'side_gig', 'other']
         :

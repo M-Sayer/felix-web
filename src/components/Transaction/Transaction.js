@@ -19,7 +19,7 @@ export default class Transaction extends React.Component {
    static contextType = TransactionsContext;
 
    componentDidMount = () => {
-       if (this.context.transaction.name) this.context.setTransactionForm();       
+     this.context.setTransactionForm();       
    }
 
    handleSubmit = ev => {
