@@ -6,12 +6,18 @@ import Transaction from '../components/Transaction/Transaction';
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
 
-  //amount
-  //desc
-  //id
-  //name
-  //category
-  //date
+  /**
+   * transaction : {
+   *    amount : [int],
+   *    description : [str],
+   *    id : [int],
+   *    name : [str],
+   *    category : [str],
+   *    date_created : [str],
+   *    
+   *    type : (this.props.match.params.type)
+   * }
+   */
   state = {
     transaction: {},
   }
