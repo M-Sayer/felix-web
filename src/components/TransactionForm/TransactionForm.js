@@ -24,7 +24,7 @@ export default class TransactionForm extends React.Component {
           <option
           key={i}
           name={item}
-          value={item}
+          defaultValue={item}
           >
           {item}
           </option>
@@ -68,15 +68,15 @@ export default class TransactionForm extends React.Component {
                     }
 
                     
-                      <input name='name' value={name} placeholder='name'></input>
-                      <select name='category' defaultValue={category}>
+                      <input name='name' defaultValue={name} placeholder='name'></input>
+                      <select name='category' defaultdefaultValue={category}>
                           {this.renderOptions(optionForType)}
                       </select>
-                      <textarea name='description' defaultValue={description}placeholder='description'></textarea>
+                      <textarea name='description' defaultdefaultValue={description}placeholder='description'></textarea>
 
                     </div>
                     <div className='amount_wrapper'>
-                      <input name='amount' defaultValue={amount} className='amount' placeholder='amount'></input>
+                      <input name='amount' defaultdefaultValue={amount} className='amount' placeholder='amount'></input>
                     </div>
                     <Button
                     type='submit' 

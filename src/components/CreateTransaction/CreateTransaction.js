@@ -19,7 +19,7 @@ export default class CreateTransaction extends React.Component {
 			TransactionsService.createTransaction(this.context.transactionForm);
 	}
 
-	handleChanges = ev =>{
+	handleChange = ev =>{
 			ev.preventDefault();
 			const {name , value} = ev.target;
 			this.context.setTransactionFormChange(name, value)
@@ -34,7 +34,7 @@ export default class CreateTransaction extends React.Component {
 		return (
 			<TransactionForm
 			handleCancel = {this.handleCancel}
-			handleChanges = {this.handleChanges}
+			handleChange = {this.handleChange}
 			handleSubmit = {this.handleSubmit}
 			editing = {false}/>
 		);
