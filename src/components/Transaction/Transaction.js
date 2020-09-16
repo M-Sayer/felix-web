@@ -6,21 +6,14 @@ import { Button } from '../Misc/Misc';
 
 export default class Transaction extends React.Component {  
 
-  static contextType = TransactionsContext;
-
   /**
    * @todo ask about design, like i know having label might not look good when the user has to edit the inputs.... but
    * there kind needed for accessibility.
    * 
    */
+  static contextType = TransactionsContext;
 
-   handleDelete =()=> {}
-
-   static contextType = TransactionsContext;
-
-   componentDidMount = () => {
-     this.context.setTransactionForm();       
-   }
+  handleDelete =()=> {}
 
    handleSubmit = ev => {
        ev.preventDefault();
