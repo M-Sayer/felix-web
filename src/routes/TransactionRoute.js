@@ -26,16 +26,6 @@ export default class TransactionRoute extends React.Component{
     })
   }
     componentDidMount = () => {
-<<<<<<< HEAD
-        const {type, id} = (this.props.match.params)
-
-        this.context.setType(type);       
-
-        TransactionsService.getSingleTransaction(type, id)
-        .then(res => this.context.setTransaction(res))
-        .then( ()=> this.context.setTransactionForm())
-        .catch(error => this.context.setError(error))
-=======
       const {type, id} = this.props.match.params;
 
       TransactionsService.getSingleTransaction(type, id)
@@ -43,7 +33,6 @@ export default class TransactionRoute extends React.Component{
         transaction: {...res, type: type}
       }))
       .catch(error => this.context.setError(error))
->>>>>>> muhajir-transaction-form
     }
 
     componentWillUnmount = () => {

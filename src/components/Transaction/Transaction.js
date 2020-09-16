@@ -1,5 +1,4 @@
 import React from 'react';
-import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionForm from '../TransactionForm/TransactionForm'
 
 import { Button } from '../Misc/Misc';
