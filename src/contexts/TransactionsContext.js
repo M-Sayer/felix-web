@@ -61,7 +61,6 @@ export class TransactionsProvider extends Component {
 
   //called on if user is on view single transaction page
   setTransactionForm = () => {
-    console.log(this.state.transaction)
     this.setState({transactionForm : this.state.transaction});
   }
 

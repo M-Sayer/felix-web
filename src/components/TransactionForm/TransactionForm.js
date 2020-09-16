@@ -1,41 +1,45 @@
 import React from 'react';
 import {Button} from '../Misc/Misc'
-import TransactionsContext from '../../contexts/TransactionsContext';
-
 /**
  * @todo 1:> hook up api
  *       2:> make sure that it can work for both single transaction AND new transaction
- * 
- * @note Al : "make a form component for both"
- *       me : (눈_눈) "y tho"
  */
+
+ /**
+  * @todo
+  * transaction form object needs to be a prop
+  * event handlers need to be props
+  * 
+  *     formObj : {
+  *         name : '',
+  *         description: '',
+  *         type : '' ,
+  *         category : '' ,
+  *         amount : 00,
+  *         }
+  *     event props : 
+  *     handleSubmit : () => {},
+  *     handleCancel : () => {},
+  *     handleChange : () => {},
+  *  
+  */
 
 export default class TransactionForm extends React.Component {
 
-    static contextType = TransactionsContext;
 
-    componentDidMount = () => {
-        if(this.context.transaction.name)this.context.setTransactionForm();       
-    }
-
-    handleSubmit = ev => {
-        ev.preventDefault();
-        this.context.setTransaction(this.context.transactionForm)
-        console.log(this.context.transactionForm)
-    }
-
-    handleChanges = ev =>{
-        ev.preventDefault();
-        console.log(this.context.transactionForm)
-        const {name , value} = ev.target;
-        console.log('name',name, 'value', value) 
-        this.context.setTransactionFormChange(name, value)
-    }
-
-    handleCancel = ev => {
-        ev.preventDefault();
-        this.context.toggleEdit();
-    }
+    static defaultProps = {
+        handleCancel : () => {},
+        handleChange : () => {},
+        handleSubmit : () => {},
+        editing : false, 
+        transactionForm : {
+            name : '',
+            description: '',
+            type : '' ,
+            category : '' ,
+            amount : 0,
+        }
+    } 
 
     renderOptions = arr =>{
         if(arr.length){
@@ -54,10 +58,10 @@ export default class TransactionForm extends React.Component {
     }
 
     render(){
-       const {name, description, amount, category} = this.context.transactionForm
+       const {name, description, amount, category} = this.props.transactionForm
         
        const optionForType = 
-        this.context.type === 'income'
+        this.props.transactionForm.type === 'income'
         ?
         ['paycheck', 'freelance', 'side_gig', 'other']
         :
@@ -67,14 +71,14 @@ export default class TransactionForm extends React.Component {
         return(
             <div className='transaction_form_wrapper'>
                 <form
-                onSubmit={this.handleSubmit}
-                onChange={this.handleChanges}
+                onSubmit={this.props.handleSubmit}
+                onChange={this.props.handleChanges}
                 >
 
                     <div className='transaction_notes'>
 
                     {
-                        !this.context.transaction.id 
+                        !this.props.editing 
                         && 
                         <>
                             <label htmlFor='transactionType'></label>
@@ -100,7 +104,7 @@ export default class TransactionForm extends React.Component {
                       Submit
                     </Button>
                     <Button
-                    onClick={this.handleCancel} 
+                    onClick={this.props.handleCancel} 
                     className='transaction_form_cancel'>
                         Cancel
                     </Button>
