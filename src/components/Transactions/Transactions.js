@@ -58,6 +58,13 @@ class Transactions extends Component {
               : ''
           }
         </ul>
+        <button
+          onClick={() =>
+            this.props.history.push('/dashboard')}
+            type='click'
+        >
+          Back
+        </button>
       </>
     );
   }
