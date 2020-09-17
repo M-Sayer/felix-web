@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
+import CreateTransaction from '../CreateTransaction/CreateTransaction';
 
 class Transactions extends Component {
   static contextType = TransactionsContext;
@@ -58,6 +59,7 @@ class Transactions extends Component {
               : ''
           }
         </ul>
+        <CreateTransaction />
       </>
     );
   }
