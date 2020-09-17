@@ -51,6 +51,22 @@
     font-weight: 700;
     text-transform: uppercase; 
 }
+/**************************************************/
+
+
+/**************************************************/
+/* TERTIARY BUTTONS */
+.tertiaryBtn {
+    width: 80px;
+    border-radius: 4px;
+
+    margin: 4px;
+    padding: 4px;
+
+    font-size: .85em;
+    font-weight: 700;
+    text-transform: uppercase; 
+}
 /***********************************************/
 
 /*****************************************************************************/

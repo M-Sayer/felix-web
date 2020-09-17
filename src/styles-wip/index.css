@@ -46,7 +46,7 @@ li {
 /* CENTER ELEMENTS*/
 .centered {
     text-align: center;
-    margin: 0 auto;    
+    align-self: center; 
 }
 /**************************************************/
 
@@ -59,8 +59,53 @@ li {
     font-size: 2em;
     margin: -10px 0 10px 0;
 }
-/**************************************************/
 
+.userData2 {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.35em;
+    padding: 2px 20px 2px 0;
+}
+
+
+.dataFlexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0 -35px;
+}
+/* "dataFlexRow" requires "<span>"inline element"</span>" to work */
+/* EXAMPLE: 
+    <li 
+        className='userData2'
+        key={i}
+    >
+        <div className='dataFlexRow'>
+        <span>{trx.income_category || trx.expense_category}</span>
+        <span>{trx.income_amount || trx.expense_amount}</span> 
+        <button
+            className='tertiaryBtn btn'
+            onClick={() =>
+            this.props.history.push(this.renderTransactionParams(trx))
+            }
+        >
+            Details
+        </button>
+        </div>
+    </li>
+*/
+
+
+/* NOTE TO SELF: HOW DO WE IMPLEMENT THIS STYLE FOR DATA FROM DATABASE??? */
+.income {
+    color: blue;
+}
+
+.expense {
+    color: red;
+}
+/**************************************************/
 
 
 /*****************************************************************************/
@@ -73,17 +118,6 @@ li {
 } */
 
 /*********** STILL NEED TO FIX THESE AS A STANDARDIZED STYLE *************/
-/* requires <span className='transactionItem'> to work*/
-/* .transactionItem {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 25px 0 -35px;
-    padding: 5px 0;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.35em;
-} */
 /*****************************************************************************/
 /*****************************************************************************/
 /*****************************************************************************/
