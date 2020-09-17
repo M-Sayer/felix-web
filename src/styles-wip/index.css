@@ -50,6 +50,19 @@ li {
 }
 /**************************************************/
 
+/*  
+.alignLeft {
+    margin: 0;
+    position: absolute;
+    left: 15%;
+    bottom: 18%;
+}
+.alignRight {
+    margin: 0;
+    position: absolute;
+    right: 15%;
+    bottom: 18%;
+} */
 
 /**************************************************/
 /* USER DATA FROM THE DATABASE */
@@ -95,6 +108,15 @@ li {
     </li>
 */
 
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+    align-self: space-around;
+}
+
 .middleColumnAlign {
     margin-right: 10%;
     position: absolute;
@@ -113,7 +135,7 @@ li {
         <span className='middleColumnAlign'>
         {trx.income_amount || trx.expense_amount}
         </span>
-        
+
         <button
         className='tertiaryBtn btn'
         onClick={() =>

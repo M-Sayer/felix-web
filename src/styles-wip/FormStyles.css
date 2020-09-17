@@ -8,6 +8,14 @@
     align-items: center;
     margin: 20px 0;
 }
+
+.formContainerALT {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 0 10px 0;
+}
 /**************************************************/
 
 
@@ -36,6 +44,40 @@
 }
 /**************************************************/
 
+
+/**************************************************/
+/* FORM SELECTS */
+.formSelect {
+    /* width: 100%; */
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.275em;
+    font-weight: 400;
+    color: white;
+    text-align: center;
+    text-transform: none;
+    
+    width: 250px;
+    padding: 5px 41%;
+    margin: 10px 0 9px 0;
+
+    border-radius: 4px;
+    background: none;
+    border: .105em solid rgb(128, 128, 128);    
+    appearance: none;
+}
+.formSelect:hover, .formSelect:focus {
+    border: .115em solid rgb(109, 253, 114);
+    outline: none;
+}
+.formSelect:active {
+    background-color: rgb(244, 198, 83);
+} 
+/**************************************************/
+
 /*****************************************************************************/
 /*****************************************************************************/
 /*****************************************************************************/
+
+
+
+
