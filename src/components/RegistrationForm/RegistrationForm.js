@@ -1,7 +1,11 @@
 import React from 'react';
 import AuthService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
-import './RegistrationForm.css';
+
+import '../../styles-wip/index.css'
+import '../../styles-wip/LinkStyles.css'
+import '../../styles-wip/ButtonStyles.css'
+import '../../styles-wip/FormStyles.css'
 
 // Code for RegistrationForm is working...
 class RegistrationForm extends React.Component {
@@ -80,70 +84,80 @@ class RegistrationForm extends React.Component {
     return (
       <>
         <form 
-          className='RegistrationForm'
+          className='RegistrationForm formContainer'
           onSubmit={this.handleUserRegistration}
         >
           <div role='alert'>
             {error && <p className='error-alert'>{error}</p>}
           </div>
 
-          <label
+          {/* <label
             htmlFor='first_name'
           >
             First Name
-          </label>
+          </label> */}
           <input
+            className='formInput'
+            placeholder="First Name"
             id='first_name'
             type='text'
             required
           />
       
-          <label
+          {/* <label
             htmlFor='last_name'
           >
             Last Name
-          </label>
+          </label> */}
           <input
+            className='formInput'
+            placeholder="Last Name"
             id='last_name'
             type='text'
             required
           />
       
-          <label
+          {/* <label
             htmlFor='username'
           >
             Username
-          </label>
+          </label> */}
           <input
+            className='formInput'
+            placeholder="Username"
             id='username'
             type='text'
             required
           />
       
-          <label
+          {/* <label
             htmlFor='email'
           >
             Email
-          </label>
+          </label> */}
           <input
+            className='formInput'
+            placeholder="Email"
             id='email'
             type='text'
             required
           />
       
-          <label
+          {/* <label
             htmlFor='password'
           >
             Password
-          </label>
+          </label> */}
           <input
+            className='formInput'
+            placeholder="Password"
             id='password'
             type='password'
             required
           />
       
           <button
-            className='submit-button'
+            className='primaryBtn btn'
             type='submit'
           >
             Submit
@@ -151,6 +165,7 @@ class RegistrationForm extends React.Component {
         </form>
 
         <button
+          className='btn-link'
           onClick={() =>
             this.props.history.push('/login')
           }

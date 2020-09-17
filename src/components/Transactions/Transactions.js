@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 
+import '../../styles-wip/OverviewStyles.css'
+import '../../styles-wip/index.css'
+import '../../styles-wip/ButtonStyles.css'
+
 class Transactions extends Component {
   static contextType = TransactionsContext;
 
@@ -17,15 +21,22 @@ class Transactions extends Component {
     return transactions.map((trx, i) => {
       return (
         <li 
+          className='dataFlexRow userData2'
           key={i}
         >
-          {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount} 
+          <span>
+            {trx.income_category || trx.expense_category}
+          </span> 
+          <span className='middleColumnAlign'>
+            {trx.income_amount || trx.expense_amount}
+          </span>
           <button
+            className='tertiaryBtn btn'
             onClick={() =>
               this.props.history.push(this.renderTransactionParams(trx))
             }
           >
-            See More Details
+            Details
           </button>
         </li>
       );
@@ -47,8 +58,8 @@ class Transactions extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <>
-        <h2>
+      <div className='overviewContainer'>
+        <h2 className='sectionHeader'>
           All Transactions
         </h2>
         <ul>
@@ -58,7 +69,7 @@ class Transactions extends Component {
               : ''
           }
         </ul>
-      </>
+      </div>
     );
   }
 }

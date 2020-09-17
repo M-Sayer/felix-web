@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 
+import '../../styles-wip/OverviewStyles.css'
+import '../../styles-wip/index.css'
+import '../../styles-wip/ButtonStyles.css'
+
 class TransactionsOverview extends Component {
   static contextType = TransactionsContext;
 
@@ -10,9 +14,11 @@ class TransactionsOverview extends Component {
     return transactions.map((trx, i) => {
       return (
         <li 
+          className='dataFlexRow userData2'
           key={i}
         >
-            {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount}
+            <span>{trx.income_category || trx.expense_category}</span> 
+            <span>{trx.income_amount || trx.expense_amount}</span>
         </li>
       );
     });
@@ -34,11 +40,11 @@ class TransactionsOverview extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <>
-        <h2>
+      <article className='overviewContainer'>
+        <h2 className='sectionHeader'>
           Transactions Overview
         </h2>
-        <ul>
+        <ul >
           {
             (transactions.length)
               ? this.renderTransactions(transactions)
@@ -46,13 +52,14 @@ class TransactionsOverview extends Component {
           }
         </ul>
         <button
+          className='secondaryBtn btn centered'
           onClick={() =>
             this.props.history.push('/transactions')}
             type='click'
         >
-          See All Transactions
+          See All
         </button>
-      </>
+      </article>
     );
   }
 

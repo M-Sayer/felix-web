@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import TokenService from '../../services/token-service';
 
+import '../../styles-wip/index.css'
+import '../../styles-wip/LinkStyles.css'
+import '../../styles-wip/LogoHeader.css'
 
 const Header = () => {
   const { isUserLoggedIn, handleUserLog } = useContext(UserContext);

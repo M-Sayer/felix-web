@@ -67,7 +67,6 @@ li {
     padding: 2px 20px 2px 0;
 }
 
-
 .dataFlexRow {
     display: flex;
     flex-direction: row;
@@ -96,6 +95,35 @@ li {
     </li>
 */
 
+.middleColumnAlign {
+    margin-right: 10%;
+    position: absolute;
+    right: 33%;
+}
+/* "middleColumnAlign" requires "<span>"inline element"</span>" to work */
+/* EXAMPLE: 
+    <li 
+        className='dataFlexRow userData2'
+        key={i}
+    >
+        <span>
+        {trx.income_category || trx.expense_category}
+        </span> 
+
+        <span className='middleColumnAlign'>
+        {trx.income_amount || trx.expense_amount}
+        </span>
+        
+        <button
+        className='tertiaryBtn btn'
+        onClick={() =>
+            this.props.history.push(this.renderTransactionParams(trx))
+        }
+        >
+        Details
+        </button>
+    </li>
+*/
 
 /* NOTE TO SELF: HOW DO WE IMPLEMENT THIS STYLE FOR DATA FROM DATABASE??? */
 .income {
