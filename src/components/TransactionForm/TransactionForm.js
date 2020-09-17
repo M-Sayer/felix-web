@@ -4,18 +4,40 @@ import {Button} from '../Misc/Misc'
 export default class TransactionForm extends React.Component {
 
   static defaultProps = {
-    handleCancel : () => {},
-    handleChange : () => {},
-    handleSubmit : () => {},
-    editing : false, 
-    transaction : {
-      name : '',
-      description: '',
-      type : '' ,
-      category : '' ,
-      amount : 0,
+    handleCancel: () => {},
+    handleSubmit: () => {},
+    editing: false,
+    transaction: {
+      amount: "",
+      category: "",
+      description: "",
+      name: "",
+      type: "",
     }
   } 
+
+	state = {
+    amount: "",
+    category: "",
+    description: "",
+    name: "",
+    type: "",
+  }
+
+  componentDidMount() {
+    if (this.props.transaction) {
+      this.setState({...this.props.transaction})
+    }
+  }
+
+  handleChange = event => {
+    event.preventDefault();
+    const {name , value} = event.target;
+    this.setState({
+        ...this.state,
+        [name]: value 
+    })
+  }
 
   renderOptions = arr =>{
     if(arr.length){
@@ -36,8 +58,7 @@ export default class TransactionForm extends React.Component {
 
 
     render(){
-       console.log(this.props)
-       const {name, description, amount, category, type } = this.props.transaction
+       const {name, description, amount, category, type } = this.state
         
        const optionForType = 
         type === 'income'
@@ -50,8 +71,8 @@ export default class TransactionForm extends React.Component {
         return(
             <div className='transaction_form_wrapper'>
                 <form
-                  onSubmit={this.props.handleSubmit}
-                  onChange={this.props.handleChange}
+                  onSubmit={e => this.props.handleSubmit(e, this.state)}
+                  onChange={e => this.handleChange(e)}
                 >
                     <div className='transaction_notes'>
 
@@ -61,6 +82,7 @@ export default class TransactionForm extends React.Component {
                         <>
                             <label htmlFor='transactionType'></label>
                             <select name='type'>
+                                <option value=''>select</option>
                                 {this.renderOptions(['income','expenses'])}
                             </select> 
                         </>
@@ -69,7 +91,7 @@ export default class TransactionForm extends React.Component {
 
                     
                       <input name='name' value={name} placeholder='name'></input>
-                      <select name='category' defaultValue={category}>
+                      <select name='category' value={category}>
                           {this.renderOptions(optionForType)}
                       </select>
                       <textarea name='description' value={description}placeholder='description'></textarea>

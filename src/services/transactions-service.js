@@ -57,6 +57,7 @@ const TransactionsService = {
 
   async createTransaction( newTransactionObject ) {
     //newTransactionObject should contain name, description, amount, category, and type
+    console.log(newTransactionObject)
     const settings = {
       'method': 'POST',
       'body' : JSON.stringify(newTransactionObject),

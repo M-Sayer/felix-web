@@ -7,32 +7,20 @@ import TransactionsContext from '../../contexts/TransactionsContext';
 export default class CreateTransaction extends React.Component {
 	static contextType = TransactionsContext;
 
-
-	componentDidMount = () => {
-	}
-
-	handleSubmit = ev => {
-			ev.preventDefault();
-			console.log(this.context.transactionForm)
-			TransactionsService.createTransaction(this.context.transactionForm);
-	}
-
-	handleChange = ev =>{
-			ev.preventDefault();
-			const {name , value} = ev.target;
-			this.context.setTransactionFormChange(name, value)
+	handleSubmit = (e, data) => {
+			e.preventDefault();
+			console.log(this.state)
+			TransactionsService.createTransaction(data);
 	}
 
 	handleCancel = ev => {
-			ev.preventDefault();
-			//close the create form somehow
+			this.props.history.push('/createtransaction')
 	}
 
 	render() {
 		return (
 			<TransactionForm
 			handleCancel = {this.handleCancel}
-			handleChange = {this.handleChange}
 			handleSubmit = {this.handleSubmit}
 			editing = {false}/>
 		);
