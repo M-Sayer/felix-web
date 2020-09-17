@@ -19,22 +19,11 @@ const emptyTransactionForm = {
 
 // Refactor later
 const TransactionsContext = React.createContext({
-  transaction: nullTransaction,
   transactions: [],
-  type: null,
-  edit: false, 
   transactionForm : emptyTransactionForm,
-  setTransaction : ()=>{},
   setTransactions : ()=>{},
-  setTransactionForm : () =>{},
-  setTransactionFormChange: ()=>{},
-  setType: ()=>{},
-  clearTransaction : ()=>{},
   clearTransactions : ()=>{},
-  clearTransactionForm : () => {},
-  clearType: ()=>{},
   clearError: ()=>{},
-  toggleEdit: ()=>{},
   filterTransactions : ()=>{},
   sortTransactions : ()=>{},
   setError : () => {},
@@ -44,54 +33,19 @@ export default TransactionsContext;
 
 export class TransactionsProvider extends Component {
   state = {
-    transaction: nullTransaction,
     transactions: [],
-    transactionForm : emptyTransactionForm,
-    edit : false,
-    type : null,
     error: null
-  }
-
-  setTransaction = (transaction) => {
-    this.setState({transaction});
   }
 
   setTransactions = (transactions) => {
     this.setState({transactions});
   }
 
-  //called on if user is on view single transaction page
-  setTransactionForm = transactionForm =>{
-    this.setState({transactionForm : this.state.transaction})
-  }
-  
-
-  setTransactionFormChange = (name,value) =>{
-    this.setState({
-      transactionForm :{
-         ...this.state.transactionForm ,
-         [name] : value} })
-  }
-
-  setType = type => this.setState({type})
-
-  clearTransaction = () => {
-    this.setState({transaction: nullTransaction});
-  }
-
-  clearTransactionForm = () => {
-    this.setState({transactionForm: nullTransaction});
-  }
-
   clearTransactions = () => {
     this.setState({transactions: []});
   }
 
-  clearType = () => this.setState({type : null})
-
   clearError = () => this.setError({error : null})
-
-  toggleEdit = () => this.setState({edit : !this.state.edit})
 
   filterTransactions = (transactions, property, value) => {
     return transactions.filter(trx => trx[property] === value);
@@ -113,23 +67,10 @@ export class TransactionsProvider extends Component {
     return (
       <TransactionsContext.Provider 
         value={{ 
-          transaction: this.state.transaction,
           transactions: this.state.transactions,
-          transactionForm : this.state.transactionForm,
-          type : this.state.type,
-          edit : this.state.edit,
-
-          setTransaction: this.setTransaction,
           setTransactions: this.setTransactions,
-          setTransactionForm: this.setTransactionForm,
-          setTransactionFormChange: this.setTransactionFormChange,
-          setType: this.setType,
-          clearTransaction: this.clearTransaction,
           clearTransactions: this.clearTransactions,
-          clearTransactionForm : this.clearTransactionForm,
-          clearType: this.clearType,
           clearError: this.clearError,
-          toggleEdit: this.toggleEdit,
 
           filterTransactions: this.filterTransactions,
           sortTransactions: this.sortTransactions,
