@@ -1,26 +1,10 @@
 import React, { Component } from 'react';
 
-const nullTransaction = {
-  'id' : null,
-  'name' : null,
-  'description' : null,
-  'date_created' : null,
-  'amount' : null,
-  'category' : null
-}
 
-const emptyTransactionForm = {
-  name : '',
-  type : '',
-  description : '',
-  amount : 0,
-  category : ''
-}
 
 // Refactor later
 const TransactionsContext = React.createContext({
   transactions: [],
-  transactionForm : emptyTransactionForm,
   setTransactions : ()=>{},
   clearTransactions : ()=>{},
   clearError: ()=>{},

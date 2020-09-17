@@ -42,8 +42,6 @@ export default class TransactionRoute extends React.Component{
     }
 
     componentWillUnmount = () => {
-        this.context.clearTransaction();
-        this.context.clearTransactionForm();
         this.context.clearError();
     }
 
