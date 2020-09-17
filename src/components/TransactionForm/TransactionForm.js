@@ -60,23 +60,21 @@ export default class TransactionForm extends React.Component {
                         && 
                         <>
                             <label htmlFor='transactionType'></label>
-                            <select name='type'>
+                            <select name='type' required>
                                 {this.renderOptions(['income','expenses'])}
                             </select> 
                         </>
 
                     }
-
-                    
-                      <input name='name' value={name} placeholder='name'></input>
-                      <select name='category' defaultValue={category}>
+                      <input name='name' value={name} placeholder='name' required></input>
+                      <select name='category' defaultValue={category} required>
                           {this.renderOptions(optionForType)}
                       </select>
                       <textarea name='description' value={description}placeholder='description'></textarea>
 
                     </div>
                     <div className='amount_wrapper'>
-                      <input name='amount' value={amount} className='amount' placeholder='amount'></input>
+                      <input name='amount' value={amount} className='amount' placeholder='amount' required></input>
                     </div>
                     <Button
                     type='submit' 
