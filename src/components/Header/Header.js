@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import TokenService from '../../services/token-service';
 
-import '../../styles-wip/Header-ALT.css';
+import '../../styles-wip/Header.css';
 
 const Header = () => {
   const { isUserLoggedIn, handleUserLog } = useContext(UserContext);

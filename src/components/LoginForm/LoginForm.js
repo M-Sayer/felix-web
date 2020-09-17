@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
+import '../../styles-wip/ButtonStyles.css'
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
@@ -75,6 +76,7 @@ class LoginForm extends Component {
   
         <button
           type='submit'
+          className='btn'
         >
           Submit
         </button>
