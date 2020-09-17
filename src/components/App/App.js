@@ -8,6 +8,7 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 
 // Main Components
 import DashboardRoute from '../../routes/DashboardRoute';
+import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
 
@@ -33,6 +34,11 @@ const App = () => {
           <PrivateRoute
             exact path={'/dashboard'}
             comp={DashboardRoute}
+          />
+
+          <PrivateRoute
+            path={'/createtransaction'}
+            comp={CreateTransactionRoute}
           />
 
           <PrivateRoute

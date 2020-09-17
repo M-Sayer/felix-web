@@ -9,12 +9,10 @@ export default class CreateTransaction extends React.Component {
 
 
 	componentDidMount = () => {
-		this.context.clearTransactionForm();      
 	}
 
 	handleSubmit = ev => {
 			ev.preventDefault();
-			this.context.setTransaction(this.context.transactionForm)
 			console.log(this.context.transactionForm)
 			TransactionsService.createTransaction(this.context.transactionForm);
 	}

@@ -52,6 +52,13 @@ class TransactionsOverview extends Component {
         >
           See All Transactions
         </button>
+        <button
+          onClick={() =>
+            this.props.history.push('/createtransaction')}
+            type='click'
+        >
+          Create Transaction
+        </button>
       </>
     );
   }

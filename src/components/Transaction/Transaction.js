@@ -44,7 +44,7 @@ export default class Transaction extends React.Component {
        ev.preventDefault();
       TransactionsService.updateSingleTransaction(this.props.transaction);
       this.toggleEdit();
-       
+
    }
 
    handleCancel = ev => {
