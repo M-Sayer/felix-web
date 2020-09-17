@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import GoalsContext from '../../contexts/GoalsContext';
 
-const Goals = (props) => {
-  const {
-    goals = [],
-  } = useContext(GoalsContext);
+const GoalsOverview = (props) => {
+  const { goals = [] } = useContext(GoalsContext);
+
+  console.log(goals);
 
   const renderGoals = (goals) => {
     return goals
@@ -30,15 +30,6 @@ const Goals = (props) => {
           <li>
             {goal.end_date}
           </li>
-          <li>
-            <button
-              onClick={() =>
-                props.history.push(`/goal/${goal.id}`)
-              }
-            >
-              See More Details
-            </button>
-          </li>
         </ul>
       ));
   }
@@ -46,7 +37,7 @@ const Goals = (props) => {
   return (
     <>
       <h2>
-        Goals
+        Goals Overview
       </h2>
       <ul>
         {
@@ -55,8 +46,15 @@ const Goals = (props) => {
             : ''
         }
       </ul>
+      <button
+          onClick={() =>
+            props.history.push('/goals')}
+            type='click'
+        >
+          See All Goals
+      </button>
     </>
   )
 }
 
-export default Goals;
+export default GoalsOverview;

@@ -4,11 +4,22 @@ import GoalsService from '../services/goals-service';
 
 const nullGoal = {
   'id' : null,
+  'name': null,
   'user_id' : null,
   'goal_amount' : null,
   'contribution_amount' : null,
   'current_amount' : null,
   'end_date' : null
+}
+
+const tempGoal = {
+  'id' : 6,
+  'user_id' : 6,
+  'name': 'Poker Money',
+  'goal_amount' : 100,
+  'contribution_amount' : 25,
+  'current_amount' : 0,
+  'end_date' : '2020-09-16T17:28:55.263Z',
 }
 
 // Refactor later
@@ -29,9 +40,9 @@ export const GoalsProvider = (props) => {
   useEffect(() => {
     async function getUserGoals() {
       try {
-        // const userGoals = await GoalsService.getGoals();
-        const { goals } = await GoalsService.getGoals();
-        setGoals(goals);
+        // const { goals } = await GoalsService.getGoals();
+
+        setGoals([tempGoal]);
       }
       catch(error) {
         console.log(error);

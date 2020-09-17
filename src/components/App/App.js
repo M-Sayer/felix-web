@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 // Util Components
 import Header from '../Header/Header';
@@ -8,6 +8,8 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 
 // Main Components
 import DashboardRoute from '../../routes/DashboardRoute';
+import GoalsRoute from '../../routes/GoalsRoute';
+import GoalRoute from '../../routes/GoalRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
 
@@ -16,31 +18,33 @@ import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
-import Goals from '../Goals/Goals';
-
 const App = () => {
   return (
     <>
       <Header />
       <div className='App'>
         <Switch>
-          {/* This is just a placeholder.
-          Should there be a landing route? */}
-
-          <Route
-            exact
-            path={'/'}
-            component={Goals}
-          />
-
-          {/* <PrivateRoute
-            exact path={'/'}
-            comp={DashboardRoute} 
-          /> */}
 
           <PrivateRoute
-            exact path={'/dashboard'}
+            exact
+            path={'/'}
             comp={DashboardRoute}
+          />
+
+          <PrivateRoute
+            exact
+            path={'/dashboard'}
+            comp={DashboardRoute}
+          />
+
+          <PrivateRoute
+            path={'/goals'}
+            comp={GoalsRoute}
+          />
+
+          <PrivateRoute
+            path={'/goal/:id'}
+            comp={GoalRoute}
           />
 
           <PrivateRoute
@@ -63,10 +67,6 @@ const App = () => {
             comp={RegistrationRoute}
           />
 
-          {/* <Route
-            path={'/'}
-            component={LandingRoute}
-          /> */}
         </Switch>
       </div>
     </>
