@@ -1,54 +1,104 @@
 import React from 'react';
-import TransactionsContext from '../../contexts/TransactionsContext';
+import TransactionForm from '../TransactionForm/TransactionForm'
 
 import { Button } from '../Misc/Misc';
+import TransactionsService from '../../services/transactions-service';
 
 export default class Transaction extends React.Component {  
-  static contextType = TransactionsContext;
-    
-  render(){
-    const {
-      name,
-      date_created,
-      amount,
-      subType } = this.context.transaction;
 
-    return (
-      <div
-        className='transaction_details_wrapper'
-      >
-        <div
-          className='transaction_notes'
-        >
-          <p>
-            {name}
-          </p>
-          <p>
-            {date_created}
-          </p>
-          <p>
-            {subType}
-          </p>
+  state = {
+    edit: false,
+  }
+
+  static defaultProps = {
+    transaction : {
+      amount: "",
+      category: "",
+      date_created: "",
+      description: "",
+      id: 0,
+      name: "",
+      type: "",
+    },
+    handleChange : () => {},
+    history : {
+      push : () => {}
+    }
+  }
+
+  toggleEdit = () => {
+    this.setState({ edit: !this.state.edit })
+  }
+
+   handleDelete =()=> {
+     const {type, id} = this.props.match.params;
+     TransactionsService.deleteSingleTransaction(type,id)
+     .then(()=> this.props.history.push('/dashboard'))
+   }
+
+   componentDidMount = () => {
+    //  this.context.setTransactionForm();       
+   }
+
+   handleSubmit = ev => {
+       ev.preventDefault();
+      TransactionsService.updateSingleTransaction(this.props.transaction);
+      this.toggleEdit();
+       
+   }
+
+   handleCancel = ev => {
+       ev.preventDefault();
+       this.context.toggleEdit();
+   }
+
+  renderTransaction = () => {
+    const {name, date_created, amount, category, description } = this.props.transaction;
+    return(
+      !this.state.edit ?
+      (
+      <div className='transaction'>
+        <div className='transactionInfo'>
+          <p>{name}</p>
+          <p>{date_created}</p>
+          <p>{category}</p>
+          <p>{description}</p>
         </div>
-        <div
-          className='amount_wrapper'
-        >
-          <p
-            className='amount'
-          >
-            {amount}
-          </p>
+        <div className='amount'>
+          <p>{amount}</p>
         </div>
         <Button
-          className='transaction_edit'
-        >
+        onClick={this.toggleEdit}
+        className='transaction_edit'>
           Edit
         </Button>
         <Button
-          className='transaction_delete'
-        >
+        onClick={this.handleDelete}
+         className='transaction_delete'>
           Delete
         </Button>
+      </div>
+        )
+        :
+        (
+          <>
+            <TransactionForm
+              handleCancel = {this.handleCancel}
+              handleChange = {this.props.handleChange} 
+              handleSubmit = {this.handleSubmit}
+              transaction = {this.props.transaction} //remove date from props
+              editing = {true}
+            />
+          </>
+        )
+    )
+  }
+
+  
+  render(){
+    return (
+      <div className='transaction_details_wrapper'>
+        {this.renderTransaction()}
       </div>
     );
   }

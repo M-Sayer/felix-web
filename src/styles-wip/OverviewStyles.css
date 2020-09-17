@@ -1,0 +1,38 @@
+/**************** USER OVERVIEW STYLING *****************/
+
+/* OVERVIEW FLEX CONTAINER */
+.overviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: left;
+    margin: -5px 0 25px 20px;
+}
+/**************************************************/
+
+
+/**************************************************/
+/* SECTION HEADER */
+.sectionHeader {
+    color: rgb(249, 157, 149);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.15em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: left;
+}
+/**************************************************/
+
+
+/**************************************************/
+/* SECTION SUBHEADER */
+.sectionSubHeader {
+    color: rgb(101, 244, 236);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.25em;
+}
+
+/*****************************************************************************/
+/*****************************************************************************/
+/*****************************************************************************/

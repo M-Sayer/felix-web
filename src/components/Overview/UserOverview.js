@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import UserService from '../../services/user-service';
 
+import '../../styles-wip/UserOverview-ALT.css'
+
 class UserOverview extends Component {
   static contextType = UserContext;
 
@@ -21,16 +23,23 @@ class UserOverview extends Component {
     const { user = {} } = this.context;
 
     return (
-      <article>
+      <article className='UserOverview'>
         <h2>
           User Overview
         </h2>
-        <p>
-          Balance: {user.balance}
+        <p className='balance btn'>
+          Balance
         </p>
-        <p>
-          Allowance: {user.allowance}
+        <div className='userData'>
+          {user.balance}
+        </div>
+        
+        <p className='allowance btn'>
+          Allowance
         </p>
+        <div className='userData'>
+          {user.allowance}
+        </div>
       </article>
     );
   }
