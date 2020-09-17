@@ -10,11 +10,31 @@ export default class Transaction extends React.Component {
     edit: false,
   }
 
+  static defaultProps = {
+    transaction : {
+      amount: "",
+      category: "",
+      date_created: "",
+      description: "",
+      id: 0,
+      name: "",
+      type: "",
+    },
+    handleChange : () => {},
+    history : {
+      push : () => {}
+    }
+  }
+
   toggleEdit = () => {
     this.setState({ edit: !this.state.edit })
   }
 
-   handleDelete =()=> {}
+   handleDelete =()=> {
+     const {type, id} = this.props.match.params;
+     TransactionsService.deleteSingleTransaction(type,id)
+     .then(()=> this.props.history.push('/dashboard'))
+   }
 
    componentDidMount = () => {
     //  this.context.setTransactionForm();       
@@ -52,7 +72,9 @@ export default class Transaction extends React.Component {
         className='transaction_edit'>
           Edit
         </Button>
-        <Button className='transaction_delete'>
+        <Button
+        onClick={this.handleDelete}
+         className='transaction_delete'>
           Delete
         </Button>
       </div>

@@ -53,7 +53,11 @@ export default class TransactionRoute extends React.Component{
         <h2>
           Transaction
         </h2> 
-        <Transaction handleChange={this.handleChange} transaction={this.state.transaction}/>
+        <Transaction
+          handleChange={this.handleChange}
+          transaction={this.state.transaction}
+          {...this.props}
+          />
       </section>
     );
   }
