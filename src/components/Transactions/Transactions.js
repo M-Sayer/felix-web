@@ -59,6 +59,7 @@ class Transactions extends Component {
               : ''
           }
         </ul>
+        test
         <CreateTransaction />
       </>
     );
