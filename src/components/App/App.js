@@ -10,6 +10,7 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import DashboardRoute from '../../routes/DashboardRoute';
 import GoalsRoute from '../../routes/GoalsRoute';
 import GoalRoute from '../../routes/GoalRoute';
+import GoalFormRoute from '../../routes/GoalFormRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
 
@@ -24,7 +25,6 @@ const App = () => {
       <Header />
       <div className='App'>
         <Switch>
-
           <PrivateRoute
             exact
             path={'/'}
@@ -33,18 +33,19 @@ const App = () => {
 
           <PrivateRoute
             exact
-            path={'/dashboard'}
-            comp={DashboardRoute}
-          />
-
-          <PrivateRoute
             path={'/goals'}
             comp={GoalsRoute}
           />
 
           <PrivateRoute
+            exact
             path={'/goal/:id'}
             comp={GoalRoute}
+          />
+
+          <PrivateRoute
+            path={'/goal/:type/:id'}
+            comp={GoalFormRoute}
           />
 
           <PrivateRoute

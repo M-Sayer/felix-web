@@ -1,5 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import GoalsContext from '../../contexts/GoalsContext';
+import GoalsService from '../../services/goals-service';
+
+/**
+ * 
+ * @param {*} props 
+ * @todo finalize form
+ */
 
 const Goal = (props) => {
   const { 
@@ -8,22 +15,30 @@ const Goal = (props) => {
   } = useContext(GoalsContext);
 
   useEffect(() => {
-    // Fetch call to get a specific goal
-    // Based on id in params
-
-    // Test goal
-    const testGoal = {
-      'id' : 6,
-      'user_id' : 6,
-      'name': 'Poker Money',
-      'goal_amount' : 100,
-      'contribution_amount' : 25,
-      'current_amount' : 0,
-      'end_date' : '2020-09-16T17:28:55.263Z',
+    async function getGoal() {
+      try {
+        const goal = await GoalsService.getGoal(props.match.params.id);
+        setGoal(goal);
+      }
+      catch(error) {
+        console.log(error);
+      }
     }
+    getGoal();
 
-    setGoal(testGoal);
-  }, [setGoal])
+    setGoal();
+  }, [setGoal, props.match.params]);
+
+  const handleDeleteGoal = async () => {
+    try {
+      const response = await GoalsService.deleteGoal(goal.id);
+      props.history.push(`/goals`);
+      console.log(response);
+    }
+    catch(error) {
+      console.log(error);
+    }
+  }
 
   return (
     <ul>
@@ -44,6 +59,22 @@ const Goal = (props) => {
       </li>
       <li>
         {goal.end_date}
+      </li>
+      <li>
+        <button
+          onClick={() =>
+            props.history.push(`/goal/edit/${goal.id}`)
+          }
+        >
+          Edit
+        </button>
+        <button
+          onClick={() =>
+            handleDeleteGoal()
+          }
+        >
+          Delete
+        </button>
       </li>
     </ul>
   )

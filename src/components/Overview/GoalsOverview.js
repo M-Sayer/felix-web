@@ -1,10 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import GoalsContext from '../../contexts/GoalsContext';
+import GoalsService from '../../services/goals-service';
 
 const GoalsOverview = (props) => {
-  const { goals = [] } = useContext(GoalsContext);
+  const { 
+    goals = [],
+    setGoals,
+  } = useContext(GoalsContext);
 
-  console.log(goals);
+  useEffect(() => {
+    async function getUserGoals() {
+      try {
+        const goals = await GoalsService.getGoals();
+        setGoals(goals);
+      }
+      catch(error) {
+        console.log(error);
+      }
+    }
+    getUserGoals();
+  }, [setGoals]);
 
   const renderGoals = (goals) => {
     return goals
@@ -39,6 +54,15 @@ const GoalsOverview = (props) => {
       <h2>
         Goals Overview
       </h2>
+      <p>
+        <button
+            onClick={() =>
+              props.history.push('/goal/add/ ')}
+              type='click'
+          >
+            Add a New Goal
+        </button>
+      </p>
       <ul>
         {
           (goals.length)

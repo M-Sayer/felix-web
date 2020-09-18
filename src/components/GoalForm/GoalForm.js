@@ -2,18 +2,29 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import GoalsService from '../../services/goals-service';
 
-const GoalsForm = (props) => {
-  const { method } = props;
-  const [ goal, setGoal ] = useState({id: '/'});
+const GoalForm = (props) => {
+  console.log(props)
+  const { type = 'add', id = '' } = props.match.params;
+  const method = (type === 'add') ? 'POST': 'PATCH';
+
+  const [ goal, setGoal ] = useState({});
   const [ error, setError ] = useState(null);
 
   useEffect(() => {
-    if(props.method === 'PATCH') {
-      // Make an async call to fetch the goal
-      // Store the goal in state
-      // Populate form fields with goal
+    if(type === 'edit') {
+      async function setInitialFormValues(id) {
+        console.log('Meow')
+        try {
+          const goal = await GoalsService.getGoal(id);
+          setGoal(goal);
+        }
+        catch(error) {
+          setError(error);
+        }
+      }
+      setInitialFormValues(id);
     }
-  });
+  }, [id, type]);
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
@@ -21,25 +32,27 @@ const GoalsForm = (props) => {
     const name = e.target['name'].value;
     const goal_amount = e.target['goal_amount'].value;
 
-    // end_date
     // Where month = 0-11 (zero-indexed)
     // Where year = YYYY
     // Where day = DD
     const end_date = e.target['end_date'].value;
     
-    // For adding a goal
     // Calculate contribution amount
     // Weekly by default 
     // Where number of weeks = Days from now to target date divided by 7
     // Where contribution amount = Goal amount divided by number of weeks
-    // Simple enough
-
     const currentDate = moment();
+
     // Temporary
-    const targetDate = moment(['2020', '09', '17']).format();
+    const targetDate = moment(['2020', '09', '17']);
+
+    // End-date-exclusive, hence +1
     const daysFromCurrentDate =  targetDate.diff(currentDate, 'days') + 1;
+    console.log(daysFromCurrentDate, 'days')
     const weeks = Math.floor(daysFromCurrentDate/7);
+    console.log(weeks, 'weeks')
     const contribution_amount = Number(goal_amount)/weeks;
+    console.log(Number(goal_amount)/weeks)
 
     // For editing a goal
     // Cases:
@@ -56,10 +69,10 @@ const GoalsForm = (props) => {
     }
 
     // POST/PATCH goal to server
-
     try {
-      const response = await GoalsService.createUpdateGoal(newGoal, goal.id, method);
+      const response = await GoalsService.createUpdateGoal(newGoal, id, method);
       console.log(response);
+      props.history.push('/');
     }
     catch(error) {
       console.log(error)
@@ -88,7 +101,7 @@ const GoalsForm = (props) => {
       </label>
       <input
         defaultValue={
-          (method === 'edit')
+          (type === 'edit')
           ? goal.name
           : ''
         }
@@ -96,7 +109,7 @@ const GoalsForm = (props) => {
         onChange={() => {
 
         }}
-        method='text'
+        type='text'
       />
 
       <label
@@ -106,12 +119,12 @@ const GoalsForm = (props) => {
       </label>
       <input
         defaultValue={
-          (method === 'edit')
+          (type === 'edit')
           ? goal.goal_amount
           : ''
         }
         id='goal_amount'
-        method='text'
+        type='text'
       />
 
       <label
@@ -121,12 +134,12 @@ const GoalsForm = (props) => {
       </label>
       <input
         defaultValue={
-          (method === 'edit')
-          ? goal.goal_amount
+          (type === 'edit')
+          ? goal.end_date
           : ''
         }
         id='end_date'
-        method='text'
+        type='text'
       />
 
       <button>
@@ -135,3 +148,5 @@ const GoalsForm = (props) => {
     </form>
   )
 }
+
+export default GoalForm;

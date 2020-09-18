@@ -1,6 +1,5 @@
 // import React, { Component } from 'react';
-import React, { useEffect, useState } from 'react'; 
-import GoalsService from '../services/goals-service';
+import React, { useState } from 'react'; 
 
 const nullGoal = {
   'id' : null,
@@ -10,16 +9,6 @@ const nullGoal = {
   'contribution_amount' : null,
   'current_amount' : null,
   'end_date' : null
-}
-
-const tempGoal = {
-  'id' : 6,
-  'user_id' : 6,
-  'name': 'Poker Money',
-  'goal_amount' : 100,
-  'contribution_amount' : 25,
-  'current_amount' : 0,
-  'end_date' : '2020-09-16T17:28:55.263Z',
 }
 
 // Refactor later
@@ -35,21 +24,20 @@ export default GoalsContext;
 export const GoalsProvider = (props) => {
   const [error, setError] = useState(null);
   const [goal, setGoal] = useState(nullGoal);
-
   const [goals, setGoals] = useState([]);
-  useEffect(() => {
-    async function getUserGoals() {
-      try {
-        // const { goals } = await GoalsService.getGoals();
 
-        setGoals([tempGoal]);
-      }
-      catch(error) {
-        console.log(error);
-      }
-    }
-    getUserGoals();
-  }, []);
+  // useEffect(() => {
+  //   async function getUserGoals() {
+  //     try {
+  //       const goals = await GoalsService.getGoals();
+  //       setGoals(goals);
+  //     }
+  //     catch(error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   getUserGoals();
+  // }, []);
 
   return (
     <GoalsContext.Provider 
