@@ -4,10 +4,6 @@ import TransactionForm from '../TransactionForm/TransactionForm'
 import { Button } from '../Misc/Misc';
 import TransactionsService from '../../services/transactions-service';
 
-import '../../styles-wip/OverviewStyles.css'
-import '../../styles-wip/index.css'
-import '../../styles-wip/ButtonStyles.css'
-
 export default class Transaction extends React.Component {  
 
   state = {

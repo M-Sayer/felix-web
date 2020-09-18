@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import UserService from '../../services/user-service';
 
-import '../../styles-wip/OverviewStyles.css'
-import '../../styles-wip/index.css'
-
 
 class UserOverview extends Component {
   static contextType = UserContext;
@@ -25,18 +22,18 @@ class UserOverview extends Component {
     const { user = {} } = this.context;
 
     return (
-      <article className='UserOverview overviewContainer'>
-        <h2 className='sectionHeader'>
+      <article className='UserOverview'>
+        <h2>
           User Overview
         </h2>
-        <p className='sectionSubHeader'>
+        <p className='balance btn'>
           Balance
         </p>
         <div className='userData'>
           {user.balance}
         </div>
         
-        <p className='sectionSubHeader'>
+        <p className='allowance btn'>
           Allowance
         </p>
         <div className='userData'>

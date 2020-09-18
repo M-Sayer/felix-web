@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
 
-import '../../styles-wip/index.css'
-import '../../styles-wip/LinkStyles.css'
-import '../../styles-wip/ButtonStyles.css'
-import '../../styles-wip/FormStyles.css'
-
 // Validation
 // Integrate with Formik as soon as logic has been implemented
 
@@ -54,37 +49,31 @@ class LoginForm extends Component {
 
     return (
       <form 
-        className='formContainer'
         onSubmit={(e) => 
           this.handleUserLogin(e)}
       >
   
-        {/* <label
+        <label
           htmlFor='username'
         >
           Username
-        </label> */}
+        </label>
         <input
-          className='formInput'
-          placeholder='Username'
           id='username'
           type='text'
         />
   
-        {/* <label
+        <label
           htmlFor='password'
         >
           Password
-        </label> */}
+        </label>
         <input
-          className='formInput'
-          placeholder='Password'
           id='password'
           type='text' // Change to type='password'
         />
   
         <button
-          className='primaryBtn btn'
           type='submit'
         >
           Submit

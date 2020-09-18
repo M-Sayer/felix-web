@@ -48,89 +48,46 @@ export default class TransactionForm extends React.Component {
         ;
 
         return(
-            <div className='transaction_form_wrapper formContainer'>
-
-                <form 
-                  className='formContainerALT'
+            <div className='transaction_form_wrapper'>
+                <form
                   onSubmit={this.props.handleSubmit}
                   onChange={this.props.handleChange}
                 >
-                    <div className='transaction_notes formContainerALT'>
-                    {
-                      !this.props.editing 
-                      && 
-                      <>
-                        <label 
-                          htmlFor='transactionType'>
-                        </label>
+                    <div className='transaction_notes'>
 
-                        <select 
-                          className='formSelect' 
-                          name='type'
-                        >
-                          {this.renderOptions(['income','expenses'])}
-                        </select> 
-                      </>
+                    {
+                        !this.props.editing 
+                        && 
+                        <>
+                            <label htmlFor='transactionType'></label>
+                            <select name='type'>
+                                {this.renderOptions(['income','expenses'])}
+                            </select> 
+                        </>
 
                     }
-                      <input 
-                        className='formInput' 
-                        name='name' 
-                        value={name} 
-                        placeholder='name'>
-                      </input>
 
-
-   
-                      <select 
-                        className='formSelect'
-                        name='category' 
-                        defaultValue={category}
-                      >
-                        {this.renderOptions(optionForType)}
+                    
+                      <input name='name' value={name} placeholder='name'></input>
+                      <select name='category' defaultValue={category}>
+                          {this.renderOptions(optionForType)}
                       </select>
+                      <textarea name='description' value={description}placeholder='description'></textarea>
 
-          
-
-
-
-
-                      <textarea 
-                        className='formInput' 
-                        name='description' 
-                        value={description}
-                        placeholder='description'>
-                      </textarea>
                     </div>
-
-
-
                     <div className='amount_wrapper'>
-                      <input 
-                        name='amount' 
-                        value={amount} 
-                        className='amount formInput' 
-                        placeholder='amount'>
-                      </input>
+                      <input name='amount' value={amount} className='amount' placeholder='amount'></input>
                     </div>
-
-
-
-                    <div className='flexRow'>
-                      <Button
-                        type='submit' 
-                        className='transaction_submit secondaryBtnALT btn'
-                      >
-                        Submit
-                      </Button>
-
-                      <Button
-                        onClick={this.props.handleCancel} 
-                        className='transaction_form_cancel secondaryBtnALT btn cancel'
-                      >
+                    <Button
+                    type='submit' 
+                    className='transaction_submit'>
+                      Submit
+                    </Button>
+                    <Button
+                    onClick={this.props.handleCancel} 
+                    className='transaction_form_cancel'>
                         Cancel
-                      </Button>
-                    </div>
+                    </Button>
                 </form>
             </div>
         )

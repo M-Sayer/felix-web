@@ -3,9 +3,6 @@ import TransactionsContext from '../contexts/TransactionsContext';
 import TransactionsService from '../services/transactions-service';
 import Transaction from '../components/Transaction/Transaction';
 
-import '../styles-wip/OverviewStyles.css'
-import '../styles-wip/index.css'
-
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
 
@@ -51,7 +48,7 @@ export default class TransactionRoute extends React.Component{
   render(){
     return(
       <section>
-        <h2 className='formContainerALT altColor' >
+        <h2>
           Transaction
         </h2> 
         <Transaction

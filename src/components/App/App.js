@@ -16,13 +16,11 @@ import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
-import '../../styles-wip/index.css'
-
 const App = () => {
   return (
     <>
       <Header />
-      <div className='App centered'>
+      <div className='App'>
         <Switch>
           {/* This is just a placeholder.
           Should there be a landing route? */}
