@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import GoalsService from '../../services/goals-service';
 
 import moment from 'moment';
-// import Calendar from '../../components/Misc/Calendar/Calendar';
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -128,30 +127,6 @@ const GoalForm = (props) => {
         id='goal_amount'
         type='text'
       />
-
-      {/* <label
-        htmlFor='end_date'
-      >
-        End Date: 
-      </label>
-      <input
-        defaultValue={
-          (type === 'edit')
-          ? goal.end_date
-          : ''
-        }
-        id='end_date'
-        type='text'
-      /> */}
-
-      {/* <Calendar 
-        initialYear={
-          Number(moment(goal.end_date).format('YYYY'))
-        }
-        initialMonth={
-          Number(moment(goal.end_date).format('M') -1)
-        }
-      /> */}
 
       <DatePicker
         selected={date}
