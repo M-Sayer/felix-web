@@ -48,10 +48,23 @@ li {
 /* CENTER ELEMENTS*/
 .centered {
     text-align: center;
-    margin: 0 auto;    
+    align-self: center; 
 }
 /**************************************************/
 
+/*  
+.alignLeft {
+    margin: 0;
+    position: absolute;
+    left: 15%;
+    bottom: 18%;
+}
+.alignRight {
+    margin: 0;
+    position: absolute;
+    right: 15%;
+    bottom: 18%;
+} */
 
 /**************************************************/
 /* USER DATA FROM THE DATABASE */
@@ -61,8 +74,93 @@ li {
     font-size: 2em;
     margin: -10px 0 10px 0;
 }
-/**************************************************/
 
+/* SMALLER DATA SIZE with alternate padding*/
+.userData2 {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.35em;
+    padding: 2px 20px 2px 0;
+}
+
+.dataFlexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 0 -35px;
+}
+/* "dataFlexRow" requires "<span>"inline element"</span>" to work */
+/* EXAMPLE: 
+    <li 
+        className='userData2'
+        key={i}
+    >
+        <div className='dataFlexRow'>
+        <span>{trx.income_category || trx.expense_category}</span>
+        <span>{trx.income_amount || trx.expense_amount}</span> 
+        <button
+            className='tertiaryBtn btn'
+            onClick={() =>
+            this.props.history.push(this.renderTransactionParams(trx))
+            }
+        >
+            Details
+        </button>
+        </div>
+    </li>
+*/
+
+/* FLEXBOX CONTAINER with row direction */
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px;
+    align-self: space-around;
+}
+
+/* ADJUSTS 3column DATA ELEMENTS to have straightened middle column*/
+.middleColumnAlign {
+    margin-right: 10%;
+    position: absolute;
+    right: 33%;
+}
+/* "middleColumnAlign" requires "<span>"inline element"</span>" to work */
+/* EXAMPLE: 
+    <li 
+        className='dataFlexRow userData2'
+        key={i}
+    >
+        <span>
+        {trx.income_category || trx.expense_category}
+        </span> 
+
+        <span className='middleColumnAlign'>
+        {trx.income_amount || trx.expense_amount}
+        </span>
+
+        <button
+        className='tertiaryBtn btn'
+        onClick={() =>
+            this.props.history.push(this.renderTransactionParams(trx))
+        }
+        >
+        Details
+        </button>
+    </li>
+*/
+
+/* NOTE TO SELF: HOW DO WE IMPLEMENT THIS STYLE FOR DATA FROM DATABASE??? */
+.income {
+    color: blue;
+}
+
+.expense {
+    color: red;
+}
+/**************************************************/
 
 
 /*****************************************************************************/
@@ -75,17 +173,6 @@ li {
 } */
 
 /*********** STILL NEED TO FIX THESE AS A STANDARDIZED STYLE *************/
-/* requires <span className='transactionItem'> to work*/
-/* .transactionItem {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 0 25px 0 -35px;
-    padding: 5px 0;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.35em;
-} */
 /*****************************************************************************/
 /*****************************************************************************/
 /*****************************************************************************/
