@@ -20,10 +20,7 @@ const GoalForm = (props) => {
     if(type === 'edit') {
       async function setInitialFormValues(id) {
         try {
-          const goal = await GoalsService.getGoal(id);
-          console.log(goal.end_date);
-          console.log(moment(goal.end_date).utc().format());
-          console.log(new Date(goal.end_date));
+          const goal = await GoalsService.getGoal(id); 
           setDate(new Date(goal.end_date));
           setGoal(goal);
         }
@@ -53,7 +50,7 @@ const GoalForm = (props) => {
     const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
     console.log(daysFromCurrentDate, 'days');
 
-    const weeks = Math.floor(daysFromCurrentDate/7);
+    const weeks = (Math.floor(daysFromCurrentDate/7) === 0) ? 1: Math.floor(daysFromCurrentDate/7);
     console.log(weeks, 'weeks');
 
     const contribution_amount = Number(goal_amount)/weeks;
@@ -74,14 +71,14 @@ const GoalForm = (props) => {
     }
 
     // POST/PATCH goal to server
-    // try {
-    //   const response = await GoalsService.createUpdateGoal(newGoal, id, method);
-    //   console.log(response);
-    //   props.history.push('/');
-    // }
-    // catch(error) {
-    //   console.log(error)
-    // }
+    try {
+      const response = await GoalsService.createUpdateGoal(newGoal, id, method);
+      console.log(response);
+      props.history.push('/');
+    }
+    catch(error) {
+      console.log(error)
+    }
 
   }
 
