@@ -73,6 +73,7 @@ li {
     margin: -10px 0 10px 0;
 }
 
+/* SMALLER DATA SIZE with alternate padding*/
 .userData2 {
     color: white;
     font-family: 'Roboto', sans-serif;
@@ -108,6 +109,7 @@ li {
     </li>
 */
 
+/* FLEXBOX CONTAINER with row direction */
 .flexRow {
     display: flex;
     flex-direction: row;
@@ -117,6 +119,7 @@ li {
     align-self: space-around;
 }
 
+/* ADJUSTS 3column DATA ELEMENTS to have straightened middle column*/
 .middleColumnAlign {
     margin-right: 10%;
     position: absolute;
