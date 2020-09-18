@@ -65,7 +65,7 @@ export default class TransactionForm extends React.Component {
                         </label>
 
                         <select 
-                          className='...' 
+                          className='formSelect' 
                           name='type'
                         >
                           {this.renderOptions(['income','expenses'])}
