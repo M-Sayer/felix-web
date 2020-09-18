@@ -21,6 +21,10 @@
 }
 /**************************************************/
 
+/* "CANCEL" & "DELETE" BUTTONS COLOR */
+.cancel, .delete {
+    background-color: rgba(252, 56, 56, 0.769);
+}
 
 /**************************************************/
 /* PRIMARY BUTTONS */
@@ -45,9 +49,40 @@
     border-radius: 4px;
 
     margin: 4px;
-    padding: 4px;
+    padding: 6px;
 
     font-size: 1.0125em;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* flex-basis: 7em;  */
+}
+
+/* SECONDARY BUTTONS with larger margin spacing */
+.secondaryBtnALT {
+    width: 100px;
+    border-radius: 4px;
+
+    margin: 25px;
+    padding: 8px;
+
+    font-size: 1.0125em;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-basis: 6em; 
+}
+/**************************************************/
+
+
+/**************************************************/
+/* TERTIARY BUTTONS */
+.tertiaryBtn {
+    width: 80px;
+    border-radius: 4px;
+
+    margin: 4px;
+    padding: 4px;
+
+    font-size: .85em;
     font-weight: 700;
     text-transform: uppercase; 
 }

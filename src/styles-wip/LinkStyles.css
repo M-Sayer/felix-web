@@ -1,5 +1,5 @@
 /********************* ALL LINKS *******************************/
-a {
+a, .btn-link {
     color: rgb(101, 244, 236);
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
@@ -14,21 +14,6 @@ a:active {
     background-color: rgb(244, 198, 83);
 }
 /**************************************************/
-
-/*********** STILL NEED TO FIX THESE AS A STANDARDIZED STYLE *************/
-/* TRANSACTION 'DETAILS' LINK/BUTTON */
-/* .details {
-    font-family: 'Roboto', sans-serif;
-    font-size: .8em;
-    font-weight: 900;
-    justify-self: self-end;
-    text-transform: uppercase;
-    color:  rgb(11, 47, 41);
-    outline: none;
-    border: none;
-    border-radius: 4px;
-    background: rgb(101, 244, 236);   
-} */
 
 /*****************************************************************************/
 /*****************************************************************************/
