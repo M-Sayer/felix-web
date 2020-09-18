@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
+import '../../styles-wip/FormStyles.css'
+import '../../styles-wip/ButtonStyles.css'
 import './LoginForm.css'
 
 // Validation
@@ -50,35 +52,31 @@ class LoginForm extends Component {
 
     return (
         <form
-        clasname='LoginForm'
+        className='formContainer'
           onSubmit={(e) => 
             this.handleUserLogin(e)}
         >
     
-          <label
-            htmlFor='username'
-          >
-            Username
-          </label>
           <input
+            aria-label='username'
+            placeholder='username'
+            className='formInput'
             autoComplete='username'
             id='username'
             type='text'
           />
-    
-          <label
-            htmlFor='password'
-          >
-            Password
-          </label>
+
           <input
+            aria-label='password'
+            placeholder='password'
+            className='formInput'
             autoComplete='current-password'
             id='password'
             type='password'
           />
     
           <button
-            className='submit-button'
+            className='primaryBtn'
             type='submit'
           >
             Submit

@@ -60,23 +60,42 @@ export default class TransactionForm extends React.Component {
                         && 
                         <>
                             <label htmlFor='transactionType'></label>
-                            <select name='type'>
-                                {this.renderOptions(['income','expenses'])}
+                            <select
+                              className='formSelect' name='type'>
+                              {this.renderOptions(['income','expenses'])}
                             </select> 
                         </>
 
                     }
 
                     
-                      <input name='name' value={name} placeholder='name'></input>
-                      <select name='category' defaultValue={category}>
-                          {this.renderOptions(optionForType)}
+                      <input
+                        className='formInput'
+                        name='name'
+                        value={name}
+                        placeholder='name'>
+                      </input>
+
+                      <select 
+                        className='formSelect'
+                        name='category'
+                        defaultValue={category}>
+                        {this.renderOptions(optionForType)}
                       </select>
-                      <textarea name='description' value={description}placeholder='description'></textarea>
+                      
+                      <textarea 
+                        name='description' 
+                        value={description}placeholder='description'>
+                      </textarea>
 
                     </div>
                     <div className='amount_wrapper'>
-                      <input name='amount' value={amount} className='amount' placeholder='amount'></input>
+                      <input 
+                        className='formInput' 
+                        name='amount' 
+                        value={amount}  
+                        placeholder='amount'>
+                      </input>
                     </div>
                     <Button
                     type='submit' 
