@@ -2,12 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
 
-/**
- * 
- * @param {*} props 
- * @todo finalize form
- */
-
 const Goal = (props) => {
   const { 
     goal = {},
