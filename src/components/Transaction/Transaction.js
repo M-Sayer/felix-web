@@ -4,6 +4,8 @@ import TransactionForm from '../TransactionForm/TransactionForm'
 import { Button } from '../Misc/Misc';
 import TransactionsService from '../../services/transactions-service';
 
+import './transaction.css'
+
 export default class Transaction extends React.Component {  
 
   state = {
@@ -54,29 +56,34 @@ export default class Transaction extends React.Component {
 
   renderTransaction = () => {
     const {name, date_created, amount, category, description } = this.props.transaction;
+    const {type} = this.props.match.params; 
     return(
       !this.state.edit ?
       (
-      <div className='transaction'>
-        <div className='transactionInfo'>
-          <p>{name}</p>
-          <p>{date_created}</p>
-          <p>{category}</p>
-          <p>{description}</p>
+      <div className='transaction_wrapper'>
+        <div className='transactionInfo_wrapper'>
+          <div className='text_info_divider'>
+          <p className='transaction name'>{name}</p>
+          <p className='transaction date'>{date_created}</p>
+          <p className='transaction category'>{category}</p>
+          <p className='transaction description'>{description}</p>
+          </div>
+          <div className='amount_wrapper'>
+            <p className={`transaction ${type} amount`}>${amount}</p>
+          </div>
         </div>
-        <div className='amount'>
-          <p>{amount}</p>
+        <div className='button_wrapper'>
+          <Button
+          onClick={this.toggleEdit}
+          className='transaction_edit'>
+            Edit
+          </Button>
+          <Button
+          onClick={this.handleDelete}
+           className='transaction_delete'>
+            Delete
+          </Button>
         </div>
-        <Button
-        onClick={this.toggleEdit}
-        className='transaction_edit'>
-          Edit
-        </Button>
-        <Button
-        onClick={this.handleDelete}
-         className='transaction_delete'>
-          Delete
-        </Button>
       </div>
         )
         :

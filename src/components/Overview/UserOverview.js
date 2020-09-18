@@ -10,7 +10,6 @@ class UserOverview extends Component {
   async componentDidMount() {
     try {
       const user = await UserService.getUser();
-      console.log(user);
       this.context.setUser(user);
     }
     catch(error) {

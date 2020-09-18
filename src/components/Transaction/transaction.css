@@ -1,0 +1,63 @@
+/*------------------------------------- 
+font-family: 'MuseoModerno', sans-serif;
+font-family: 'Roboto', sans-serif; 
+--------------------------------------*/
+
+.transaction_details_wrapper{
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+}
+
+.transaction_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.transactionInfo_wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem 1rem 2rem 1rem;
+}
+
+.text_info_divider{
+    text-align: left;
+    margin-right: 3rem;
+    font-size: 1.05rem;
+}
+
+.amount_wrapper{
+
+}
+
+.transaction{
+
+}
+
+.amount{
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.transaction_edit{
+
+}
+
+.button_wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.Button{
+    margin: .3rem ;
+}
+
+.income{
+    color: #3fa396 ;
+}
+
+.expenses{
+    color: #995E50 ;
+}
+

@@ -6,7 +6,6 @@ class TransactionsOverview extends Component {
   static contextType = TransactionsContext;
 
   renderTransactions(transactions) {
-    console.log(transactions)
     return transactions.map((trx, i) => {
       return (
         <li 

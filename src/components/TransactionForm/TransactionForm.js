@@ -36,7 +36,6 @@ export default class TransactionForm extends React.Component {
 
 
     render(){
-       console.log(this.props)
        const {name, description, amount, category, type } = this.props.transaction
         
        const optionForType = 
