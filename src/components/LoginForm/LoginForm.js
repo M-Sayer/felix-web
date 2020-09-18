@@ -45,7 +45,6 @@ class LoginForm extends Component {
   }
     
   render() {
-    // const { user } = this.context;
 
     return (
       <form 
@@ -83,6 +82,5 @@ class LoginForm extends Component {
     );
   }
 }
-
 
 export default LoginForm;
