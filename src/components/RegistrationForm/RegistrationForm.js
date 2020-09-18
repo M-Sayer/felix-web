@@ -53,25 +53,6 @@ class RegistrationForm extends React.Component {
       // Alternatively, throws an 'alert' for errors in registration submission
       // alert(res.error) 
     }
-
-    // AuthService.postNewUser(newUser)
-    //   .then(response => {
-    //     first_name.value = '';
-    //     last_name.value = '';
-    //     username.value = '';
-    //     email.value = '';
-    //     password.value = '';
-
-    //     TokenService.saveAuthToken(response.auth);
-    //     this.props.onRegSuccess();
-    //   })
-    //   .catch(res => {
-    //     // Any errors with registration will display on page
-    //     this.setState({error: res.error})
-
-    //     // Alternatively, throws an 'alert' for errors in registration submission
-    //     // alert(res.error)  
-    //   })
   }
 
   render() {

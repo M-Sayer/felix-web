@@ -1,28 +1,47 @@
 import React from 'react';
-import TransactionForm from '../TransactionForm/TransactionForm'
-import TransactionsService from '../../services/transactions-service'
+import TransactionForm from '../TransactionForm/TransactionForm';
+import TransactionsService from '../../services/transactions-service';
 import TransactionsContext from '../../contexts/TransactionsContext';
 
 
 export default class CreateTransaction extends React.Component {
 	static contextType = TransactionsContext;
 
-	handleSubmit = (e, data) => {
-			e.preventDefault();
-			console.log(this.state)
-			TransactionsService.createTransaction(data);
-	}
+	state = {
+		error: null,
+	};
 
-	handleCancel = ev => {
-			this.props.history.push('/createtransaction')
-	}
+	handleSubmit = async (e, data) => {
+		e.preventDefault();
+		e.target.type.value = ''
+		e.target.name.value = ''
+		e.target.description.value = ''
+		e.target.category.value = ''
+		e.target.amount.value = ''
+		try {
+			await TransactionsService.createTransaction(data)
+		} catch(error) {
+			this.setState({...error});
+		};
+	};
+
+	handleCancel = e => {
+		e.preventDefault()
+		this.props.history.push('/dashboard')
+	};
 
 	render() {
 		return (
-			<TransactionForm
-			handleCancel = {this.handleCancel}
-			handleSubmit = {this.handleSubmit}
-			editing = {false}/>
+			<>
+				<div role='alert'>
+							{this.state.error && <p className='error-alert'>{this.state.error}</p>}
+				</div>
+				<TransactionForm
+				handleCancel = {this.handleCancel}
+				handleSubmit = {this.handleSubmit}
+				editing = {false}
+				/>
+			</>
 		);
 	};
 };

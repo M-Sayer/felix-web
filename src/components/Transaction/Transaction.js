@@ -36,10 +36,6 @@ export default class Transaction extends React.Component {
      .then(()=> this.props.history.push('/dashboard'))
    }
 
-   componentDidMount = () => {
-    //  this.context.setTransactionForm();       
-   }
-
    handleSubmit = (ev, data) => {
        ev.preventDefault();
       TransactionsService.updateSingleTransaction(data);
