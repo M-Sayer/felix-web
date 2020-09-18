@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import TokenService from '../services/token-service';
 
-// Refactor later
-
 const UserContext = React.createContext({
   user: {},
   isUserLoggedIn: '',
@@ -21,7 +19,6 @@ export class UserProvider extends Component {
     this.setState({user});
   }
 
-  // Could be better
   setIsUserLoggedIn = (isUserLoggedIn) => {
     this.setState({isUserLoggedIn});
   }
@@ -53,17 +50,3 @@ export class UserProvider extends Component {
     );
   }
 }
-
-// export const UserProvider = (props) => {
-//   const [user, setUser] = useState({});
-
-//   return (
-//     <UserContext.Provider 
-//       value={{ 
-//         user,
-//         setUser,
-//       }}>
-//       {props.children}
-//     </UserContext.Provider>
-//   );
-// }

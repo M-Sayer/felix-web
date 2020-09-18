@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import GoalsService from '../../services/goals-service';
 
+import moment from 'moment';
+// import Calendar from '../../components/Misc/Calendar/Calendar';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 const GoalForm = (props) => {
-  console.log(props)
   const { type = 'add', id = '' } = props.match.params;
   const method = (type === 'add') ? 'POST': 'PATCH';
 
   const [ goal, setGoal ] = useState({});
   const [ error, setError ] = useState(null);
 
+  const [ date, setDate ] = useState(new Date());
+
   useEffect(() => {
     if(type === 'edit') {
       async function setInitialFormValues(id) {
-        console.log('Meow')
         try {
           const goal = await GoalsService.getGoal(id);
+          console.log(goal.end_date);
+          console.log(moment(goal.end_date).utc().format());
+          console.log(new Date(goal.end_date));
+          setDate(new Date(goal.end_date));
           setGoal(goal);
         }
         catch(error) {
@@ -26,33 +35,29 @@ const GoalForm = (props) => {
     }
   }, [id, type]);
 
+  const handleChangeDate = (date) => {
+    setDate(date);
+    console.log(date);
+  }
+
   const handleSubmitForm = async (e) => {
     e.preventDefault();
 
     const name = e.target['name'].value;
     const goal_amount = e.target['goal_amount'].value;
-
-    // Where month = 0-11 (zero-indexed)
-    // Where year = YYYY
-    // Where day = DD
-    const end_date = e.target['end_date'].value;
+    const end_date = moment(date); // Native date object
     
-    // Calculate contribution amount
-    // Weekly by default 
-    // Where number of weeks = Days from now to target date divided by 7
-    // Where contribution amount = Goal amount divided by number of weeks
     const currentDate = moment();
 
-    // Temporary
-    const targetDate = moment(['2020', '09', '17']);
-
     // End-date-exclusive, hence +1
-    const daysFromCurrentDate =  targetDate.diff(currentDate, 'days') + 1;
-    console.log(daysFromCurrentDate, 'days')
+    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
+    console.log(daysFromCurrentDate, 'days');
+
     const weeks = Math.floor(daysFromCurrentDate/7);
-    console.log(weeks, 'weeks')
+    console.log(weeks, 'weeks');
+
     const contribution_amount = Number(goal_amount)/weeks;
-    console.log(Number(goal_amount)/weeks)
+    console.log(Number(goal_amount)/weeks);
 
     // For editing a goal
     // Cases:
@@ -69,14 +74,14 @@ const GoalForm = (props) => {
     }
 
     // POST/PATCH goal to server
-    try {
-      const response = await GoalsService.createUpdateGoal(newGoal, id, method);
-      console.log(response);
-      props.history.push('/');
-    }
-    catch(error) {
-      console.log(error)
-    }
+    // try {
+    //   const response = await GoalsService.createUpdateGoal(newGoal, id, method);
+    //   console.log(response);
+    //   props.history.push('/');
+    // }
+    // catch(error) {
+    //   console.log(error)
+    // }
 
   }
 
@@ -127,7 +132,7 @@ const GoalForm = (props) => {
         type='text'
       />
 
-      <label
+      {/* <label
         htmlFor='end_date'
       >
         End Date: 
@@ -140,6 +145,20 @@ const GoalForm = (props) => {
         }
         id='end_date'
         type='text'
+      /> */}
+
+      {/* <Calendar 
+        initialYear={
+          Number(moment(goal.end_date).format('YYYY'))
+        }
+        initialMonth={
+          Number(moment(goal.end_date).format('M') -1)
+        }
+      /> */}
+
+      <DatePicker
+        selected={date}
+        onChange={handleChangeDate}
       />
 
       <button>

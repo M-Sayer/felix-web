@@ -38,14 +38,19 @@ const App = () => {
           />
 
           <PrivateRoute
-            exact
-            path={'/goal/:id'}
-            comp={GoalRoute}
+            path={'/goal/add'}
+            comp={GoalFormRoute}
           />
 
           <PrivateRoute
             path={'/goal/:type/:id'}
             comp={GoalFormRoute}
+          />
+
+          <PrivateRoute
+            exact
+            path={'/goal/:id'}
+            comp={GoalRoute}
           />
 
           <PrivateRoute
