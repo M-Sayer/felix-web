@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { getAlerts } from '../services/alertsService';
 import moment from 'moment';
 
-
-
 const AlertsContext = React.createContext({
   allAlerts: [],
   setAllAlerts: () => {},
@@ -15,7 +13,7 @@ const AlertsContext = React.createContext({
 export default AlertsContext;
 
 export const AlertsProvider = props => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(); // this is only used to rerender
   const [allAlerts, setAllAlerts] = useState([]);
   const [dashboardAlerts, setDashboardAlerts] = useState([])
 
@@ -40,13 +38,6 @@ export const AlertsProvider = props => {
     setDashboardAlerts(allAlerts.filter(alert =>
       alert.read === false))
   }, [allAlerts])
-
-  let a = dashboardAlerts[0];
-  const b = dashboardAlerts[1];
-  a && console.log('a: ', a.date_created)
-  b && console.log('b: ', b.date_created);
-  a && b && console.log(a.date_created > b.date_created)
-  a && b && console.log(moment(a.date_created).isBefore(b.date_created))
 
   return (
     <AlertsContext.Provider 

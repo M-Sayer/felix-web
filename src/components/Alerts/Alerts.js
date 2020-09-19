@@ -24,18 +24,13 @@ const Alerts = () => {
 
   const renderAlerts = () => {
     let alerts;
-
-    if (location === '/') {
-      alerts = alertsContext.dashboardAlerts
-    } 
-    if (location === '/alerts') {
-      alerts = alertsContext.allAlerts
-    }
+    if (location === '/') alerts = alertsContext.dashboardAlerts;
+    if (location === '/alerts') alerts = alertsContext.allAlerts;
 
     return alerts.map(alert => (
       <div key={alert.id}>
-        <p>{alert.title}</p>
         <section>
+          <p>{alert.title}</p>
           <p>
             {moment(alert.date_created).format('MMM Do, YYYY')}
           </p>
