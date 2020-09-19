@@ -1,26 +1,56 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getAlerts } from '../../services/alertsService';
 import AlertsContext from '../../contexts/AlertsContext';
 
 const Alerts = () => {
   const alertsContext = useContext(AlertsContext);
   
-  const fetchData = async () => {
-    const alerts = await getAlerts();
-    alertsContext.setAlerts(alerts);
-  };
-
-  useEffect(() => {fetchData()}, []);
-
-  const location = useLocation().pathname;
+  // object where each key is an alert id
+  // value is true or false where true is expanded
+  const [expanded, setExpanded] = useState({})
   
-  const renderAlerts = () => {
-
+  const toggleExpand = (id) => {
+    setExpanded({ [id]: !expanded[id] })
   }
 
+  const location = useLocation().pathname;
+
+  const renderAlerts = () => {
+    let alerts;
+
+    if (location === '/dashboard') {
+      alerts = alertsContext.dashboardAlerts
+    } 
+    if (location === '/alerts') {
+      alerts = alertsContext.allAlerts
+    }
+    
+    return alerts.map(alert => (
+      <div key={alert.id}>
+        <p>{alert.title}</p>
+        {expanded[alert.id] 
+          ?
+          <>
+            <p>{alert.message}</p> 
+            <button onClick={() => toggleExpand(alert.id)}
+            >
+              read less
+            </button>
+          </>
+          : <button onClick={() => toggleExpand(alert.id)}
+          >
+            read more
+          </button>
+        }
+        <button>mark as read</button>
+      </div>
+    ))};
+
   return (
-    <div>alerts</div>
+    <div>
+      <h1>Alerts</h1>
+      {renderAlerts()}
+    </div>
   )
 }
 

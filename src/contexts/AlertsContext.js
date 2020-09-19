@@ -1,20 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { getAlerts } from '../services/alertsService';
 
 const AlertsContext = React.createContext({
-  alerts: [],
-  setAlerts: () => {},
+  allAlerts: [],
+  setAllAlerts: () => {},
+  dashboardAlerts: [],
+  setDashboardAlerts: () => {},
 });
 
 export default AlertsContext;
 
 export const AlertsProvider = props => {
-  const [alerts, setAlerts] = useState();
+  const [allAlerts, setAllAlerts] = useState([]);
+  const [dashboardAlerts, setDashboardAlerts] = useState([])
+
+  const fetchData = async () => {
+    const alerts = await getAlerts();
+    setAllAlerts(alerts);
+  };
+  
+  useEffect(() => {fetchData()}, []);
+
+  useEffect(() => {
+    setDashboardAlerts(allAlerts.filter(alert =>
+      alert.read === false))
+  }, [allAlerts])
 
   return (
     <AlertsContext.Provider 
       value={{
-        alerts: alerts, 
-        setAlerts: setAlerts
+        allAlerts: allAlerts, 
+        setAllAlerts: setAllAlerts,
+        dashboardAlerts: dashboardAlerts,
+        setDashboardAlerts: setDashboardAlerts,
       }}
     >
       {props.children}

@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import UserOverview from '../components/Overview/UserOverview';
 import TransactionsOverview from '../components/Overview/TransactionsOverview';
 import Alerts from '../components/Alerts/Alerts';
+import AlertsContext from '../contexts/AlertsContext';
 
 const DashboardRoute = (props) => {
+  const alertsContext = useContext(AlertsContext);
+
   return (
     <>
-      <section>
-        <Alerts />
-      </section>
+      {alertsContext.dashboardAlerts &&
+        <section>
+          <Alerts />
+        </section>
+      }
       <section>
         <UserOverview />
       </section>
