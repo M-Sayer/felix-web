@@ -48,8 +48,11 @@ const Alerts = () => {
             read more
           </button>
         }
-        <button onClick={() => markRead(alert.id)}
-        >mark as read</button>
+        {!alert.read && 
+          <button onClick={() => markRead(alert.id)}
+          > 
+            mark as read
+          </button>}
       </div>
     ))};
 

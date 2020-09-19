@@ -1,8 +1,10 @@
 import React from 'react';
 import Alerts from '../components/Alerts/Alerts';
 
-export const AlertsRoute = () => {
+const AlertsRoute = () => {
   return (
     <Alerts />
   )
 }
+
+export default AlertsRoute;
