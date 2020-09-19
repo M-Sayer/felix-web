@@ -17,9 +17,9 @@ export const AlertsProvider = props => {
   const [allAlerts, setAllAlerts] = useState([]);
   const [dashboardAlerts, setDashboardAlerts] = useState([])
 
-  //sort alerts by most recent
+  // sort alerts by most recent
   const sortAlerts = alerts => {
-    return alerts.sort((a, b) => {
+    alerts.sort((a, b) => {
       if (moment(a).isBefore(b)) return 1;
       
       return -1
@@ -28,8 +28,8 @@ export const AlertsProvider = props => {
   
   const fetchData = async () => {
     const alerts = await getAlerts();
-    const sortedAlerts = sortAlerts(alerts);
-    setAllAlerts(sortedAlerts);
+    sortAlerts(alerts);
+    setAllAlerts(alerts);
   };
   
   useEffect(() => {fetchData()}, [state]);
