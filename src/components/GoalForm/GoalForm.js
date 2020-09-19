@@ -45,22 +45,24 @@ const GoalForm = (props) => {
     
     const currentDate = moment();
 
-    // End-date-exclusive, hence +1
     const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
     console.log(daysFromCurrentDate, 'days');
 
-    const weeks = (Math.floor(daysFromCurrentDate/7) === 0) ? 1: Math.floor(daysFromCurrentDate/7);
-    console.log(weeks, 'weeks');
+    // Refactor
+    let numberOfSundays = 0;
 
-    const contribution_amount = Number(goal_amount)/weeks;
-    console.log(Number(goal_amount)/weeks);
+    for(let i = 0; i <= daysFromCurrentDate; i++) {
+      if(moment().add(i, 'days').day() === 0) {
+        numberOfSundays += 1;
+      }
+    }
 
-    // For editing a goal
-    // Cases:
-    // If user does not change goal_amount
-    // If user changes goal_amount
-    // If user does not change contribution_amount
-    // If user changes contribution_amount
+    if(numberOfSundays === 0) {
+      numberOfSundays = 1;
+    }
+    
+    let contribution_amount = Math.ceil(((Number(goal_amount) / numberOfSundays) * 100) / 100);
+    console.log(contribution_amount);
 
     const newGoal = {
       name,
@@ -78,7 +80,6 @@ const GoalForm = (props) => {
     catch(error) {
       console.log(error)
     }
-
   }
 
   return (

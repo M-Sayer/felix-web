@@ -20,7 +20,6 @@ const Goal = (props) => {
     }
     getGoal();
 
-    setGoal();
   }, [setGoal, props.match.params]);
 
   const handleDeleteGoal = async () => {
