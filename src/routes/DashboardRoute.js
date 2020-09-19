@@ -9,7 +9,7 @@ const DashboardRoute = (props) => {
 
   return (
     <>
-      {alertsContext.dashboardAlerts &&
+      {alertsContext.dashboardAlerts.length > 0 &&
         <section>
           <Alerts />
         </section>

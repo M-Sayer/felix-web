@@ -6,11 +6,13 @@ const AlertsContext = React.createContext({
   setAllAlerts: () => {},
   dashboardAlerts: [],
   setDashboardAlerts: () => {},
+  setState: () => {},
 });
 
 export default AlertsContext;
 
 export const AlertsProvider = props => {
+  const [state, setState] = useState();
   const [allAlerts, setAllAlerts] = useState([]);
   const [dashboardAlerts, setDashboardAlerts] = useState([])
 
@@ -19,7 +21,7 @@ export const AlertsProvider = props => {
     setAllAlerts(alerts);
   };
   
-  useEffect(() => {fetchData()}, []);
+  useEffect(() => {fetchData()}, [state]);
 
   useEffect(() => {
     setDashboardAlerts(allAlerts.filter(alert =>
@@ -33,6 +35,7 @@ export const AlertsProvider = props => {
         setAllAlerts: setAllAlerts,
         dashboardAlerts: dashboardAlerts,
         setDashboardAlerts: setDashboardAlerts,
+        setState: setState,
       }}
     >
       {props.children}

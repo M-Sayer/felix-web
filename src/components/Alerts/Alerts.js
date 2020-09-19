@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AlertsContext from '../../contexts/AlertsContext';
+import { updateAlert } from '../../services/alertsService';
 
 const Alerts = () => {
   const alertsContext = useContext(AlertsContext);
@@ -9,8 +10,13 @@ const Alerts = () => {
   // value is true or false where true is expanded
   const [expanded, setExpanded] = useState({})
   
-  const toggleExpand = (id) => {
+  const toggleExpand = id => {
     setExpanded({ [id]: !expanded[id] })
+  }
+
+  const markRead = async id => {
+    await updateAlert(id, {read: true});
+    alertsContext.setState({}); //force rerender
   }
 
   const location = useLocation().pathname;
@@ -24,7 +30,7 @@ const Alerts = () => {
     if (location === '/alerts') {
       alerts = alertsContext.allAlerts
     }
-    
+
     return alerts.map(alert => (
       <div key={alert.id}>
         <p>{alert.title}</p>
@@ -42,7 +48,8 @@ const Alerts = () => {
             read more
           </button>
         }
-        <button>mark as read</button>
+        <button onClick={() => markRead(alert.id)}
+        >mark as read</button>
       </div>
     ))};
 
