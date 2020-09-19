@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import AlertsContext from '../../contexts/AlertsContext';
 import { updateAlert } from '../../services/alertsService';
+import moment from 'moment-timezone';
 
 const Alerts = () => {
   const alertsContext = useContext(AlertsContext);
@@ -34,6 +35,11 @@ const Alerts = () => {
     return alerts.map(alert => (
       <div key={alert.id}>
         <p>{alert.title}</p>
+        <section>
+          <p>
+            {moment(alert.date_created).format('MMM Do, YYYY')}
+          </p>
+        </section>
         {expanded[alert.id] 
           ?
           <>
