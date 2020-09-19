@@ -27,7 +27,7 @@ export default class CreateTransaction extends React.Component {
 
 	handleCancel = e => {
 		e.preventDefault()
-		this.props.history.push('/dashboard')
+		this.props.history.push('/')
 	};
 
 	render() {
