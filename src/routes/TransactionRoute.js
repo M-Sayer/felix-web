@@ -22,14 +22,8 @@ export default class TransactionRoute extends React.Component{
     transaction: {},
   }
 
-  handleChange = e => {
-    e.preventDefault();
-    const {name , value} = e.target;
-    this.setState({
-      transaction: { 
-        ...this.state.transaction,
-        [name]: value }
-    })
+  handleChange = data => {
+    this.setState({ transaction : data})
   }
     componentDidMount = () => {
       const {type, id} = this.props.match.params;

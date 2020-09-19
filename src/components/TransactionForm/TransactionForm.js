@@ -60,8 +60,8 @@ export default class TransactionForm extends React.Component {
     render(){
       //const {name, description, amount, category, type } = this.state 
       //Unused variables that were previously used to set name={name} of inputs. This was throwing a strange "uncontrolled input/requires defaultValues" error that we haven't fully figured out yet, so I'm leaving them here until then.
-      const { type } = this.state;  //For now this is all we need
-
+      const { type, name , category, description, amount} = this.state; 
+       //For now this is all we need
        const optionForType = 
         type === 'income'
         ?
@@ -72,9 +72,10 @@ export default class TransactionForm extends React.Component {
 
         return(
           <div className='transaction_form_wrapper'>
-            <form
-              onSubmit={e => this.props.handleSubmit(e, this.state)}
+            <form 
               onChange={e => this.handleChange(e)}
+              onSubmit={e => this.props.handleSubmit(e, this.state)}
+              
             >
               <div className='transaction_notes'>
                 {
@@ -82,22 +83,21 @@ export default class TransactionForm extends React.Component {
                   && 
                   <>
                     <label htmlFor='transactionType'></label>
-                    <select name='type' required>
+                    <select onChange={e => this.handleChange(e)} name='type' required>
                       <option value=''>select</option>
                       {this.renderOptions(['income','expenses'])}
                     </select> 
                   </>
                 }
-                <input name='name' placeholder='name' required></input>
-                <select name='category' required>
-                  <option value=''>select</option>
+                <input  name='name' placeholder='name' defaultValue={name} required></input>
+                <select onChange={e => this.handleChange(e)} name='category' value={category} required>
                   {this.renderOptions(optionForType)}
                 </select>
-                <textarea name='description' placeholder='description' required></textarea>
+                <textarea  name='description' placeholder='description' defaultValue={description}/>
               </div>
 
               <div className='amount_wrapper'>
-                <input name='amount' className='amount' placeholder='amount' required></input>
+                <input name='amount' type='number' className='amount' placeholder='amount' defaultValue={amount} step=".01" required></input>
               </div>
 
               <Button

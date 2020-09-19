@@ -40,6 +40,7 @@ export default class Transaction extends React.Component {
 
    handleSubmit = (ev, data) => {
        ev.preventDefault();
+       this.props.handleChange(data)
       TransactionsService.updateSingleTransaction(data);
       this.toggleEdit();
    }
