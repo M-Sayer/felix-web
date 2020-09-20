@@ -80,6 +80,7 @@ const GoalForm = (props) => {
     catch(error) {
       console.log(error)
     }
+
   }
 
   return (
