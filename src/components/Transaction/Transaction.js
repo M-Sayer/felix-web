@@ -33,7 +33,7 @@ export default class Transaction extends React.Component {
    handleDelete =()=> {
      const {type, id} = this.props.match.params;
      TransactionsService.deleteSingleTransaction(type,id)
-     .then(()=> this.props.history.push('/dashboard'))
+     .then(()=> this.props.history.push('/'))
    }
 
    handleSubmit = (ev, data) => {
