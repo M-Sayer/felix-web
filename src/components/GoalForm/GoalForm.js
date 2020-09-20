@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
+
 import GoalsService from '../../services/goals-service';
 
-import moment from 'moment';
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
 
 const GoalForm = (props) => {
@@ -33,7 +33,6 @@ const GoalForm = (props) => {
 
   const handleChangeDate = (date) => {
     setDate(date);
-    console.log(date);
   }
 
   const handleSubmitForm = async (e) => {
