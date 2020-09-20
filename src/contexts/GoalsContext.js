@@ -1,5 +1,6 @@
 // import React, { Component } from 'react';
 import React, { useState } from 'react'; 
+import moment from 'moment';
 
 const nullGoal = {
   'id' : null,
@@ -26,6 +27,26 @@ export const GoalsProvider = (props) => {
   const [goal, setGoal] = useState(nullGoal);
   const [goals, setGoals] = useState([]);
 
+  const countNumberOfSundays = (daysFromCurrentDate) => {
+    let numberOfSundays = 0;
+
+    for(let i = 0; i <= daysFromCurrentDate; i++) {
+      if(moment().add(i, 'days').day() === 0) {
+        numberOfSundays += 1;
+      }
+    }
+
+    if(numberOfSundays === 0) {
+      numberOfSundays = 1;
+    }
+
+    return numberOfSundays;
+  }
+
+  const calculateContributionAmount = (amount, frequency) => {
+    Math.ceil(((amount / frequency) * 100) / 100);
+  }
+
   return (
     <GoalsContext.Provider 
       value={{ 
@@ -36,7 +57,10 @@ export const GoalsProvider = (props) => {
         setGoals,
 
         error,
-        setError
+        setError,
+
+        countNumberOfSundays,
+        calculateContributionAmount,
       }}>
       {props.children}
     </GoalsContext.Provider>

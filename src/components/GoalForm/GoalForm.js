@@ -1,19 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import moment from 'moment';
 
+import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const GoalForm = (props) => {
+  const { countNumberOfSundays, calculateContributionAmount } = useContext(GoalsContext);
+
   const { type = 'add', id = '' } = props.match.params;
   const method = (type === 'add') ? 'POST': 'PATCH';
 
   const [ goal, setGoal ] = useState({});
-  const [ error, setError ] = useState(null);
 
+  // Set initial date to current date
+  // Using native date object
+  // DatePicker updated to deprecate using Moment.js
   const [ date, setDate ] = useState(new Date());
+
+  const [ error, setError ] = useState(null);
 
   useEffect(() => {
     if(type === 'edit') {
@@ -29,9 +36,10 @@ const GoalForm = (props) => {
       }
       setInitialFormValues(id);
     }
-  }, [id, type]);
+  }, [type, id]);
 
   const handleChangeDate = (date) => {
+    // Form picks up date selected by user and sets state var date
     setDate(date);
   }
 
@@ -40,29 +48,23 @@ const GoalForm = (props) => {
 
     const name = e.target['name'].value;
     const goal_amount = e.target['goal_amount'].value;
-    const end_date = moment(date); // Native date object
-    
+
+    // Form picks up date selected by user and sets state var date
+    // Use moment wrapper: native date object -> moment object
+    // For accuracy & consistency
+    const end_date = moment(date);
     const currentDate = moment();
 
+    // Use moment method .diff to calculate number of days from current to end date
     const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
-    console.log(daysFromCurrentDate, 'days');
 
-    // Refactor
-    let numberOfSundays = 0;
-
-    for(let i = 0; i <= daysFromCurrentDate; i++) {
-      if(moment().add(i, 'days').day() === 0) {
-        numberOfSundays += 1;
-      }
-    }
-
-    if(numberOfSundays === 0) {
-      numberOfSundays = 1;
-    }
+    // Contribution amount is moved from allowance to goals every Sunday, 00:00 UTC
+    // Calculate number of Sundays (and not number of weeks)
+    // Consider the edge case when there are 3 Sundays but only 20 days
+    // Conclusion: Number of weeks from now is not a reliable measure given the above edge case
+    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
+    const contribution_amount = calculateContributionAmount(Number(goal_amount), numberOfSundays);
     
-    let contribution_amount = Math.ceil(((Number(goal_amount) / numberOfSundays) * 100) / 100);
-    console.log(contribution_amount);
-
     const newGoal = {
       name,
       goal_amount,
@@ -72,8 +74,7 @@ const GoalForm = (props) => {
 
     // POST/PATCH goal to server
     try {
-      const response = await GoalsService.createUpdateGoal(newGoal, id, method);
-      console.log(response);
+      await GoalsService.createUpdateGoal(newGoal, id, method);
       props.history.push('/');
     }
     catch(error) {
@@ -138,7 +139,7 @@ const GoalForm = (props) => {
         Submit
       </button>
     </form>
-  )
+  );
 }
 
 export default GoalForm;
