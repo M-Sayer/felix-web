@@ -12,7 +12,7 @@ class RegistrationRoute extends React.Component {
   handleRegSuccess = () => {
     // Add logic to redirect user to last private page visited
     const { history } = this.props;
-    history.push('/dashboard');
+    history.push('/');
   }
 
   render() {

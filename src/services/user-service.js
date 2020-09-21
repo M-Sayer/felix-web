@@ -18,7 +18,7 @@ const UserService = {
     // Prior to making this call
     // There is no way I am getting user id in advance
     // Possible solutions:
-    // (1) Send user id with authToken?
+    // (1) Send user id with authToken? <---- solution I went with -CJLS
     // (2) Have token parsed to get user id from payload on client side
     const response = await fetch(`${config.API_ENDPOINT}/users`, settings);
 

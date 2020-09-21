@@ -8,8 +8,10 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 
 // Main Components
 import DashboardRoute from '../../routes/DashboardRoute';
+import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
+import AlertsRoute from '../../routes/AlertsRoute';
 
 // Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
@@ -17,6 +19,7 @@ import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
 const App = () => {
+
   return (
     <>
       <Header />
@@ -29,9 +32,14 @@ const App = () => {
             comp={DashboardRoute} 
           />
 
+          <PrivateRoute 
+            path={'/alerts'}
+            comp={AlertsRoute}
+          />
+
           <PrivateRoute
-            exact path={'/dashboard'}
-            comp={DashboardRoute}
+            path={'/createtransaction'}
+            comp={CreateTransactionRoute}
           />
 
           <PrivateRoute

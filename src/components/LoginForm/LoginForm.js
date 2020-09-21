@@ -48,7 +48,6 @@ class LoginForm extends Component {
   }
     
   render() {
-    // const { user } = this.context;
 
     return (
         <form
