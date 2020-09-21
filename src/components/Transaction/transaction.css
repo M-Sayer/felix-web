@@ -34,6 +34,10 @@ font-family: 'Roboto', sans-serif;
 
 }
 
+.description{
+    word-break: break-word;
+}
+
 .amount{
     font-size: 1.3rem;
     margin: 0;
@@ -53,6 +57,10 @@ font-family: 'Roboto', sans-serif;
     margin: .3rem ;
     height: 3rem;
     width: 6rem;
+}
+
+.red_button{
+    background-color: rgba(252, 56, 56, 0.769);
 }
 
 .income{

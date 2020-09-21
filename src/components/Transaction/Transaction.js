@@ -76,7 +76,7 @@ export default class Transaction extends React.Component {
           </Button>
           <Button
           onClick={this.handleDelete}
-           className='transaction_delete'>
+           className='transaction_delete red_button'>
             Delete
           </Button>
         </div>

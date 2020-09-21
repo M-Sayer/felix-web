@@ -41,8 +41,8 @@ export default class TransactionRoute extends React.Component{
 
   render(){
     return(
-      <section>
-        <h2>
+      <section className='single_transaction'>
+        <h2 className='single_transaction_header'>
           Transaction
         </h2> 
         <Transaction
