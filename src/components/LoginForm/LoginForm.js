@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
+import '../../styles-wip/FormStyles.css'
+import '../../styles-wip/ButtonStyles.css'
+import './LoginForm.css'
 
 // Validation
 // Integrate with Formik as soon as logic has been implemented
@@ -47,38 +50,37 @@ class LoginForm extends Component {
   render() {
 
     return (
-      <form 
-        onSubmit={(e) => 
-          this.handleUserLogin(e)}
-      >
-  
-        <label
-          htmlFor='username'
+        <form
+        className='formContainer'
+          onSubmit={(e) => 
+            this.handleUserLogin(e)}
         >
-          Username
-        </label>
-        <input
-          id='username'
-          type='text'
-        />
-  
-        <label
-          htmlFor='password'
-        >
-          Password
-        </label>
-        <input
-          id='password'
-          type='text' // Change to type='password'
-        />
-  
-        <button
-          type='submit'
-        >
-          Submit
-        </button>
-  
-      </form>
+    
+          <input
+            aria-label='username'
+            placeholder='username'
+            className='formInput'
+            autoComplete='username'
+            id='username'
+            type='text'
+          />
+
+          <input
+            aria-label='password'
+            placeholder='password'
+            className='formInput'
+            autoComplete='current-password'
+            id='password'
+            type='password'
+          />
+    
+          <button
+            className='primaryBtn'
+            type='submit'
+          >
+            Submit
+          </button>
+        </form>
     );
   }
 }

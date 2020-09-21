@@ -1,7 +1,9 @@
-/**************** FORM STYLING *****************/
+/*============ MAIN WRAPPERS ======================================================*/
+.transaction_details_wrapper{
 
-/* FORM FLEX CONTAINER */
-.formContainer {
+}
+
+.transaction_form{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -9,18 +11,23 @@
     margin: 20px 0;
 }
 
-.formContainerALT {
+
+/*=============== SUB WRAPPERS  ============================================================*/
+
+.transaction_notes{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    margin: 0 0 10px 0;
+    margin: 20px 0;
 }
-/**************************************************/
 
-/**************************************************/
-/* FORM INPUTS */
-.formInput {
+
+
+/*================ SINGLE ITEM RULES =============================================================*/
+
+/*ALL INPUTS*/
+.transaction_input {
     text-align: center;
     text-transform: none;
     font-family: 'Roboto', sans-serif;
@@ -34,19 +41,17 @@
     border: .105em solid rgb(128, 128, 128);
     background: none;
 }
-.formInput::placeholder {
+.transaction_input::placeholder {
     text-transform: lowercase;
 }
-.formInput:focus, .formInputt:hover {
+.transaction_input:focus, .transaction_input:hover {
     border: .115em solid rgb(109, 253, 114);
     outline: none;
 }
-/**************************************************/
 
+/* SELECTION OPTIONS */
 
-/**************************************************/
-/* FORM DROPDOWN SELECT MENUS */
-.formSelect {
+.transaction_selector {
     font-family: 'Roboto', sans-serif;
     font-size: 1.275em;
     font-weight: 400;
@@ -60,16 +65,10 @@
     background: none;
     border: .105em solid rgb(128, 128, 128);    
 }
-.formSelect:hover, .formSelect:focus {
+.transaction_selector:hover, .transaction_selector:focus {
     border: .115em solid rgb(109, 253, 114);
     outline: none;
 }
-.formSelect:active {
+.transaction_selector:active {
     background-color: rgb(244, 198, 83);
 }
-/*Need a .formLabel class too*/
-/**************************************************/
-
-/*****************************************************************************/
-/*****************************************************************************/
-/*****************************************************************************/
