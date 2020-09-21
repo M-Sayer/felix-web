@@ -60,7 +60,7 @@ class Transactions extends Component {
         </ul>
         <button
           onClick={() =>
-            this.props.history.push('/dashboard')}
+            this.props.history.push('/')}
             type='click'
         >
           Back
