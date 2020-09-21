@@ -1,21 +1,44 @@
 import React from 'react';
-import {Button} from '../Misc/Misc'
+import {Button} from '../Misc/Misc';
+import './TransactionForm.css'
 
 export default class TransactionForm extends React.Component {
 
   static defaultProps = {
-    handleCancel : () => {},
-    handleChange : () => {},
-    handleSubmit : () => {},
-    editing : false, 
-    transaction : {
-      name : '',
-      description: '',
-      type : '' ,
-      category : '' ,
-      amount : 0,
+    handleCancel: () => {},
+    handleSubmit: () => {},
+    editing: false,
+    transaction: {
+      amount: "",
+      category: "",
+      description: "",
+      name: "",
+      type: "",
     }
-  } 
+  }; 
+
+	state = {
+    amount: "",
+    category: "",
+    description: "",
+    name: "",
+    type: "",
+  };
+
+  componentDidMount() {
+    if (this.props.transaction) {
+      this.setState({...this.props.transaction})
+    }
+  };
+
+  handleChange = event => {
+    event.preventDefault();
+    const {name , value} = event.target;
+    this.setState({
+      ...this.state,
+      [name]: value 
+    });
+  };
 
   renderOptions = arr =>{
     if(arr.length){
@@ -28,17 +51,18 @@ export default class TransactionForm extends React.Component {
           >
           {item}
           </option>
-        )
-      })
-    }
-  }
+        );
+      });
+    };
+  };
 
 
 
     render(){
-       console.log(this.props)
-       const {name, description, amount, category, type } = this.props.transaction
-        
+      //const {name, description, amount, category, type } = this.state 
+      //Unused variables that were previously used to set name={name} of inputs. This was throwing a strange "uncontrolled input/requires defaultValues" error that we haven't fully figured out yet, so I'm leaving them here until then.
+      const { type, name , category, description, amount} = this.state; 
+       //For now this is all we need
        const optionForType = 
         type === 'income'
         ?
@@ -48,67 +72,76 @@ export default class TransactionForm extends React.Component {
         ;
 
         return(
-            <div className='transaction_form_wrapper'>
-                <form
-                  onSubmit={this.props.handleSubmit}
-                  onChange={this.props.handleChange}
-                >
-                    <div className='transaction_notes'>
+          <div className='transaction_form_wrapper'>
+            <form
+              className='transaction_form' 
+              onChange={e => this.handleChange(e)}
+              onSubmit={e => this.props.handleSubmit(e, this.state)}
+              
+            >
+              <div className='transaction_notes'>
+                {
+                  !this.props.editing 
+                  && 
+                  <>
+                    <label htmlFor='transactionType'></label>
+                    <select
+                      onChange={e => this.handleChange(e)}
+                      name='type'
+                      className='transaction_selector transaction__form_type'
+                      required>
+                        <option value=''>select</option>
+                      {this.renderOptions(['income','expenses'])}
+                    </select> 
+                  </>
+                }
+                <input 
+                  name='name' 
+                  placeholder='name'
+                  defaultValue={name}
+                  required
+                  className='transaction_input name_input'/>
+                <select 
+                  onChange={e => this.handleChange(e)}
+                  name='category'
+                  value={category}
+                  className='transaction_selector transaction__form_category'
+                  required>
+                    <option value=''>select</option>
+                    {this.renderOptions(optionForType)}
+                </select>
+                <textarea
+                  name='description'
+                  placeholder='description'
+                  defaultValue={description}
+                  className='transaction_input description_input'/>
+              </div>
 
-                    {
-                        !this.props.editing 
-                        && 
-                        <>
-                            <label htmlFor='transactionType'></label>
-                            <select
-                              className='formSelect' name='type'>
-                              {this.renderOptions(['income','expenses'])}
-                            </select> 
-                        </>
+              <div className='amount_wrapper'>
+                <input
+                  name='amount'
+                  type='number'
+                  className='transaction_input amount_input'
+                  placeholder='amount'
+                  defaultValue={amount}
+                  step=".01"
+                  required/>
+              </div>
+                <div className='button_wrapper'>
+                  <Button
+                  type='submit' 
+                  className='transaction_submit'>
+                    Submit
+                  </Button>
 
-                    }
-
-                    
-                      <input
-                        className='formInput'
-                        name='name'
-                        value={name}
-                        placeholder='name'>
-                      </input>
-
-                      <select 
-                        className='formSelect'
-                        name='category'
-                        defaultValue={category}>
-                        {this.renderOptions(optionForType)}
-                      </select>
-                      
-                      <textarea 
-                        name='description' 
-                        value={description}placeholder='description'>
-                      </textarea>
-
-                    </div>
-                    <div className='amount_wrapper'>
-                      <input 
-                        className='formInput' 
-                        name='amount' 
-                        value={amount}  
-                        placeholder='amount'>
-                      </input>
-                    </div>
-                    <Button
-                    type='submit' 
-                    className='transaction_submit'>
-                      Submit
-                    </Button>
-                    <Button
-                    onClick={this.props.handleCancel} 
-                    className='transaction_form_cancel'>
-                        Cancel
-                    </Button>
-                </form>
-            </div>
-        )
-    }
-}
+                  <Button
+                  onClick={this.props.handleCancel} 
+                  className='transaction_form_cancel red_button'>
+                    Cancel
+                  </Button>
+                </div>
+            </form>
+          </div>
+        );
+    };
+};

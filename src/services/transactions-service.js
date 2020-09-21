@@ -54,6 +54,27 @@ const TransactionsService = {
 
     return response.json();
   },
+
+  async createTransaction( newTransactionObject ) {
+    //newTransactionObject should contain name, description, amount, category, and type
+    const settings = {
+      'method': 'POST',
+      'body' : JSON.stringify(newTransactionObject),
+      'headers': {
+        'Authorization': `Bearer ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
+        'Content-Type' : 'application/json'
+      },
+    }
+    //POST the new transaction object to the server
+    const response = await fetch(`${config.API_ENDPOINT}/transactions`, settings);
+
+    if(!response.ok) {
+      const error = await response.json();
+      return Promise.reject(error);
+    }
+
+    return await response;
+  }
 }
 
 
