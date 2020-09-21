@@ -11,7 +11,7 @@ class TransactionsOverview extends Component {
 
     for(const trx of transactions) {
       if(i < 3 && i < transactions.length) {
-        transactions.push(
+        transactionsList.push(
           <li 
             key={i}
           >
@@ -45,7 +45,7 @@ class TransactionsOverview extends Component {
       this.context.setTransactions(sortedTransactions);
     }
     catch(error) {
-      this.context.setError(...error);
+      this.context.setError(error);
     }
   }
 
@@ -58,7 +58,7 @@ class TransactionsOverview extends Component {
           Transactions Overview
         </h2>
         {(transactions.length)
-            ? this.renderTrsnsactions(transactions)
+            ? this.renderTransactions(transactions)
             : ''
         }
       </>
