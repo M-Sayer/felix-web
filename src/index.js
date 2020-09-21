@@ -14,7 +14,6 @@ import App from './components/App/App';
 ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-      <CSSBaseline />
         <TransactionsProvider>
           <UserProvider>
             <GoalsProvider>

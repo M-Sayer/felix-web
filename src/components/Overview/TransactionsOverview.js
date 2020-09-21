@@ -32,7 +32,7 @@ class TransactionsOverview extends Component {
             this.props.history.push('/transactions')}
             type='click'
         >
-          See All Transactions
+          Add a New Transaction
         </button>
       </>
     );
