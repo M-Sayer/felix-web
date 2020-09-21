@@ -32,7 +32,7 @@ class TransactionsOverview extends Component {
             this.props.history.push('/transactions')}
             type='click'
         >
-          Add a New Transaction
+          See All Transactions
         </button>
       </>
     );
@@ -57,6 +57,13 @@ class TransactionsOverview extends Component {
         <h2>
           Transactions Overview
         </h2>
+        <button
+          onClick={() =>
+            this.props.history.push('/createtransaction')}
+            type='click'
+        >
+          Add a New Transaction
+      </button>
         {(transactions.length)
             ? this.renderTransactions(transactions)
             : ''

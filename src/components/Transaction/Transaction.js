@@ -44,7 +44,7 @@ export default class Transaction extends React.Component {
 
    handleCancel = ev => {
        ev.preventDefault();
-       this.context.toggleEdit();
+       this.toggleEdit();
    }
 
   renderTransaction = () => {
