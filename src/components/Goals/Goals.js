@@ -23,27 +23,32 @@ const Goals = (props) => {
 
   const renderGoals = (goals) => {
     return goals
-      .map((goal, i) => (
-        <ul
-          key={i}
-        >
-          <li>
-            Name: {goal.name}
-          </li>
-          <li>
-            Current Amount: {goal.current_amount} / Goal Amount: {goal.goal_amount}
-          </li>
-          <li>
-            <button
-              onClick={() =>
-                props.history.push(`/goal/${goal.id}`)
-              }
+      .map((goal, i) => {
+        if(!goal.completed) {
+          return (
+            <ul
+              key={i}
             >
-              See More Details
-            </button>
-          </li>
-        </ul>
-      ));
+              <li>
+                Name: {goal.name}
+              </li>
+              <li>
+                Current Amount: {goal.current_amount} / Goal Amount: {goal.goal_amount}
+              </li>
+              <li>
+                <button
+                  onClick={() =>
+                    props.history.push(`/goal/${goal.id}`)
+                  }
+                >
+                  See More Details
+                </button>
+              </li>
+            </ul>
+          );
+        }
+        return '';
+      });
   }
 
   return (
