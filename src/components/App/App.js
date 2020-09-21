@@ -11,6 +11,7 @@ import DashboardRoute from '../../routes/DashboardRoute';
 import GoalsRoute from '../../routes/GoalsRoute';
 import GoalRoute from '../../routes/GoalRoute';
 import GoalFormRoute from '../../routes/GoalFormRoute';
+import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
 
@@ -20,6 +21,7 @@ import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
 const App = () => {
+
   return (
     <>
       <Header />
@@ -51,6 +53,11 @@ const App = () => {
             exact
             path={'/goal/:id'}
             comp={GoalRoute}
+          />
+
+          <PrivateRoute
+            path={'/createtransaction'}
+            comp={CreateTransactionRoute}
           />
 
           <PrivateRoute
