@@ -27,7 +27,6 @@ const GoalsOverview = (props) => {
     let i = 0;
 
     for(const goal of goals) {
-      console.log(goal)
       if(i < 3 && i < goals.length && !goal.completed) {
         goalsList.push((
           <ul
