@@ -36,16 +36,7 @@ const GoalsOverview = (props) => {
               Name: {goal.name}
             </li>
             <li>
-              Goal Amount: {goal.goal_amount}
-            </li>
-            <li>
-              Current Amount: {goal.current_amount}
-            </li>
-            <li>
-              Contribution Amount: {goal.contribution_amount}
-            </li>
-            <li>
-              End Date: {goal.end_date}
+              Current Amount: {goal.current_amount}/Goal Amount: {goal.goal_amount}
             </li>
           </ul>
         ));
@@ -74,10 +65,6 @@ const GoalsOverview = (props) => {
       <h2>
         Goals Overview
       </h2>
-      {(goals.length)
-          ? renderGoals(goals)
-          : ''
-      }
       <button
           onClick={() =>
             props.history.push('/goal/add/ ')}
@@ -85,6 +72,10 @@ const GoalsOverview = (props) => {
         >
           Add a New Goal
       </button>
+      {(goals.length)
+          ? renderGoals(goals)
+          : ''
+      }
     </>
   );
 }
