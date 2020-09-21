@@ -11,13 +11,13 @@ class TransactionsOverview extends Component {
 
     for(const trx of transactions) {
       if(i < 3 && i < transactions.length) {
-        transactions.push(
+        transactionsList.push((
           <li 
             key={i}
           >
             {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount}
           </li>
-        );
+        ));
       }
       i++;
     }
@@ -42,23 +42,33 @@ class TransactionsOverview extends Component {
     try {
       const { income, expenses } = await TransactionsService.getAllTransactions();
       const sortedTransactions = this.context.sortTransactions([...income, ...expenses], 'date_created');
+      console.log(sortedTransactions)
       this.context.setTransactions(sortedTransactions);
     }
     catch(error) {
-      this.context.setError(...error);
+      this.context.setError(error);
     }
   }
 
   render() {
     const { transactions = [] } = this.context;
+    console.log(transactions)
 
     return (
       <>
         <h2>
           Transactions Overview
         </h2>
+        {/* Change this to a Link? */}
+        <button
+          onClick={() =>
+            this.props.history.push('/createtransaction')}
+            type='click'
+        >
+          Add a New Transaction
+        </button>
         {(transactions.length)
-            ? this.renderTrsnsactions(transactions)
+            ? this.renderTransactions(transactions)
             : ''
         }
       </>
