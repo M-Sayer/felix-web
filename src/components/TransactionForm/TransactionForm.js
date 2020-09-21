@@ -116,7 +116,6 @@ export default class TransactionForm extends React.Component {
                   defaultValue={description}
                   className='transaction_input description_input'/>
               </div>
-
               <div className='amount_wrapper'>
                 <input
                   name='amount'

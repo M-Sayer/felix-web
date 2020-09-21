@@ -11,7 +11,7 @@ class LoginRoute extends Component {
   onLoginSuccess = () => {
     // Add logic to redirect user to last private page visited
     const { history } = this.props;
-    history.push('/dashboard');
+    history.push('/');
   }
   // Redirect logic here
 

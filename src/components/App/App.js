@@ -11,6 +11,7 @@ import DashboardRoute from '../../routes/DashboardRoute';
 import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
+import AlertsRoute from '../../routes/AlertsRoute';
 
 // Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
@@ -31,9 +32,9 @@ const App = () => {
             comp={DashboardRoute} 
           />
 
-          <PrivateRoute
-            exact path={'/dashboard'}
-            comp={DashboardRoute}
+          <PrivateRoute 
+            path={'/alerts'}
+            comp={AlertsRoute}
           />
 
           <PrivateRoute
