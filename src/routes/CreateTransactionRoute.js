@@ -7,9 +7,7 @@ export default class CreateTransactionRoute extends React.Component {
     return (
       <>
         <section>
-          <CreateTransaction
-            history={this.props.history}
-          />
+          <CreateTransaction history={this.props.history} />
         </section>
       </>
     );
