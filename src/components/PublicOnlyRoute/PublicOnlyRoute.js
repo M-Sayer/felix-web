@@ -10,8 +10,12 @@ function PublicOnlyRoute(props) {
       {...props}
       render={(props) =>
         (TokenService.hasAuthToken())
-          ? <Redirect to={'/'} />
-          : <Component {...props}/>
+          ? <Redirect 
+              to={'/'}
+            />
+          : <Component
+              {...props}
+            />
       }
     />
   );
