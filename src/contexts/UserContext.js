@@ -13,6 +13,7 @@ export class UserProvider extends Component {
   state = {
     user: {},
     isUserLoggedIn: '',
+    error: null,
   }
 
   setUser = (user) => {
@@ -34,6 +35,10 @@ export class UserProvider extends Component {
     }    
   }
 
+  setError = (error) => {
+    this.setState({error});
+  }
+
   render() {
     return (
       <UserContext.Provider 
@@ -44,6 +49,8 @@ export class UserProvider extends Component {
           setUser: this.setUser,
           setIsUserLoggedIn: this.setIsUserLoggedIn,
           handleUserLog: this.handleUserLog,
+
+          setError: this.setError,
         }}>
         {this.props.children}
       </UserContext.Provider>

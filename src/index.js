@@ -11,7 +11,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 import App from './components/App/App';
 
-
 ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>

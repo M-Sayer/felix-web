@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import UserService from '../../services/user-service';
 
-
 class UserOverview extends Component {
   static contextType = UserContext;
 
   async componentDidMount() {
     try {
       const user = await UserService.getUser();
-      console.log(user);
       this.context.setUser(user);
     }
     catch(error) {
-      // For now!
-      console.log(error);
+      this.context.setError(...error);
     }
   }
 

@@ -4,8 +4,8 @@ import moment from 'moment';
 import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
 
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const GoalForm = (props) => {
   const { countNumberOfSundays, calculateContributionAmount } = useContext(GoalsContext);
@@ -44,6 +44,7 @@ const GoalForm = (props) => {
   }
 
   const handleSubmitForm = async (e) => {
+    setError(null);
     e.preventDefault();
 
     const name = e.target['name'].value;
@@ -77,8 +78,8 @@ const GoalForm = (props) => {
       await GoalsService.createUpdateGoal(newGoal, id, method);
       props.history.push('/');
     }
-    catch(error) {
-      console.log(error)
+    catch({ error }) {
+      setError(error);
     }
 
   }

@@ -43,9 +43,8 @@ export const GoalsProvider = (props) => {
     return numberOfSundays;
   }
 
-  const calculateContributionAmount = (amount, frequency) => {
+  const calculateContributionAmount = (amount, frequency) =>
     Math.ceil(((amount / frequency) * 100) / 100);
-  }
 
   return (
     <GoalsContext.Provider 

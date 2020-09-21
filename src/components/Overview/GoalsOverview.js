@@ -6,6 +6,7 @@ const GoalsOverview = (props) => {
   const { 
     goals = [],
     setGoals,
+    setError,
   } = useContext(GoalsContext);
 
   useEffect(() => {
@@ -14,39 +15,58 @@ const GoalsOverview = (props) => {
         const goals = await GoalsService.getGoals();
         setGoals(goals);
       }
-      catch(error) {
-        console.log(error);
+      catch({ error }) {
+        setError(error)
       }
     }
     getUserGoals();
-  }, [setGoals]);
+  }, [setGoals, setError]);
 
   const renderGoals = (goals) => {
-    return goals
-      .map((goal, i) => (
-        <ul
-          key={i}
-        >
-          <li>
-            {goal.name}
-          </li>
-          <li>
-            {goal.id}
-          </li>
-          <li>
-            {goal.goal_amount}
-          </li>
-          <li>
-            {goal.contribution_amount}
-          </li>
-          <li>
-            {goal.current_amount}
-          </li>
-          <li>
-            {goal.end_date}
-          </li>
+    const goalsList = [];
+    let i = 0;
+
+    for(const goal of goals) {
+      if(i < 3 && i < goals.length) {
+        goalsList.push((
+          <ul
+            key={i}
+          >
+            <li>
+              Name: {goal.name}
+            </li>
+            <li>
+              Goal Amount: {goal.goal_amount}
+            </li>
+            <li>
+              Current Amount: {goal.current_amount}
+            </li>
+            <li>
+              Contribution Amount: {goal.contribution_amount}
+            </li>
+            <li>
+              End Date: {goal.end_date}
+            </li>
+          </ul>
+        ));
+        i++;
+      }
+    }
+
+    return (
+      <>
+        <ul>
+          {goalsList}
         </ul>
-      ));
+        <button
+          onClick={() =>
+            props.history.push('/goals')}
+            type='click'
+        >
+          See All Goals
+        </button>
+      </>
+    );
   }
 
   return (
@@ -54,31 +74,19 @@ const GoalsOverview = (props) => {
       <h2>
         Goals Overview
       </h2>
-      <p>
-        <button
-            onClick={() =>
-              props.history.push('/goal/add/ ')}
-              type='click'
-          >
-            Add a New Goal
-        </button>
-      </p>
-      <ul>
-        {
-          (goals.length)
-            ? renderGoals(goals)
-            : ''
-        }
-      </ul>
+      {(goals.length)
+          ? renderGoals(goals)
+          : ''
+      }
       <button
           onClick={() =>
-            props.history.push('/goals')}
+            props.history.push('/goal/add/ ')}
             type='click'
         >
-          See All Goals
+          Add a New Goal
       </button>
     </>
-  )
+  );
 }
 
 export default GoalsOverview;

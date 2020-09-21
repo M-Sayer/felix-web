@@ -34,42 +34,39 @@ const Goal = (props) => {
   }
 
   return (
-    <ul>
-      <li>
-        {goal.id}
-      </li>
-      <li>
-        {goal.name}
-      </li>
-      <li>
-        {goal.goal_amount}
-      </li>
-      <li>
-        {goal.contribution_amount}
-      </li>
-      <li>
-        {goal.current_amount}
-      </li>
-      <li>
-        {goal.end_date}
-      </li>
-      <li>
-        <button
-          onClick={() =>
-            props.history.push(`/goal/edit/${goal.id}`)
-          }
-        >
-          Edit
-        </button>
-        <button
-          onClick={() =>
-            handleDeleteGoal()
-          }
-        >
-          Delete
-        </button>
-      </li>
-    </ul>
+    <>
+      <ul>
+        <li>
+          Name: {goal.name}
+        </li>
+        <li>
+          Goal Amount: {goal.goal_amount}
+        </li>
+        <li>
+          Current Amount: {goal.current_amount}
+        </li>
+        <li>
+          Weekly Contribution Amount: {goal.contribution_amount}
+        </li>
+        <li>
+          Target End Date: {goal.end_date}
+        </li>
+      </ul>
+      <button
+        onClick={() =>
+          props.history.push(`/goal/edit/${goal.id}`)
+        }
+      >
+        Edit
+      </button>
+      <button
+        onClick={() =>
+          handleDeleteGoal()
+        }
+      >
+        Delete
+      </button>
+    </>
   )
 }
 

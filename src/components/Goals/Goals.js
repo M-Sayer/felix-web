@@ -28,22 +28,10 @@ const Goals = (props) => {
           key={i}
         >
           <li>
-            {goal.name}
+            Name: {goal.name}
           </li>
           <li>
-            {goal.id}
-          </li>
-          <li>
-            {goal.goal_amount}
-          </li>
-          <li>
-            {goal.contribution_amount}
-          </li>
-          <li>
-            {goal.current_amount}
-          </li>
-          <li>
-            {goal.end_date}
+            Current Amount: {goal.current_amount} / Goal Amount: {goal.goal_amount}
           </li>
           <li>
             <button
