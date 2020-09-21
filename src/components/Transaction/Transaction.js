@@ -12,13 +12,13 @@ export default class Transaction extends React.Component {
 
   static defaultProps = {
     transaction : {
-      amount: '',
-      category: '',
-      date_created: '',
-      description: '',
+      amount: "",
+      category: "",
+      date_created: "",
+      description: "",
       id: 0,
-      name: '',
-      type: '',
+      name: "",
+      type: "",
     },
     handleChange : () => {},
     history : {
