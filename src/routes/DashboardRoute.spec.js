@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 // import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
-import PublicOnlyRoute from './PublicOnlyRoute';
-import DashboardRoute from '../../routes/DashboardRoute'
+import { BrowserRouter, Route } from 'react-router-dom';
+import DashboardRoute from './DashboardRoute';
 
-describe(`PublicOnlyRoute Component`, () => {
+describe(`DashboardRoute Component`, () => {
   describe(`Smoke test`, () => {
     it(`Renders without crashing`, () => {
       const div = document.createElement('div');
       ReactDOM.render(
         <BrowserRouter>
-          <PublicOnlyRoute
-            comp={DashboardRoute}
+          <Route
+            component={DashboardRoute}
           />
         </BrowserRouter>,
         div);
@@ -32,4 +31,4 @@ describe(`PublicOnlyRoute Component`, () => {
   //     expect(tree).toMatchSnapshot()
   //   });
   // });
-});
+})
