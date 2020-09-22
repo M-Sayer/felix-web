@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import UserService from '../../services/user-service';
 
+import '../../styles-wip/OverviewStyles.css'
+
 class UserOverview extends Component {
   static contextType = UserContext;
 
