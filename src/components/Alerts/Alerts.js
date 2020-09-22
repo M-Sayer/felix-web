@@ -24,7 +24,7 @@ const Alerts = () => {
 
   const renderAlerts = () => {
     let alerts;
-    if (location === '/') alerts = alertsContext.dashboardAlerts;
+    if (location === '/') alerts = alertsContext.dashboardAlerts.slice(0, 3);
     if (location === '/alerts') alerts = alertsContext.allAlerts;
 
     return alerts.map(alert => (
