@@ -135,10 +135,18 @@ const GoalForm = (props) => {
         selected={date}
         onChange={handleChangeDate}
       />
-
-      <button>
-        Submit
-      </button>
+      <div>
+        <button>
+          Submit
+        </button>
+        <button
+          onClick={() => {
+            props.history.push('/')
+          }}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

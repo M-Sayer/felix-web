@@ -63,6 +63,13 @@ const Goals = (props) => {
             : ''
         }
       </ul>
+      <button
+          onClick={() =>
+            props.history.push('/')}
+            type='click'
+        >
+          Back
+        </button>
     </article>
   )
 }
