@@ -11,8 +11,8 @@ class UserOverview extends Component {
       const user = await UserService.getUser();
       this.context.setUser(user);
     }
-    catch(error) {
-      this.context.setError(...error);
+    catch({ error }) {
+      this.context.setError(error);
     }
   }
 
