@@ -16,6 +16,11 @@ const Header = () => {
     return (
       <nav className='headerNav'>
         <Link
+          to='/'
+        >
+          Dashboard
+        </Link>
+        <Link
           onClick={() => {
             handleUserLog();
           }}

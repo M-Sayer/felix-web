@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import UserOverview from '../components/Overview/UserOverview';
+import GoalsOverview from '../components/Overview/GoalsOverview';
 import TransactionsOverview from '../components/Overview/TransactionsOverview';
 import Alerts from '../components/Alerts/Alerts';
 import AlertsContext from '../contexts/AlertsContext';
@@ -22,6 +23,12 @@ const DashboardRoute = (props) => {
       }
       <section>
         <UserOverview />
+      </section>
+
+      <section>
+        <GoalsOverview
+          {...props}
+        />
       </section>
 
       <section>

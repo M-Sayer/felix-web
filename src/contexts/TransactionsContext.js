@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-
-
-// Refactor later
 const TransactionsContext = React.createContext({
   transactions: [],
   setTransactions : ()=>{},
@@ -29,7 +26,7 @@ export class TransactionsProvider extends Component {
     this.setState({transactions: []});
   }
 
-  clearError = () => this.setError({error : null})
+  clearError = () => this.setError({error : null});
 
   filterTransactions = (transactions, property, value) => {
     return transactions.filter(trx => trx[property] === value);

@@ -6,15 +6,37 @@ class TransactionsOverview extends Component {
   static contextType = TransactionsContext;
 
   renderTransactions(transactions) {
-    return transactions.map((trx, i) => {
-      return (
-        <li 
-          key={i}
-        >
+    const transactionsList = [];
+    let i = 0;
+
+    for(const trx of transactions) {
+      if(i < 3 && i < transactions.length) {
+        transactionsList.push(
+          <li 
+            key={i}
+          >
             {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount}
-        </li>
-      );
-    });
+          </li>
+        );
+      }
+      i++;
+    }
+
+    return (
+      <>
+        <ul>
+          {transactionsList}
+        </ul>
+        <button
+          className='btn'
+          onClick={() =>
+            this.props.history.push('/transactions')}
+            type='click'
+        >
+          See All
+        </button>
+      </>
+    );
   }
 
   async componentDidMount() {
@@ -24,8 +46,7 @@ class TransactionsOverview extends Component {
       this.context.setTransactions(sortedTransactions);
     }
     catch(error) {
-      // For now
-      console.log(error);
+      this.context.setError(error);
     }
   }
 
@@ -33,33 +54,27 @@ class TransactionsOverview extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <>
-        <h2>
+      <article>
+        <h2
+          className='sectionHeader'
+        >
           Transactions Overview
         </h2>
-        <ul>
-          {
-            (transactions.length)
-              ? this.renderTransactions(transactions)
-              : ''
-          }
-        </ul>
         <button
-          onClick={() =>
-            this.props.history.push('/transactions')}
-        >
-          See All Transactions
-        </button>
-        <button
+          className='btn'
           onClick={() =>
             this.props.history.push('/createtransaction')}
+            type='click'
         >
-          Create Transaction
-        </button>
-      </>
+          Add Transaction
+      </button>
+        {(transactions.length)
+            ? this.renderTransactions(transactions)
+            : ''
+        }
+      </article>
     );
   }
-
 }
 
 export default TransactionsOverview;

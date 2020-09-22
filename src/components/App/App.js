@@ -8,6 +8,9 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 
 // Main Components
 import DashboardRoute from '../../routes/DashboardRoute';
+import GoalsRoute from '../../routes/GoalsRoute';
+import GoalRoute from '../../routes/GoalRoute';
+import GoalFormRoute from '../../routes/GoalFormRoute';
 import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
 import TransactionRoute from '../../routes/TransactionRoute';
@@ -18,6 +21,13 @@ import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
+import '../../styles-wip/index.css';
+import '../../styles-wip/ButtonStyles.css';
+import '../../styles-wip/FormStyles.css';
+import '../../styles-wip/LinkStyles.css';
+import '../../styles-wip/LogoHeader.css';
+import '../../styles-wip/OverviewStyles.css';
+
 const App = () => {
 
   return (
@@ -25,13 +35,34 @@ const App = () => {
       <Header />
       <div className='App'>
         <Switch>
-          {/* This is just a placeholder.
-          Should there be a landing route? */}
           <PrivateRoute
-            exact path={'/'}
-            comp={DashboardRoute} 
+            exact
+            path={'/'}
+            comp={DashboardRoute}
+          />
+    
+          <PrivateRoute
+            exact
+            path={'/goals'}
+            comp={GoalsRoute}
           />
 
+          <PrivateRoute
+            path={'/goal/add'}
+            comp={GoalFormRoute}
+          />
+
+          <PrivateRoute
+            path={'/goal/:type/:id'}
+            comp={GoalFormRoute}
+          />
+
+          <PrivateRoute
+            exact
+            path={'/goal/:id'}
+            comp={GoalRoute}
+          />
+    
           <PrivateRoute 
             path={'/alerts'}
             comp={AlertsRoute}
@@ -62,10 +93,6 @@ const App = () => {
             comp={RegistrationRoute}
           />
 
-          {/* <Route
-            path={'/'}
-            component={LandingRoute}
-          /> */}
         </Switch>
       </div>
     </>

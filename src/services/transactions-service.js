@@ -1,5 +1,5 @@
-import config from '../config'
-import TokenService from './token-service'
+import config from '../config';
+import TokenService from './token-service';
 
 // config.API_ENDPOINT = http://localhost:8000/api
 const TransactionsService = {
@@ -76,6 +76,5 @@ const TransactionsService = {
     return await response;
   }
 }
-
 
 export default TransactionsService;

@@ -19,7 +19,8 @@ export default class CreateTransaction extends React.Component {
 		e.target.category.value = ''
 		e.target.amount.value = ''
 		try {
-			await TransactionsService.createTransaction(data)
+      await TransactionsService.createTransaction(data);
+      this.props.history.push('/');
 		} catch(error) {
 			this.setState({...error});
 		};
