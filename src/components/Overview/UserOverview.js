@@ -12,7 +12,7 @@ class UserOverview extends Component {
       this.context.setUser(user);
     }
     catch(error) {
-      this.context.setError(...error);
+      this.context.setError(error);
     }
   }
 
