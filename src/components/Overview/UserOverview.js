@@ -19,8 +19,12 @@ class UserOverview extends Component {
     const { user = {} } = this.context;
 
     return (
-      <article className='UserOverview'>
-        <h2>
+      <article 
+        className='UserOverview'
+      >
+        <h2
+          className='sectionHeader'
+        >
           User Overview
         </h2>
         <p className='balance btn'>

@@ -21,6 +21,13 @@ import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
 // import LandingRoute from '../../routes/LandingRoute';
 
+import '../../styles-wip/index.css';
+import '../../styles-wip/ButtonStyles.css';
+import '../../styles-wip/FormStyles.css';
+import '../../styles-wip/LinkStyles.css';
+import '../../styles-wip/LogoHeader.css';
+import '../../styles-wip/OverviewStyles.css';
+
 const App = () => {
 
   return (

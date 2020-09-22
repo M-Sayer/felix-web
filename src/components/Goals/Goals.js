@@ -52,7 +52,7 @@ const Goals = (props) => {
   }
 
   return (
-    <>
+    <article>
       <h2>
         Goals
       </h2>
@@ -63,7 +63,7 @@ const Goals = (props) => {
             : ''
         }
       </ul>
-    </>
+    </article>
   )
 }
 

@@ -36,6 +36,11 @@ font-family: 'Roboto', sans-serif;
 
 /**************************************************/
 /* ALL LIST ITEMS */
+
+ul {
+  padding-inline-start: 5px;
+}
+
 li {
     list-style: none;
 }

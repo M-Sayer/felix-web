@@ -50,33 +50,39 @@ const GoalsOverview = (props) => {
           {goalsList}
         </ul>
         <button
+          className='btn'
           onClick={() =>
             props.history.push('/goals')}
             type='click'
         >
-          See All Goals
+          See Goals
         </button>
       </>
     );
   }
 
   return (
-    <>
-      <h2>
+    <article
+      className=''
+    >
+      <h2
+        className='sectionHeader'
+      >
         Goals Overview
       </h2>
       <button
+          className='btn'
           onClick={() =>
             props.history.push('/goal/add/ ')}
             type='click'
         >
-          Add a New Goal
+          Add Goal
       </button>
       {(goals.length)
           ? renderGoals(goals)
           : ''
       }
-    </>
+    </article>
   );
 }
 

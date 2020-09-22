@@ -3,11 +3,11 @@ import Goal from '../components/Goal/Goal';
 
 const GoalRoute = (props) => {
   return (
-    <>
+    <section>
       <Goal 
         {...props}
       />
-    </>
+    </section>
   )
 }
 

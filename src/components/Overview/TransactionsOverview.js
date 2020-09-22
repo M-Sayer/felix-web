@@ -28,11 +28,12 @@ class TransactionsOverview extends Component {
           {transactionsList}
         </ul>
         <button
+          className='btn'
           onClick={() =>
             this.props.history.push('/transactions')}
             type='click'
         >
-          See All Transactions
+          See All
         </button>
       </>
     );
@@ -53,22 +54,25 @@ class TransactionsOverview extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <>
-        <h2>
+      <article>
+        <h2
+          className='sectionHeader'
+        >
           Transactions Overview
         </h2>
         <button
+          className='btn'
           onClick={() =>
             this.props.history.push('/createtransaction')}
             type='click'
         >
-          Add a New Transaction
+          Add Transaction
       </button>
         {(transactions.length)
             ? this.renderTransactions(transactions)
             : ''
         }
-      </>
+      </article>
     );
   }
 }
