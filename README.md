@@ -1,40 +1,108 @@
-### To get started, clone this repository and run npm install to install project dependencies
+# Third Capstone App Name: Felix: Personal Finance Assistant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Links
+**Link to live app: https://.vercel.app/**
 
-## Available Scripts
+**Link to gist: https://mischkiey.github.io/thinkful-ei-first-capstone/**
 
-In the project directory, you can run:
+<p>&nbsp;</p>
 
-### `npm start`
+## Table of Contents
+1. Description
+2. How It Works
+3. Client Documentation/Screenshots
+4. Technologies
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p>&nbsp;</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Description
+*
 
-### `npm test`
+<p>&nbsp;</p>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How It Works
+As the user:
+* I should be able to create an account with email and password
+* I should be able to login with username and password
+* I should have a dashboard to see core information and utilize core features
 
-### `npm run build`
+* I should be able to read my balance
+* I should be able to read an updated balance after creating new transactions
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* I should be able to read my list of transactions
+* I should be able to read a specific transaction, seeing all of its information
+* I should be able to create a transaction
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* I should be able to read my allowance
+* I should be able to read my goals
+* I should be able to create a goal
+* I should be able to fund goals from allowance
+* I should be able to see a calculated weekly contribution amount
+* Every week, the contribution amount should be automatically moved from allowance to goal. Change should persist in allowance. Balance remains the same.
+* I should be be alerted of success on goal target date
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p>&nbsp;</p>
 
-### `npm run eject`
+## Client Documentation/Screenshots
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. **Login Page**
+![Landing Page](/images/screenshots/login-page.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<p>&nbsp;</p>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. **Signup Page**
+![Signup Page](/images/screenshots/signup-page.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<p>&nbsp;</p>
+
+5. **Dashboard Page** 
+![Dashboard Page](/images/screenshots/dashboard-page.png)
+
+<p>&nbsp;</p>
+
+6. **Transactions Page**
+![Transactions Page](/images/screenshots/transactions-page.png)
+ 
+<p>&nbsp;</p>
+
+7. **Transaction Page**
+![Transaction Page](/images/screenshots/transaction-page.png)
+
+<p>&nbsp;</p>
+
+8. **Add/Edit Transactions Form Page**
+![Add/Edit Transactions Form Page](/images/screenshots/transactions-form-page.png)
+
+<p>&nbsp;</p>
+
+9. **Goals Page**
+![Goals Page](/images/screenshots/goals-page.png)
+ 
+<p>&nbsp;</p>
+
+10. **Goal Page**
+![Goal Page](/images/screenshots/goal-page.png)
+
+<p>&nbsp;</p>
+
+11. **Add/Edit Goals Form Page**
+![Add/Edit Goals Form Page](/images/screenshots/goals-form-page.png)
+
+<p>&nbsp;</p>
+
+12. **Alerts Page**
+![Alerts Page](/images/screenshots/alerts-page.png)
+
+<p>&nbsp;</p>
+
+## Technology Used
+1. HTML, CSS, JavaScript
+2. React, React Hooks
+3. Node.js
+4. Express
+5. PostgreSQL
+6. Vercel
+7. Heroku, Heroku Scheduler
+8. Testing frameworks such as Jest, Mocha, Chai, & Supertest
+9. Calendar.js
+10. Moment.js
