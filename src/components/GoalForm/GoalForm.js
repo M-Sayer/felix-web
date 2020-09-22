@@ -86,6 +86,7 @@ const GoalForm = (props) => {
 
   return (
     <form
+      className='formContainer'
       onSubmit={(e) =>
         handleSubmitForm(e)
       }
@@ -101,9 +102,9 @@ const GoalForm = (props) => {
       <label
         htmlFor='name'
       >
-        Name: 
       </label>
       <input
+        className='formInput'
         defaultValue={
           (type === 'edit')
           ? goal.name
@@ -113,32 +114,47 @@ const GoalForm = (props) => {
         onChange={() => {
 
         }}
+        placeholder='name'
         type='text'
       />
 
       <label
         htmlFor='goal_amount'
       >
-        Amount: 
       </label>
       <input
+        className='formInput'
         defaultValue={
           (type === 'edit')
           ? goal.goal_amount
           : ''
         }
         id='goal_amount'
+        placeholder='amount'
         type='text'
       />
 
       <DatePicker
+        className='formInput'
         selected={date}
         onChange={handleChangeDate}
+        placeholder={date}
       />
-
-      <button>
-        Submit
-      </button>
+      <div>
+        <button
+          className='btn secondaryBtnALT'
+        >
+          Submit
+        </button>
+        <button
+          className='btn cancel secondaryBtnALT'
+          onClick={() => {
+            props.history.push('/')
+          }}
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

@@ -13,9 +13,25 @@ class TransactionsOverview extends Component {
       if(i < 3 && i < transactions.length) {
         transactionsList.push(
           <li 
+            className='userData2'
             key={i}
           >
-            {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount}
+            <div
+              className='dataFlexRow'
+            >
+              <span>
+                {trx.income_category || trx.expense_category}:
+              </span>
+              <span
+                className=
+                  {(trx.income_amount)
+                    ? 'income'
+                    : 'expenses'
+                  }
+              >
+                {trx.income_amount || trx.expense_amount}
+              </span>
+            </div>
           </li>
         );
       }
@@ -23,19 +39,9 @@ class TransactionsOverview extends Component {
     }
 
     return (
-      <>
-        <ul>
-          {transactionsList}
-        </ul>
-        <button
-          className='btn'
-          onClick={() =>
-            this.props.history.push('/transactions')}
-            type='click'
-        >
-          See All
-        </button>
-      </>
+      <ul>
+        {transactionsList}
+      </ul>
     );
   }
 
@@ -54,24 +60,42 @@ class TransactionsOverview extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <article>
+      <article
+        className='overviewSection'
+      >
         <h2
           className='sectionHeader'
         >
           Transactions Overview
         </h2>
-        <button
-          className='btn'
-          onClick={() =>
-            this.props.history.push('/createtransaction')}
-            type='click'
-        >
-          Add Transaction
-      </button>
         {(transactions.length)
             ? this.renderTransactions(transactions)
             : ''
         }
+        <div
+          className='btnsFlexRow'
+        >
+          <button
+            className='btn tertiaryBtn'
+            onClick={() =>
+              this.props.history.push('/createtransaction')}
+              type='click'
+          >
+            +
+          </button>
+          {(transactions.length)
+              ? <button
+                  className='btn tertiaryBtn'
+                  onClick={() =>
+                    this.props.history.push('/transactions')
+                  }
+                  type='click'
+                >
+                  See All
+                </button>
+              : ''
+          }
+        </div>
       </article>
     );
   }

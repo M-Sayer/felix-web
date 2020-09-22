@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
+import './Overview.css';
 
 const GoalsOverview = (props) => {
   const { 
@@ -29,59 +30,70 @@ const GoalsOverview = (props) => {
     for(const goal of goals) {
       if(i < 3 && i < goals.length && !goal.completed) {
         goalsList.push((
-          <ul
+          <li
+            className='userData2'
             key={i}
           >
-            <li>
-              Name: {goal.name}
-            </li>
-            <li>
-              Current Amount: {goal.current_amount}/Goal Amount: {goal.goal_amount}
-            </li>
-          </ul>
+            <div
+              className='dataFlexRow'
+            >
+              <span>
+                {goal.name}
+              </span>
+              <span>
+                {goal.current_amount} of {goal.goal_amount}
+              </span>
+            </div>
+          </li>
         ));
         i++;
       }
     }
 
     return (
-      <>
-        <ul>
-          {goalsList}
-        </ul>
-        <button
-          className='btn'
-          onClick={() =>
-            props.history.push('/goals')}
-            type='click'
-        >
-          See Goals
-        </button>
-      </>
+      <ul>
+        {goalsList}
+      </ul>
     );
   }
 
   return (
     <article
-      className=''
+      className='overviewSection'
     >
       <h2
         className='sectionHeader'
       >
         Goals Overview
       </h2>
-      <button
-          className='btn'
-          onClick={() =>
-            props.history.push('/goal/add/ ')}
-            type='click'
-        >
-          Add Goal
-      </button>
       {(goals.length)
           ? renderGoals(goals)
           : ''
       }
+      <div
+        className='btnsFlexRow'
+      >
+        <button
+            className='btn tertiaryBtn'
+            onClick={() =>
+              props.history.push('/goal/add/ ')}
+              type='click'
+          >
+            +
+        </button>
+        {(goals.length)
+          ? <button
+              className='btn tertiaryBtn'
+              onClick={() =>
+                props.history.push('/goals')
+              }
+              type='click'
+            >
+              See All
+            </button>
+          : ''
+        }
+      </div>
     </article>
   );
 }
