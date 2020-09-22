@@ -5,6 +5,7 @@
     /* text-decoration: none; */
     font-family: 'Roboto', sans-serif; 
     color:  rgb(11, 47, 41);
+    border-radius: .3rem;
     outline: none;
     background-color: rgb(101, 244, 236);
     border: none;
