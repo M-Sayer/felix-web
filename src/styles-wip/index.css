@@ -40,7 +40,7 @@ font-family: 'Roboto', sans-serif;
 /* ALL LIST ITEMS */
 
 ul {
-  padding-inline-start: 5px;
+  padding-inline-start: 0;
 }
 
 li {
@@ -85,7 +85,8 @@ li {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-size: 1.35em;
-    padding: 2px 20px 2px 0;
+    /* Commented this out because it won't display right -Miki */
+    /* padding: 2px 20px 2px 0; */
 }
 
 .dataFlexRow {
@@ -93,7 +94,8 @@ li {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 0 -35px;
+    /* Commented this out because it won't display right -Miki */
+    /* margin: 0 0 0 -35px; */
 }
 /* "dataFlexRow" requires "<span>"inline element"</span>" to work */
 /* EXAMPLE: 
@@ -173,10 +175,10 @@ li {
 /*****************************************************************************/
 /******** NOTE TO SELF (JAMES) ************/
 /* IS THIS GETTING UTILIZED ??? */
-/* .error-alert {
+.error {
     color: red;
     font-size: 1.15em;
-} */
+}
 
 /*********** STILL NEED TO FIX THESE AS A STANDARDIZED STYLE *************/
 /*****************************************************************************/

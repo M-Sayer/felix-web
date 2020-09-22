@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from '../Misc/Misc';
-import './TransactionForm.css'
+import './TransactionForm.css';
 
 export default class TransactionForm extends React.Component {
 

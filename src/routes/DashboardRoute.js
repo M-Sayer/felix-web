@@ -12,7 +12,11 @@ const DashboardRoute = (props) => {
 
   return (
     <>
-      <button onClick={() => history.push('/alerts')}
+      <button
+        className='btn tertiaryBtn'
+        onClick={() => 
+          history.push('/alerts')
+        }
       >
         alerts
       </button>
@@ -21,11 +25,15 @@ const DashboardRoute = (props) => {
           <Alerts />
         </section>
       }
-      <section>
+      <section
+        className=''
+      >
         <UserOverview />
       </section>
 
-      <section>
+      <section
+        className=''
+      >
         <GoalsOverview
           {...props}
         />
