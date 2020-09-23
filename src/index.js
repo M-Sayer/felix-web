@@ -16,13 +16,15 @@ import './styles-wip/index.css'
 ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-        <TransactionsProvider>
+        <AlertsProvider>
           <UserProvider>
-            <GoalsProvider>
-              <App />
-            </GoalsProvider>
+            <TransactionsProvider>
+              <GoalsProvider>
+                <App />
+              </GoalsProvider>
+            </TransactionsProvider>
           </UserProvider>
-        </TransactionsProvider>
+        </AlertsProvider>
     </ThemeProvider>
   </BrowserRouter>,
   document.getElementById('root')
