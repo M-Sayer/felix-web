@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
+import './Goals.css';
 
 const Goals = (props) => {
   const {
@@ -26,25 +28,26 @@ const Goals = (props) => {
       .map((goal, i) => {
         if(!goal.completed) {
           return (
-            <ul
+            <li
+              className='goalsListItem userData2'
               key={i}
             >
-              <li>
-                Name: {goal.name}
-              </li>
-              <li>
-                Current Amount: {goal.current_amount} / Goal Amount: {goal.goal_amount}
-              </li>
-              <li>
-                <button
-                  onClick={() =>
-                    props.history.push(`/goal/${goal.id}`)
-                  }
+              <Link
+                className='userData2'
+                to={`/goal/${goal.id}`}
+              >
+                <div
+                  className='dataFlexRow'
                 >
-                  See More Details
-                </button>
-              </li>
-            </ul>
+                  <span>
+                    {goal.name}
+                  </span>
+                  <span>
+                    {goal.current_amount} of {goal.goal_amount}
+                  </span>
+                </div>
+              </Link>
+            </li>
           );
         }
         return '';
@@ -52,8 +55,12 @@ const Goals = (props) => {
   }
 
   return (
-    <article>
-      <h2>
+    <article
+      className='goalsContainer'
+    >
+      <h2
+        className='sectionHeader'
+      >
         Goals
       </h2>
       <ul>
@@ -63,13 +70,6 @@ const Goals = (props) => {
             : ''
         }
       </ul>
-      <button
-          onClick={() =>
-            props.history.push('/')}
-            type='click'
-        >
-          Back
-        </button>
     </article>
   )
 }

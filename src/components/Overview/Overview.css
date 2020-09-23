@@ -12,10 +12,6 @@
   text-align: left;
 }
 
-.dataFlexRow {
-  margin: 10px 0;
-}
-
 .btnsFlexRow {
   display: flex;
   flex-direction: row;

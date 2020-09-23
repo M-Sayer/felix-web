@@ -9,26 +9,32 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const GoalForm = (props) => {
   const { countNumberOfSundays, calculateContributionAmount } = useContext(GoalsContext);
+  const [ error, setError ] = useState(null);
 
+  // Extract form type and goal id (if any) from params
+  // Based on form type, set HTTP method
   const { type = 'add', id = '' } = props.match.params;
   const method = (type === 'add') ? 'POST': 'PATCH';
-
-  const [ goal, setGoal ] = useState({});
 
   // Set initial date to current date
   // Using native date object
   // DatePicker updated to deprecate using Moment.js
   const [ date, setDate ] = useState(new Date());
 
-  const [ error, setError ] = useState(null);
+  // If form type is edit, make a fetch call to get goal information
+  const [ goal, setGoal ] = useState({});
+  const [ contributionAmount, setContributionAmount ] = useState(0);
+  const [ goalAmount, setGoalAmount ] = useState(0);
 
   useEffect(() => {
     if(type === 'edit') {
       async function setInitialFormValues(id) {
         try {
           const goal = await GoalsService.getGoal(id); 
+          setContributionAmount(goal.contribution_amount);
           setDate(new Date(goal.end_date));
           setGoal(goal);
+          setGoalAmount(goal.goal_amount);
         }
         catch(error) {
           setError(error);
@@ -38,9 +44,25 @@ const GoalForm = (props) => {
     }
   }, [type, id]);
 
+  const handleChangeGoalAmount = (e) => {
+    setGoalAmount(e.target.value);
+    const end_date = moment(date);
+    const currentDate = moment();
+    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
+    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
+    const contribution_amount = calculateContributionAmount(Number(e.target.value), numberOfSundays);
+    setContributionAmount(contribution_amount);
+  }
+
   const handleChangeDate = (date) => {
     // Form picks up date selected by user and sets state var date
     setDate(date);
+    const end_date = moment(date);
+    const currentDate = moment();
+    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
+    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
+    const contribution_amount = calculateContributionAmount(Number(goalAmount), numberOfSundays);
+    setContributionAmount(contribution_amount);
   }
 
   const handleSubmitForm = async (e) => {
@@ -81,7 +103,6 @@ const GoalForm = (props) => {
     catch({ error }) {
       setError(error);
     }
-
   }
 
   return (
@@ -99,23 +120,29 @@ const GoalForm = (props) => {
           {error}
         </div>
       }
+      {contributionAmount > 0 &&
+        <div>
+          Your Weekly Contribution Amount: {contributionAmount}
+        </div>
+      }
       <label
-        htmlFor='name'
+        htmlFor='goal_name'
       >
       </label>
       <input
+        aria-label='goal_name'
         className='formInput'
         defaultValue={
           (type === 'edit')
           ? goal.name
           : ''
         }
-        id='name'
+        id='goal_name'
         onChange={() => {
-
         }}
-        placeholder='name'
+        placeholder='goal name'
         type='text'
+        required
       />
 
       <label
@@ -123,6 +150,7 @@ const GoalForm = (props) => {
       >
       </label>
       <input
+        aria-label='goal amount'
         className='formInput'
         defaultValue={
           (type === 'edit')
@@ -130,11 +158,18 @@ const GoalForm = (props) => {
           : ''
         }
         id='goal_amount'
+        min='0'
+        onChange={(e) => {
+          handleChangeGoalAmount(e);
+        }}
         placeholder='amount'
-        type='text'
+        // step='0.1'
+        type='number'
+        required
       />
 
       <DatePicker
+        aria-label='goal target end date'
         className='formInput'
         selected={date}
         onChange={handleChangeDate}
