@@ -20,7 +20,6 @@ export const AlertsProvider = props => {
 
   // sort alerts by most recent
   const sortAlerts = alerts => {
-    console.log(alerts)
     alerts.sort((a, b) => {
       if (moment(a).isBefore(b)) return 1;
       
