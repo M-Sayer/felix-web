@@ -96,7 +96,8 @@ export default class TransactionForm extends React.Component {
                   </>
                 }
                 <input 
-                  name='name' 
+                  name='name'
+                  maxlength='50'
                   placeholder='name'
                   defaultValue={name}
                   required
@@ -112,6 +113,7 @@ export default class TransactionForm extends React.Component {
                 </select>
                 <textarea
                   name='description'
+                  maxlength='500'
                   placeholder='description'
                   defaultValue={description}
                   className='transaction_input description_input'/>
@@ -120,6 +122,8 @@ export default class TransactionForm extends React.Component {
                 <input
                   name='amount'
                   type='number'
+                  min='-9999999999'
+                  max='9999999999'
                   className='transaction_input amount_input'
                   placeholder='amount'
                   defaultValue={amount}
