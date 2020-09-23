@@ -68,76 +68,62 @@ class RegistrationForm extends React.Component {
             {error && <p className='error-alert'>{error}</p>}
           </div>
 
-          <label
-            htmlFor='first_name'
-          >
-            First Name
-          </label>
           <input
+            aria-label='firstname'
+            placeholder='first name'
+            className='formInput'
             id='first_name'
             type='text'
             required
           />
       
-          <label
-            htmlFor='last_name'
-          >
-            Last Name
-          </label>
           <input
+            aria-label='lastname'
+            placeholder='last name'
+            className='formInput'
             id='last_name'
             type='text'
             required
           />
       
-          <label
-            htmlFor='username'
-          >
-            Username
-          </label>
           <input
+            aria-label='username'
+            placeholder='username'
+            className='formInput'
             id='username'
             type='text'
             required
           />
       
-          <label
-            htmlFor='email'
-          >
-            Email
-          </label>
           <input
+            aria-label='email'
+            placeholder='email'
+            className='formInput'
             id='email'
             type='text'
             required
           />
-      
-          <label
-            htmlFor='password'
-          >
-            Password
-          </label>
+
           <input
+            aria-label='password'
+            placeholder='password'
+            className='formInput'
             id='password'
             type='password'
             required
           />
       
           <button
-            className='submit-button'
+            className='primaryBtn'
             type='submit'
           >
             Submit
           </button>
         </form>
 
-        <button
-          onClick={() =>
-            this.props.history.push('/login')
-          }
-        >
+        <a href='/login'>
           Already have an account? Login
-        </button>
+        </a>
       </>
     )
   }   
