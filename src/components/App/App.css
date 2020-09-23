@@ -1,0 +1,26 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+
+@media screen and (min-width: 1024px) {
+
+    .App {
+        flex-direction: row;
+        margin: 0 30px;
+        flex-wrap: wrap;
+    }
+
+    .overviewSection {
+        /* display: flex; */
+        flex-direction: column;
+        padding: 15px 50px;
+        text-align: left;
+        width: 100%; 
+        margin: 20px 10px 10px 10px;       
+
+    }
+
+}

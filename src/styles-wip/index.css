@@ -22,7 +22,6 @@ font-family: 'Roboto', sans-serif;
 * {
     box-sizing: border-box;
 }
-/**************************************************/
 
 
 /**************************************************/
@@ -33,7 +32,6 @@ font-family: 'Roboto', sans-serif;
     background-color: rgb(35, 39, 43);
     color: #FFFFFF;/*remove later - GAGE*/
 }
-/**************************************************/
 
 
 /**************************************************/
@@ -46,7 +44,6 @@ ul {
 li {
     list-style: none;
 }
-/**************************************************/
 
 
 /**************************************************/
@@ -55,21 +52,7 @@ li {
     text-align: center;
     align-self: center; 
 }
-/**************************************************/
 
-/*  
-.alignLeft {
-    margin: 0;
-    position: absolute;
-    left: 15%;
-    bottom: 18%;
-}
-.alignRight {
-    margin: 0;
-    position: absolute;
-    right: 15%;
-    bottom: 18%;
-} */
 
 /**************************************************/
 /* USER DATA FROM THE DATABASE */
@@ -80,6 +63,7 @@ li {
     margin: -10px 0 10px 0;
 }
 
+/**************************************************/
 /* SMALLER DATA SIZE with alternate padding*/
 .userData2 {
     color: #FFFFFF;
@@ -89,6 +73,7 @@ li {
     /* padding: 2px 20px 2px 0; */
 }
 
+/**************************************************/
 .dataFlexRow {
     display: flex;
     flex-direction: row;
@@ -118,6 +103,8 @@ li {
     </li>
 */
 
+
+/**************************************************/
 /* FLEXBOX CONTAINER with row direction */
 .flexRow {
     display: flex;
@@ -128,6 +115,8 @@ li {
     align-self: space-around;
 }
 
+
+/**************************************************/
 /* ADJUSTS 3column DATA ELEMENTS to have straightened middle column*/
 .middleColumnAlign {
     margin-right: 10%;
@@ -159,6 +148,8 @@ li {
     </li>
 */
 
+
+/**************************************************/
 /* NOTE TO SELF: HOW DO WE IMPLEMENT THIS STYLE FOR DATA FROM DATABASE??? */
 .income{
     color: #81D281 ;
@@ -168,19 +159,11 @@ li {
     color: #995E50 ;
 }
 
+
 /**************************************************/
-
-
-/*****************************************************************************/
-/*****************************************************************************/
 /******** NOTE TO SELF (JAMES) ************/
 /* IS THIS GETTING UTILIZED ??? */
 .error {
     color: red;
     font-size: 1.15em;
 }
-
-/*********** STILL NEED TO FIX THESE AS A STANDARDIZED STYLE *************/
-/*****************************************************************************/
-/*****************************************************************************/
-/*****************************************************************************/

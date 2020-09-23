@@ -50,11 +50,11 @@ font-family: 'Roboto', sans-serif;
 .button_wrapper{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .Button{
-    margin: .3rem ;
+    margin: .9rem 1.75rem ;
     height: 3rem;
     width: 6rem;
 }

@@ -129,13 +129,13 @@ export default class TransactionForm extends React.Component {
                 <div className='button_wrapper'>
                   <Button
                   type='submit' 
-                  className='transaction_submit'>
+                  className='transaction_submit secondaryBtnALT'>
                     Submit
                   </Button>
 
                   <Button
                   onClick={this.props.handleCancel} 
-                  className='transaction_form_cancel red_button'>
+                  className='transaction_form_cancel red_button secondaryBtnALT'>
                     Cancel
                   </Button>
                 </div>

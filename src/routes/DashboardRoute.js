@@ -6,25 +6,33 @@ import Alerts from '../components/Alerts/Alerts';
 import AlertsContext from '../contexts/AlertsContext';
 import { useHistory } from 'react-router-dom';
 
+
 const DashboardRoute = (props) => {
   const alertsContext = useContext(AlertsContext);
   const history = useHistory();
 
   return (
     <>
-      <button
-        className='btn tertiaryBtn'
-        onClick={() => 
-          history.push('/alerts')
-        }
+      <div 
+        className='overviewSection'
       >
-        alerts
-      </button>
-      {alertsContext.dashboardAlerts.length > 0 &&
-        <section>
-          <Alerts />
-        </section>
-      }
+        <button
+          className='AlertsButton btn tertiaryBtn'
+          onClick={() => 
+            history.push('/alerts')
+          }
+        >
+          alerts
+        </button>
+        {alertsContext.dashboardAlerts.length > 0 &&
+          <section
+          className='Alerts'
+          >
+            <Alerts />
+          </section>
+        }
+
+      </div>   
       <section
         className=''
       >
@@ -39,7 +47,9 @@ const DashboardRoute = (props) => {
         />
       </section>
 
-      <section>
+      <section
+        className=''
+      >
         <TransactionsOverview
           {...props}
         />
