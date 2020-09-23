@@ -74,14 +74,12 @@ li {
 }
 
 /**************************************************/
-.dataFlexRow {
+/* .dataFlexRow {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    /* Commented this out because it won't display right -Miki */
-    /* margin: 0 0 0 -35px; */
-}
+} */
 /* "dataFlexRow" requires "<span>"inline element"</span>" to work */
 /* EXAMPLE: 
     <li 
@@ -118,11 +116,11 @@ li {
 
 /**************************************************/
 /* ADJUSTS 3column DATA ELEMENTS to have straightened middle column*/
-.middleColumnAlign {
+/* .middleColumnAlign {
     margin-right: 10%;
     position: absolute;
     right: 33%;
-}
+} */
 /* "middleColumnAlign" requires "<span>"inline element"</span>" to work */
 /* EXAMPLE: 
     <li 

@@ -13,7 +13,10 @@ const DashboardRoute = (props) => {
 
   return (
     <>
-      <div 
+    <section
+      className='AlertsOverview'
+    >
+      <article 
         className='overviewSection'
       >
         <button
@@ -32,15 +35,18 @@ const DashboardRoute = (props) => {
           </section>
         }
 
-      </div>   
+      </article> 
+
+    </section>
+  
       <section
-        className=''
+        className='UserOverview'
       >
         <UserOverview />
       </section>
 
       <section
-        className=''
+        className='GoalsOverview'
       >
         <GoalsOverview
           {...props}
@@ -48,7 +54,7 @@ const DashboardRoute = (props) => {
       </section>
 
       <section
-        className=''
+        className='TransactionsOverview'
       >
         <TransactionsOverview
           {...props}
