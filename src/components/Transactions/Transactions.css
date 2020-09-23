@@ -1,0 +1,28 @@
+.AllTransactions {
+}
+
+
+@media screen and (min-width: 1024px) {
+}
+
+
+/* .income{
+    color: #81D281 ;
+}
+
+.expenses{
+    color: #995E50 ;
+} */
+
+
+/*
+<span
+className=
+    {(trx.income_amount)
+    ? 'income'
+    : 'expenses'
+    }
+>
+    {trx.income_amount || trx.expense_amount}
+</span>
+*/
