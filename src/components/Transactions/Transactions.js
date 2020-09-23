@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
+import './Transactions.css';
 
 class Transactions extends Component {
   static contextType = TransactionsContext;
@@ -17,16 +19,31 @@ class Transactions extends Component {
     return transactions.map((trx, i) => {
       return (
         <li 
+          className='userData2 transactionsListItem'
           key={i}
         >
-          {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount} 
-          <button
-            onClick={() =>
-              this.props.history.push(this.renderTransactionParams(trx))
-            }
+          <Link
+            className='userData2' 
+            to={this.renderTransactionParams(trx)}
           >
-            See More Details
-          </button>
+            <div
+              className='dataFlexRow'
+            >
+              <span>
+                {trx.income_category || trx.expense_category}:
+              </span>
+              <span
+                className={
+                  (trx.income_amount)
+                    ? 'income'
+                    : 'expenses'
+                }
+              >
+                {trx.income_amount || trx.expense_amount} 
+              </span>
+
+            </div>
+          </Link>
         </li>
       );
     });
@@ -47,8 +64,12 @@ class Transactions extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <>
-        <h2>
+      <article
+        className='transactionsContainer'
+      >
+        <h2
+          className='sectionHeader'
+        >
           All Transactions
         </h2>
         <ul>
@@ -58,14 +79,7 @@ class Transactions extends Component {
               : ''
           }
         </ul>
-        <button
-          onClick={() =>
-            this.props.history.push('/')}
-            type='click'
-        >
-          Back
-        </button>
-      </>
+      </article>
     );
   }
 }

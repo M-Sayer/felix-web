@@ -1,0 +1,13 @@
+.transactionsContainer {
+  /* border: 1px solid white; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 15px;
+  padding: 15px;
+  text-align: left;
+}
+
+.transactionsListItem {
+  background-color: #282e33;
+}
