@@ -100,22 +100,24 @@ const GoalForm = (props) => {
         </div>
       }
       <label
-        htmlFor='name'
+        htmlFor='goal_name'
       >
       </label>
       <input
+        aria-label='goal_name'
         className='formInput'
         defaultValue={
           (type === 'edit')
           ? goal.name
           : ''
         }
-        id='name'
+        id='goal_name'
         onChange={() => {
 
         }}
-        placeholder='name'
+        placeholder='goal name'
         type='text'
+        required
       />
 
       <label
@@ -123,6 +125,7 @@ const GoalForm = (props) => {
       >
       </label>
       <input
+        aria-label='goal amount'
         className='formInput'
         defaultValue={
           (type === 'edit')
@@ -130,11 +133,15 @@ const GoalForm = (props) => {
           : ''
         }
         id='goal_amount'
+        min='0'
         placeholder='amount'
-        type='text'
+        step='0.1'
+        type='number'
+        required
       />
 
       <DatePicker
+        aria-label='goal target end date'
         className='formInput'
         selected={date}
         onChange={handleChangeDate}
