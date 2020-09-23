@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAlerts } from '../services/alertsService';
 import moment from 'moment';
+import TokenService from '../services/token-service';
 
 const AlertsContext = React.createContext({
   allAlerts: [],
@@ -32,7 +33,7 @@ export const AlertsProvider = props => {
     setAllAlerts(alerts);
   };
   
-  useEffect(() => {fetchData()}, [state]);
+  useEffect(() => {TokenService.hasAuthToken() && fetchData()}, [state]);
 
   useEffect(() => {
     setDashboardAlerts(allAlerts.filter(alert =>
