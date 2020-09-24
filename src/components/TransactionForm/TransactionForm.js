@@ -123,7 +123,7 @@ export default class TransactionForm extends React.Component {
                   className='transaction_input amount_input'
                   placeholder='amount'
                   defaultValue={amount}
-                  step={0.1} precision={2}
+                  step={0.01} precision={2}
                   required/>
               </div>
                 <div className='button_wrapper'>
