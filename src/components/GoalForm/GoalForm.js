@@ -69,7 +69,7 @@ const GoalForm = (props) => {
     setError(null);
     e.preventDefault();
 
-    const name = e.target['name'].value;
+    const name = e.target['goal_name'].value;
     const goal_amount = e.target['goal_amount'].value;
 
     // Form picks up date selected by user and sets state var date
