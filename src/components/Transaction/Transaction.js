@@ -33,23 +33,23 @@ export default class Transaction extends React.Component {
     this.setState({ edit: !this.state.edit })
   }
 
-   handleDelete =()=> {
-     const {type, id} = this.props.match.params;
-     TransactionsService.deleteSingleTransaction(type,id)
-     .then(()=> this.props.history.push('/'))
-   }
+  handleDelete = async () => {
+    const {type, id} = this.props.match.params;
+    await TransactionsService.deleteSingleTransaction(type,id)
+    this.props.history.push('/')
+  }
 
-   handleSubmit = (ev, data) => {
-       ev.preventDefault();
-       this.props.handleChange(data)
-      TransactionsService.updateSingleTransaction(data);
-      this.toggleEdit();
-   }
+  handleSubmit = (ev, data) => {
+    ev.preventDefault();
+    this.props.handleChange(data)
+    TransactionsService.updateSingleTransaction(data);
+    this.toggleEdit();
+  }
 
-   handleCancel = ev => {
-       ev.preventDefault();
-       this.toggleEdit();
-   }
+  handleCancel = ev => {
+    ev.preventDefault();
+    this.toggleEdit();
+  }
 
   renderTransaction = () => {
     const {name, date_created, amount, category, description } = this.props.transaction;
