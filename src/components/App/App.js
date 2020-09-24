@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Util Components
 import Header from '../Header/Header';
@@ -19,7 +19,7 @@ import AlertsRoute from '../../routes/AlertsRoute';
 // Authentication & Registration Components
 import LoginRoute from '../../routes/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute';
-// import LandingRoute from '../../routes/LandingRoute';
+import LandingRoute from '../../routes/LandingRoute';
 
 import '../../styles-wip/index.css';
 import '../../styles-wip/ButtonStyles.css';
@@ -92,6 +92,11 @@ const App = () => {
           <PublicOnlyRoute
             path={'/register'}
             comp={RegistrationRoute}
+          />
+
+          <Route
+            path={'/about'}
+            component={LandingRoute}
           />
 
         </Switch>

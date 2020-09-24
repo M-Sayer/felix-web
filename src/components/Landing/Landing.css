@@ -1,0 +1,9 @@
+.landingContainer {
+  display: flex;
+  flex-flow: column wrap;
+  text-align: left;
+}
+
+.landingContainer > p, ul, li {
+  font-family: 'Roboto', sans-serif;
+}

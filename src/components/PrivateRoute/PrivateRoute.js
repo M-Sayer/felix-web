@@ -14,7 +14,7 @@ function PrivateRoute(props) {
           : (
               <Redirect
                 to={{
-                  pathname: '/register',
+                  pathname: '/about',
                   state: { from: currentPath },
                 }}
               />
