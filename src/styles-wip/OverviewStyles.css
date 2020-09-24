@@ -1,17 +1,15 @@
 /**************** USER OVERVIEW STYLING *****************/
 
 /* OVERVIEW FLEX CONTAINER */
-.overviewContainer {
+/* .overviewContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     text-align: left;
-    margin: -5px 0 25px 20px;
-}
-/**************************************************/
+    margin: 0;
+} */
 
 
-/**************************************************/
 /* SECTION HEADER */
 .sectionHeader {
     color: rgb(249, 157, 149);
@@ -22,7 +20,7 @@
     margin: 0;
     text-align: left;
 }
-/**************************************************/
+
 
 /* SECTION HEADER without text-alignment  */
 .sectionHeaderALT {
@@ -35,7 +33,6 @@
 }
 
 
-/**************************************************/
 /* SECTION SUBHEADER */
 .sectionSubHeader {
     color: rgb(101, 244, 236);
@@ -43,6 +40,9 @@
     font-size: 1.25em;
 }
 
-/*****************************************************************************/
-/*****************************************************************************/
-/*****************************************************************************/
+/* GOAL TITLE HEADINGS */
+.goalTitleHeader {
+    color: rgb(101, 244, 236);
+    font-family: 'Roboto', sans-serif;
+    font-size: .95em;
+}

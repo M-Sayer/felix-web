@@ -28,26 +28,39 @@ const Goals = (props) => {
       .map((goal, i) => {
         if(!goal.completed) {
           return (
-            <li
-              className='goalsListItem userData2'
+            <ul
+              className='dataFlexRowALT'
               key={i}
             >
-              <Link
-                className='userData2'
-                to={`/goal/${goal.id}`}
-              >
-                <div
-                  className='dataFlexRow'
-                >
-                  <span>
-                    {goal.name}
-                  </span>
-                  <span>
-                    {goal.current_amount} of {goal.goal_amount}
-                  </span>
+              <li className='dataFlexColALT'>
+                <div className='goalTitleHeader'>
+                  Name
+                </div> 
+                <div>{goal.name}</div>
+              </li>
+              <li className='dataFlexColALT'>
+                <div className='goalTitleHeader'>
+                  Current
+                </div> 
+                <div>{goal.current_amount}</div>
+              </li>
+              <li className='dataFlexColALT'>
+                <div className='goalTitleHeader'>
+                  Goal
                 </div>
-              </Link>
-            </li>
+                <div>{goal.goal_amount}</div>
+              </li>
+              <li className='goalBtn'>
+                <button
+                  className='btn tertiaryBtn'
+                  onClick={() =>
+                    props.history.push(`/goal/${goal.id}`)
+                  }
+                >
+                  Details
+                </button>
+              </li>
+            </ul>
           );
         }
         return '';
@@ -55,21 +68,25 @@ const Goals = (props) => {
   }
 
   return (
-    <article
-      className='goalsContainer'
-    >
-      <h2
-        className='sectionHeader'
-      >
+    <article className='AllGoals'>
+      <h2 className='sectionHeaderALT'>
         Goals
       </h2>
-      <ul>
+      <ul className='overviewSectionALT'>
         {
           (goals.length)
             ? renderGoals(goals)
             : ''
         }
       </ul>
+      <button
+        className='btn tertiaryBtn'
+        onClick={() =>
+          props.history.push('/')}
+          type='click'
+      >
+        Back
+      </button>
     </article>
   )
 }
