@@ -13,12 +13,8 @@ export default class CreateTransaction extends React.Component {
 
 	handleSubmit = async (e, data) => {
 		e.preventDefault();
-		e.target.type.value = ''
-		e.target.name.value = ''
-		e.target.description.value = ''
-		e.target.category.value = ''
-		e.target.amount.value = ''
 		try {
+      console.log(data)
       await TransactionsService.createTransaction(data);
       this.props.history.push('/');
 		} catch(error) {

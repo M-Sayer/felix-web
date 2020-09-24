@@ -36,7 +36,7 @@ export default class TransactionForm extends React.Component {
     const {name , value} = event.target;
     this.setState({
       ...this.state,
-      [name]: value 
+      [name]: event.target.type === 'number' ? parseFloat(value) : value
     });
   };
 
@@ -123,7 +123,7 @@ export default class TransactionForm extends React.Component {
                   className='transaction_input amount_input'
                   placeholder='amount'
                   defaultValue={amount}
-                  step=".01"
+                  step={0.1} precision={2}
                   required/>
               </div>
                 <div className='button_wrapper'>
