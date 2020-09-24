@@ -7,7 +7,7 @@ const Landing = (props) => {
     return (
       <>
         <h2
-          className='centered sectionHeaderALT'
+          className=' sectionHeaderALT'
         >
           Meet Felix, your personal finance assistant.
         </h2>
@@ -18,14 +18,22 @@ const Landing = (props) => {
         <p>
           To get started, you may login or sign up for an account:
         </p>
-        <ul>
-          <li>
+        <ul
+          className=''
+        >
+          <li
+            className='landingList'
+          >
             Username must be unique and may include uppercase letters, lowercase letters, numbers, special characters limited to dashes and underscores
           </li>
-          <li>
+          <li
+            className='landingList'
+          >
             Password must be at least 8 characters
           </li>
-          <li>
+          <li
+            className='landingList'
+          >
             Password must include 1 uppercase, 1 lowercase, 1 numeric, and 1 special character
           </li>
         </ul>
@@ -39,7 +47,7 @@ const Landing = (props) => {
     >
       {TokenService.hasAuthToken()
         ? <h2
-            className='centered sectionHeaderALT'
+            className=' sectionHeaderALT'
           >
             Need help?
           </h2>
@@ -57,19 +65,8 @@ const Landing = (props) => {
         The app will also calculate your allowance, which is the money you have available to spend after allocating to your goals from balance.
       </p>
       <p>
-        Goals are sub-accounts that represent a purpose that a user may save up for. For every goal, you may specify the ff information:
+        Goals are sub-accounts that represent a purpose that a user may save up for. For every goal, you may specify a name, amount, and target completion date.
       </p>
-      <ul>
-        <li>
-          Name - What it is for
-        </li>
-        <li>
-          Amount - How much it is
-        </li>
-        <li>
-          Target end date - When you would like the goal to be completed
-        </li>
-      </ul>
       <p>
         Upon input of the above information, the app will calculate in real time your weekly contribution amount. The contribution amount is the fractional amount to be allocated to your goal on a specified interval (currently, only weekly). If you are satisfied with the setup, you may submit this information and let the app take care of the rest.
       </p>
