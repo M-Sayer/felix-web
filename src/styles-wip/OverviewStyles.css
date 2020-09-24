@@ -38,3 +38,10 @@
     font-family: 'Roboto', sans-serif;
     font-size: 1.25em;
 }
+
+/* GOAL TITLE HEADINGS */
+.goalTitleHeader {
+    color: rgb(101, 244, 236);
+    font-family: 'Roboto', sans-serif;
+    font-size: .95em;
+}

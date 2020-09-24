@@ -9,7 +9,7 @@
 
     .App {
         flex-direction: row;
-        margin: 0 20px;
+        margin: 0 50px;
         flex-wrap: wrap;
     }
 

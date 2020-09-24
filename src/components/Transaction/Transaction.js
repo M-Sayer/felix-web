@@ -59,26 +59,28 @@ export default class Transaction extends React.Component {
       <div className='transaction_wrapper'>
         <div className='transactionInfo_wrapper'>
           <div className='text_info_divider'>
-          <p className='transaction name'>{name}</p>
-          <p className='transaction date'>{date_created}</p>
-          <p className='transaction category'>{category}</p>
-          <p className='transaction description'>{description}</p>
+            <p className='transaction name'>{name}</p>
+            <p className='transaction date'>{date_created}</p>
+            <p className='transaction category'>{category}</p>
+            <p className='transaction description'>{description}</p>
           </div>
           <div className='amount_wrapper'>
             <p className={`transaction ${type} amount`}>${amount}</p>
           </div>
         </div>
         <div className='button_wrapper'>
-          <Button
-          onClick={this.toggleEdit}
-          className='transaction_edit'>
+          <button
+            onClick={this.toggleEdit}
+            className='btn secondaryBtnALT'
+          >
             Edit
-          </Button>
-          <Button
-          onClick={this.handleDelete}
-           className='transaction_delete red_button'>
+          </button>
+          <button
+            onClick={this.handleDelete}
+            className='btn cancel secondaryBtnALT'
+          >
             Delete
-          </Button>
+          </button>
         </div>
       </div>
         )
@@ -100,7 +102,7 @@ export default class Transaction extends React.Component {
   
   render(){
     return (
-      <div className='transaction_details_wrapper'>
+      <div className='formContainer'>
         {this.renderTransaction()}
       </div>
     );

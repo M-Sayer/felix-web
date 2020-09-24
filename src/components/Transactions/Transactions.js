@@ -65,7 +65,7 @@ class Transactions extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <div className='AllTransactions'>
+      <article className='AllTransactions'>
         <h2 className='sectionHeaderALT'>
           All Transactions
         </h2>
@@ -84,7 +84,7 @@ class Transactions extends Component {
         >
           Back
         </button>
-      </div>
+      </article>
     );
   }
 }
