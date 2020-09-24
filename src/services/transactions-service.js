@@ -34,8 +34,6 @@ const TransactionsService = {
           'Content-Type' : 'application/json'
         }
       })
-
-      console.log('deleted')
     },
   async getAllTransactions() {
     const settings = {
@@ -53,7 +51,6 @@ const TransactionsService = {
       const error = await response.json();
       return Promise.reject(error);
     }
-    console.log('got transactions')
     return response.json();
   },
 
