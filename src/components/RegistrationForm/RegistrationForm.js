@@ -59,7 +59,7 @@ class RegistrationForm extends React.Component {
     const {error} = this.state;
 
     return (
-      <>
+      <div>
         <form 
           className='RegistrationForm'
           onSubmit={this.handleUserRegistration}
@@ -114,7 +114,7 @@ class RegistrationForm extends React.Component {
           />
       
           <button
-            className='primaryBtn'
+            className='primaryBtn btn'
             type='submit'
           >
             Submit
@@ -124,7 +124,7 @@ class RegistrationForm extends React.Component {
         <a href='/login'>
           Already have an account? Login
         </a>
-      </>
+      </div>
     )
   }   
 }

@@ -4,6 +4,10 @@ import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
 import './Transactions.css';
 
+import './Transactions.css'
+import '../../styles-wip/ButtonStyles.css'
+import '../../styles-wip/index.css'
+
 class Transactions extends Component {
   static contextType = TransactionsContext;
 
@@ -19,31 +23,30 @@ class Transactions extends Component {
     return transactions.map((trx, i) => {
       return (
         <li 
-          className='userData2 transactionsListItem'
+          className='dataFlexRow'
           key={i}
         >
-          <Link
-            className='userData2' 
-            to={this.renderTransactionParams(trx)}
-          >
-            <div
-              className='dataFlexRow'
+          <span className='userData2'>
+            {trx.income_category || trx.expense_category}
+          </span>
+          <span
+            className=
+            {(trx.income_amount)
+            ? 'income userData2 middleColumn'
+            : 'expenses userData2 middleColumn'
+            }
             >
-              <span>
-                {trx.income_category || trx.expense_category}:
-              </span>
-              <span
-                className={
-                  (trx.income_amount)
-                    ? 'income'
-                    : 'expenses'
-                }
-              >
-                {trx.income_amount || trx.expense_amount} 
-              </span>
-
-            </div>
-          </Link>
+            {trx.income_amount || trx.expense_amount}
+          </span>
+      
+          <button
+            className='btn tertiaryBtn'
+            onClick={() =>
+              this.props.history.push(this.renderTransactionParams(trx))
+            }
+          >
+            Details
+          </button>
         </li>
       );
     });
@@ -64,21 +67,25 @@ class Transactions extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <article
-        className='transactionsContainer'
-      >
-        <h2
-          className='sectionHeader'
-        >
+      <article className='AllTransactions'>
+        <h2 className='sectionHeaderALT'>
           All Transactions
         </h2>
-        <ul>
+        <ul className='overviewSection'>
           {
             (transactions.length)
               ? this.renderTransactions(transactions)
               : ''
           }
         </ul>
+        <button
+          className='btn tertiaryBtn'
+          onClick={() =>
+            this.props.history.push('/')}
+            type='click'
+        >
+          Back
+        </button>
       </article>
     );
   }
