@@ -75,7 +75,7 @@ class LoginForm extends Component {
           />
     
           <button
-            className='primaryBtn'
+            className='primaryBtn btn'
             type='submit'
           >
             Submit

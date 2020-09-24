@@ -25,8 +25,9 @@ import '../../styles-wip/index.css';
 import '../../styles-wip/ButtonStyles.css';
 import '../../styles-wip/FormStyles.css';
 import '../../styles-wip/LinkStyles.css';
-import '../../styles-wip/LogoHeader.css';
+import '../../styles-wip/Header.css';
 import '../../styles-wip/OverviewStyles.css';
+import './App.css'
 
 const App = () => {
 

@@ -3,7 +3,6 @@
 /* Would have used overviewContainer but the margin is skewing it to the right -Miki */
 .overviewSection {
   background-color: #282e33;
-  /* border: 1px solid white; */
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -13,13 +12,17 @@
 }
 
 .dataFlexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
 }
 
 .btnsFlexRow {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   margin: 10px 0;
 }

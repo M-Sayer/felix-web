@@ -70,16 +70,18 @@ export default class Transaction extends React.Component {
           </div>
         </div>
         <div className='button_wrapper'>
-          <Button
-          onClick={this.toggleEdit}
-          className='transaction_edit'>
+          <button
+            onClick={this.toggleEdit}
+            className='btn secondaryBtnALT'
+          >
             Edit
-          </Button>
-          <Button
-          onClick={this.handleDelete}
-           className='transaction_delete red_button'>
+          </button>
+          <button
+            onClick={this.handleDelete}
+            className='btn cancel secondaryBtnALT'
+          >
             Delete
-          </Button>
+          </button>
         </div>
       </div>
         )
@@ -101,7 +103,7 @@ export default class Transaction extends React.Component {
   
   render(){
     return (
-      <div className='transaction_details_wrapper'>
+      <div className='formContainer'>
         {this.renderTransaction()}
       </div>
     );
