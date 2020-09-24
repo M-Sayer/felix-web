@@ -26,12 +26,6 @@ export default class Transaction extends React.Component {
     handleChange : () => {},
     history : {
       push : () => {}
-    },
-    match : {
-      params : {
-        type : '',
-        id : 0
-      }
     }
   }
 
@@ -47,29 +41,8 @@ export default class Transaction extends React.Component {
 
    handleSubmit = (ev, data) => {
        ev.preventDefault();
-       if(data.amount % 1 !== 0  ){
-         let {amount} = data
-         let a = amount.split('.')
-     
-         if(a[1].length > 2) a[1] = a[1].substring(0, 2)
-     
-         amount = a.join('.');
-     
-         data = {
-           ...data,
-           amount,
-         }
-       }
-       
-       if(this.props.match.params.type === 'income'){
-        if(data.amount < 0 ) data.amount *= -1
-       }
-       else {
-        if(data.amount > 0 ) data.amount *= -1
-       }
-
        this.props.handleChange(data)
-      // TransactionsService.updateSingleTransaction(data);
+      TransactionsService.updateSingleTransaction(data);
       this.toggleEdit();
    }
 

@@ -113,7 +113,7 @@ export default class TransactionForm extends React.Component {
                 </select>
                 <textarea
                   name='description'
-                  maxLength='500'
+                  maxlength='500'
                   placeholder='description'
                   defaultValue={description}
                   className='transaction_input description_input'/>

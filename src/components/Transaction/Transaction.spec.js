@@ -22,5 +22,16 @@ describe(`Transaction Component`, () => {
     });
   });
   
-
+  // describe(`Snapshot test`, () => {
+  //   it(`Renders the UI as expected`, () => {
+  //     const tree = renderer
+  //       .create(
+  //         <BrowserRouter>
+  //             <App />
+  //         </BrowserRouter>
+  //       )
+  //       .toJSON()
+  //     expect(tree).toMatchSnapshot()
+  //   });
+  // });
 })
