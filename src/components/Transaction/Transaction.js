@@ -3,6 +3,7 @@ import TransactionForm from '../TransactionForm/TransactionForm'
 
 import { Button } from '../Misc/Misc';
 import TransactionsService from '../../services/transactions-service';
+import moment from 'moment';
 
 import './transaction.css'
 
@@ -59,10 +60,10 @@ export default class Transaction extends React.Component {
       <div className='transaction_wrapper'>
         <div className='transactionInfo_wrapper'>
           <div className='text_info_divider'>
-            <p className='transaction name'>{name}</p>
-            <p className='transaction date'>{date_created}</p>
-            <p className='transaction category'>{category}</p>
-            <p className='transaction description'>{description}</p>
+          <p className='transaction name'>{name}</p>
+          <p className='transaction date'>{moment(date_created).format('MM/DD/YYYY')}</p>
+          <p className='transaction category'>{category}</p>
+          <p className='transaction description'>{description}</p>
           </div>
           <div className='amount_wrapper'>
             <p className={`transaction ${type} amount`}>${amount}</p>

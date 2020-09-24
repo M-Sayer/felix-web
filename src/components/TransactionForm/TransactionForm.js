@@ -97,7 +97,7 @@ export default class TransactionForm extends React.Component {
                 }
                 <input 
                   name='name'
-                  maxlength='50'
+                  maxLength='50' //lol get dunked in 
                   placeholder='name'
                   defaultValue={name}
                   required

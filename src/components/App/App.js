@@ -13,7 +13,7 @@ import GoalRoute from '../../routes/GoalRoute';
 import GoalFormRoute from '../../routes/GoalFormRoute';
 import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
-import TransactionRoute from '../../routes/TransactionRoute';
+import TransactionRoute from '../../routes/TransactionRoute/TransactionRoute';
 import AlertsRoute from '../../routes/AlertsRoute';
 
 // Authentication & Registration Components
