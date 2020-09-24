@@ -60,7 +60,7 @@ li {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-size: 2em;
-    margin: -10px 0 10px 0;
+    /* margin: -10px 0 10px 0; */
 }
 
 /**************************************************/
@@ -69,6 +69,7 @@ li {
     color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
     font-size: 1.35em;
+    margin: 10px 0;
     /* Commented this out because it won't display right -Miki */
     /* padding: 2px 20px 2px 0; */
 }

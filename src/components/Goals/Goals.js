@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GoalsContext from '../../contexts/GoalsContext';
 import GoalsService from '../../services/goals-service';
-
-import './Goals.css'
+import './Goals.css';
 
 const Goals = (props) => {
   const {

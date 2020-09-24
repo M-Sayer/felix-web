@@ -19,6 +19,12 @@ export default class CreateTransaction extends React.Component {
 		e.target.category.value = ''
 		e.target.amount.value = ''
 		try {
+			//change expense amount to a negative number before POSTing to server
+			if (data.type === 'expenses') {
+				if (data.amount > 0) {
+					data.amount *= -1;
+				}
+			}
       await TransactionsService.createTransaction(data);
       this.props.history.push('/');
 		} catch(error) {

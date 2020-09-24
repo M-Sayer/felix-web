@@ -1,9 +1,9 @@
-# Third Capstone App Name: Felix: Personal Finance Assistant
+# App Name: Felix: Personal Finance Assistant
+**Team:** Chatchawan Suwaratana, Gage Migan, James Coffelt, Michelle Colacion Francisco, Muhajir Sayer
 
 ## Links
-**Link to live app: https://.vercel.app/**
-
-**Link to gist: https://mischkiey.github.io/thinkful-ei-first-capstone/**
+**Link to live app: https://felix-web.vercel.app/**
+**Link to gist: https://gist.github.com/mischkiey/9ddc21305d729f1507055e7d7519b94e**
 
 <p>&nbsp;</p>
 
@@ -16,30 +16,20 @@
 <p>&nbsp;</p>
 
 ## Description
-*
+* Felix is a personal finance and savings app which seeks to simplify the cognitive load of the user by aggregating and automating tasks related to personal finance management.
 
 <p>&nbsp;</p>
 
 ## How It Works
 As the user:
-* I should be able to create an account with email and password
-* I should be able to login with username and password
-* I should have a dashboard to see core information and utilize core features
 
-* I should be able to read my balance
-* I should be able to read an updated balance after creating new transactions
-
-* I should be able to read my list of transactions
-* I should be able to read a specific transaction, seeing all of its information
-* I should be able to create a transaction
-
-* I should be able to read my allowance
-* I should be able to read my goals
-* I should be able to create a goal
-* I should be able to fund goals from allowance
-* I should be able to see a calculated weekly contribution amount
-* Every week, the contribution amount should be automatically moved from allowance to goal. Change should persist in allowance. Balance remains the same.
-* I should be be alerted of success on goal target date
+* I should be able to create an account
+* I should be able to login and see my persisted data
+* I should be able to access my personal information via a dashboard
+* I should be able to create transactions, aggregate all financial transactions in one place, and keep track of money coming in and going out
+* I should be able to create goals for savings
+* I should be able to see a calculated allowance, which will show me how much spending power I have after contributing to my savings goals
+* I should be be able to create planned income and planned expenses
 
 <p>&nbsp;</p>
 
@@ -104,5 +94,4 @@ As the user:
 6. Vercel
 7. Heroku, Heroku Scheduler
 8. Testing frameworks such as Jest, Mocha, Chai, & Supertest
-9. Calendar.js
-10. Moment.js
+9. Miscellaneous libraries such as Calendar.js, Moment.js, & React Date Picker
