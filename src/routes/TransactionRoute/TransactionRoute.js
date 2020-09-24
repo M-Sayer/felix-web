@@ -4,6 +4,7 @@ import TransactionsService from '../../services/transactions-service';
 import Transaction from '../../components/Transaction/Transaction';
 
 import './TransactionRoute.css';
+import { date } from 'yup';
 
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
@@ -27,7 +28,8 @@ export default class TransactionRoute extends React.Component{
   handleChange = data => {
     this.setState({ transaction : data})
   }
-    componentDidMount = () => {
+
+  componentDidMount = () => {
       const {type, id} = this.props.match.params;
 
       TransactionsService.getSingleTransaction(type, id)
@@ -37,9 +39,9 @@ export default class TransactionRoute extends React.Component{
       .catch(error => this.context.setError(error))
     }
 
-    componentWillUnmount = () => {
-        this.context.clearError();
-    }
+  componentWillUnmount = () => {
+      this.context.clearError();
+  }
 
   render(){
     return(
