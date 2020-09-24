@@ -1,7 +1,9 @@
 import React from 'react';
-import TransactionsContext from '../contexts/TransactionsContext';
-import TransactionsService from '../services/transactions-service';
-import Transaction from '../components/Transaction/Transaction';
+import TransactionsContext from '../../contexts/TransactionsContext';
+import TransactionsService from '../../services/transactions-service';
+import Transaction from '../../components/Transaction/Transaction';
+
+import './TransactionRoute.css';
 
 export default class TransactionRoute extends React.Component{
   static contextType = TransactionsContext;
@@ -42,7 +44,7 @@ export default class TransactionRoute extends React.Component{
   render(){
     return(
       <section className='single_transaction'>
-        <h2 className='single_transaction_header'>
+        <h2 className='single_transaction_header sectionHeaderALT'>
           Transaction
         </h2> 
         <Transaction

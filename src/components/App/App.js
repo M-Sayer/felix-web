@@ -13,7 +13,7 @@ import GoalRoute from '../../routes/GoalRoute';
 import GoalFormRoute from '../../routes/GoalFormRoute';
 import CreateTransactionRoute from '../../routes/CreateTransactionRoute';
 import TransactionsRoute from '../../routes/TransactionsRoute';
-import TransactionRoute from '../../routes/TransactionRoute';
+import TransactionRoute from '../../routes/TransactionRoute/TransactionRoute';
 import AlertsRoute from '../../routes/AlertsRoute';
 
 // Authentication & Registration Components
@@ -25,8 +25,9 @@ import '../../styles-wip/index.css';
 import '../../styles-wip/ButtonStyles.css';
 import '../../styles-wip/FormStyles.css';
 import '../../styles-wip/LinkStyles.css';
-import '../../styles-wip/LogoHeader.css';
+import '../../styles-wip/Header.css';
 import '../../styles-wip/OverviewStyles.css';
+import './App.css'
 
 const App = () => {
 

@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import TransactionsContext from '../../contexts/TransactionsContext';
 import TransactionsService from '../../services/transactions-service';
+import './Transactions.css';
+
+import './Transactions.css'
+import '../../styles-wip/ButtonStyles.css'
+import '../../styles-wip/index.css'
 
 class Transactions extends Component {
   static contextType = TransactionsContext;
@@ -17,15 +23,29 @@ class Transactions extends Component {
     return transactions.map((trx, i) => {
       return (
         <li 
+          className='dataFlexRow'
           key={i}
         >
-          {trx.income_category || trx.expense_category}: {trx.income_amount || trx.expense_amount} 
+          <span className='userData2'>
+            {trx.income_category || trx.expense_category}
+          </span>
+          <span
+            className=
+            {(trx.income_amount)
+            ? 'income userData2 middleColumn'
+            : 'expenses userData2 middleColumn'
+            }
+            >
+            {trx.income_amount || trx.expense_amount}
+          </span>
+      
           <button
+            className='btn tertiaryBtn'
             onClick={() =>
               this.props.history.push(this.renderTransactionParams(trx))
             }
           >
-            See More Details
+            Details
           </button>
         </li>
       );
@@ -47,11 +67,11 @@ class Transactions extends Component {
     const { transactions = [] } = this.context;
 
     return (
-      <>
-        <h2>
+      <article className='AllTransactions'>
+        <h2 className='sectionHeaderALT'>
           All Transactions
         </h2>
-        <ul>
+        <ul className='overviewSection'>
           {
             (transactions.length)
               ? this.renderTransactions(transactions)
@@ -59,13 +79,14 @@ class Transactions extends Component {
           }
         </ul>
         <button
+          className='btn tertiaryBtn'
           onClick={() =>
             this.props.history.push('/')}
             type='click'
         >
           Back
         </button>
-      </>
+      </article>
     );
   }
 }

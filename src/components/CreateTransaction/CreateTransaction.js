@@ -14,7 +14,12 @@ export default class CreateTransaction extends React.Component {
 	handleSubmit = async (e, data) => {
 		e.preventDefault();
 		try {
-      console.log(data)
+			//change expense amount to a negative number before POSTing to server
+			if (data.type === 'expenses') {
+				if (data.amount > 0) {
+					data.amount *= -1;
+				}
+			}
       await TransactionsService.createTransaction(data);
       this.props.history.push('/');
 		} catch(error) {
