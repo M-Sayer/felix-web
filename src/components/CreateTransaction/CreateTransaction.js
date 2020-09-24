@@ -13,11 +13,6 @@ export default class CreateTransaction extends React.Component {
 
 	handleSubmit = async (e, data) => {
 		e.preventDefault();
-		e.target.type.value = ''
-		e.target.name.value = ''
-		e.target.description.value = ''
-		e.target.category.value = ''
-		e.target.amount.value = ''
 		try {
 			//change expense amount to a negative number before POSTing to server
 			if (data.type === 'expenses') {
