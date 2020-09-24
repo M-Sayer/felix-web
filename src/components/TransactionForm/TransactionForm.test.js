@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 // import renderer from 'react-test-renderer';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { TransactionsProvider } from '../../contexts/TransactionsContext';
-import Transaction from './Transaction';
+import TransactionForm from './TransactionForm';
 
 describe(`Transaction Component`, () => {
   describe(`Smoke test`, () => {
@@ -13,7 +13,7 @@ describe(`Transaction Component`, () => {
         <BrowserRouter>
           <TransactionsProvider>
             <Route
-              component={Transaction}
+              component={TransactionForm}
             />
           </TransactionsProvider>
         </BrowserRouter>,
@@ -21,6 +21,5 @@ describe(`Transaction Component`, () => {
       ReactDOM.unmountComponentAtNode(div);
     });
   });
-  
 
-})
+});
