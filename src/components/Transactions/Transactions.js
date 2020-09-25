@@ -5,8 +5,8 @@ import TransactionsService from '../../services/transactions-service';
 import './Transactions.css';
 
 import './Transactions.css'
-import '../../styles-wip/ButtonStyles.css'
-import '../../styles-wip/index.css'
+import '../../styles/ButtonStyles.css'
+import '../../styles/index.css'
 
 class Transactions extends Component {
   static contextType = TransactionsContext;

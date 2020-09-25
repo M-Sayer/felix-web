@@ -3,7 +3,6 @@ import AuthService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
 import './RegistrationForm.css';
 
-// Code for RegistrationForm is working...
 class RegistrationForm extends React.Component {
   static contextType = UserContext;
 
@@ -13,7 +12,7 @@ class RegistrationForm extends React.Component {
 
   state = {
     error: null
-  } // Any errors with registration will display on page
+  }
 
   handleUserRegistration = async (e) => {
     e.preventDefault();
@@ -39,7 +38,7 @@ class RegistrationForm extends React.Component {
     email.value = '';
     password.value = '';
 
-    this.setState({error: null}) // Any errors with registration will display on page
+    this.setState({error: null})
 
     try {
       const { authToken } = await AuthService.postNewUser(newUser);
@@ -47,11 +46,7 @@ class RegistrationForm extends React.Component {
       this.props.onRegSuccess();
     }
     catch(error) {
-      // Any errors with registration will display on page
       this.setState({...error});
-
-      // Alternatively, throws an 'alert' for errors in registration submission
-      // alert(res.error) 
     }
   }
 

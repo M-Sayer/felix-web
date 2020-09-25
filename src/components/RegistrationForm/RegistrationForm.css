@@ -27,3 +27,9 @@ header, .App {
     width: 100px;
 }
 
+.error-alert {
+    color: rgb(244, 198, 83);
+	font-size: 1.25em;
+	font-weight: 500;
+}
+
