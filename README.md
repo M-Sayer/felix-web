@@ -3,6 +3,7 @@
 
 ## Links
 **Link to live app: https://felix-web.vercel.app/**
+
 **Link to gist: https://gist.github.com/mischkiey/9ddc21305d729f1507055e7d7519b94e**
 
 <p>&nbsp;</p>
@@ -36,52 +37,67 @@ As the user:
 ## Client Documentation/Screenshots
 
 1. **Login Page**
-![Landing Page](/images/screenshots/login-page.png)
+![Landing Page](/images/login.png)
 
 <p>&nbsp;</p>
 
 2. **Signup Page**
-![Signup Page](/images/screenshots/signup-page.png)
+![Signup Page](/images/signup.png)
 
 <p>&nbsp;</p>
 
-5. **Dashboard Page** 
-![Dashboard Page](/images/screenshots/dashboard-page.png)
+3. **Dashboard Page** 
+![Dashboard Page](/images/dashboard.png)
 
 <p>&nbsp;</p>
 
-6. **Transactions Page**
-![Transactions Page](/images/screenshots/transactions-page.png)
+4. **Transactions Page**
+![Transactions Page](/images/transactions.png)
  
 <p>&nbsp;</p>
 
-7. **Transaction Page**
-![Transaction Page](/images/screenshots/transaction-page.png)
+5. **Transaction Page**
+![Transaction Page](/images/transaction.png)
 
 <p>&nbsp;</p>
 
-8. **Add/Edit Transactions Form Page**
-![Add/Edit Transactions Form Page](/images/screenshots/transactions-form-page.png)
+6. **Add Transaction Form Page**
+![Add Transaction Form Page](/images/add-transaction-form.png)
 
 <p>&nbsp;</p>
 
-9. **Goals Page**
-![Goals Page](/images/screenshots/goals-page.png)
+7. **Edit Transaction Form Page**
+![Edit Transaction Form Page](/images/edit-transaction-form.png)
+
+<p>&nbsp;</p>
+
+8. **Goals Page**
+![Goals Page](/images/goals.png)
  
 <p>&nbsp;</p>
 
-10. **Goal Page**
-![Goal Page](/images/screenshots/goal-page.png)
+9. **Goal Page**
+![Goal Page](/images/goal.png)
 
 <p>&nbsp;</p>
 
-11. **Add/Edit Goals Form Page**
-![Add/Edit Goals Form Page](/images/screenshots/goals-form-page.png)
+10. **Add Goal Form Page**
+![Add Goals Form Page](/images/add-goal-form.png)
+
+<p>&nbsp;</p>
+
+11. **Edit Goal Form Page**
+![Edit Goals Form Page](/images/edit-goal-form.png)
 
 <p>&nbsp;</p>
 
 12. **Alerts Page**
-![Alerts Page](/images/screenshots/alerts-page.png)
+![Alerts Page](/images/alerts.png)
+
+<p>&nbsp;</p>
+
+13. **Landing Page**
+![Landing Page](/images/landing.png)
 
 <p>&nbsp;</p>
 

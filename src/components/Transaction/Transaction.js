@@ -26,6 +26,12 @@ export default class Transaction extends React.Component {
     handleChange : () => {},
     history : {
       push : () => {}
+    },
+    match : {
+      params : {
+        type : '',
+        id : 0
+      }
     }
   }
 

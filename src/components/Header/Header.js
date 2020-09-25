@@ -16,6 +16,11 @@ const Header = () => {
     return (
       <nav className='headerNav'>
         <Link
+          to='/about'
+        >
+          About
+        </Link>
+        <Link
           to='/'
         >
           Dashboard
@@ -37,6 +42,11 @@ const Header = () => {
   const renderLoggedOutNav = () => {
     return (
       <nav className='headerNav'>
+        <Link
+          to='/about'
+        >
+          About
+        </Link>
         <Link
           to='/login'
         >
