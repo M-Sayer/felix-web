@@ -185,7 +185,7 @@ const GoalForm = (props) => {
           handleChangeGoalAmount(e);
         }}
         placeholder='amount'
-        // step='0.1'
+        step='0.01'
         type='number'
         required
       />
