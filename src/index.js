@@ -11,7 +11,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 import App from './components/App/App';
 
-import './styles-wip/index.css'
+import './styles/index.css'
 
 ReactDOM.render(
   <BrowserRouter>

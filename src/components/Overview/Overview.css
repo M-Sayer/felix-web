@@ -1,6 +1,4 @@
-/* Note: I added ul and li properties in index.css. Please see. */
 
-/* Would have used overviewContainer but the margin is skewing it to the right -Miki */
 .overviewSection {
   background-color: #282e33;
   display: flex;

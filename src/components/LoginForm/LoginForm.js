@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import UserContext from '../../contexts/UserContext';
 import AuthService from '../../services/auth-service';
-import '../../styles-wip/FormStyles.css'
-import '../../styles-wip/ButtonStyles.css'
+import '../../styles/FormStyles.css'
+import '../../styles/ButtonStyles.css'
 import './LoginForm.css'
 
 // Validation
@@ -49,12 +49,17 @@ class LoginForm extends Component {
     
   render() {
 
+    const {error} = this.state;
+
     return (
         <form
         className='formContainer'
           onSubmit={(e) => 
             this.handleUserLogin(e)}
         >
+          <div role='alert'>
+            {error && <p className='errorMessage'>{error}</p>}
+          </div>
     
           <input
             aria-label='username'
