@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import { BrowserRouter } from 'react-router-dom';
 import { UserProvider } from './contexts/UserContext';
-// import { AlertsProvider } from './contexts/AlertsContext';
+import { AlertsProvider } from './contexts/AlertsContext';
 import { TransactionsProvider } from './contexts/TransactionsContext';
 import { GoalsProvider } from './contexts/GoalsContext';
 
@@ -16,7 +16,7 @@ import './styles-wip/index.css'
 ReactDOM.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
-        {/* <AlertsProvider> */}
+        <AlertsProvider>
           <UserProvider>
             <TransactionsProvider>
               <GoalsProvider>
@@ -24,7 +24,7 @@ ReactDOM.render(
               </GoalsProvider>
             </TransactionsProvider>
           </UserProvider>
-        {/* </AlertsProvider> */}
+        </AlertsProvider>
     </ThemeProvider>
   </BrowserRouter>,
   document.getElementById('root')

@@ -39,44 +39,24 @@ export default class Transaction extends React.Component {
     this.setState({ edit: !this.state.edit })
   }
 
-   handleDelete =()=> {
-     const {type, id} = this.props.match.params;
-     TransactionsService.deleteSingleTransaction(type,id)
-     .then(()=> this.props.history.push('/'))
-   }
+  handleDelete = async () => {
+    const {type, id} = this.props.match.params;
+    await TransactionsService.deleteSingleTransaction(type,id)
+    this.props.history.push('/')
+  }
 
-   handleSubmit = (ev, data) => {
-       ev.preventDefault();
-       if(data.amount % 1 !== 0  ){
-         let {amount} = data
-         let a = amount.split('.')
-     
-         if(a[1].length > 2) a[1] = a[1].substring(0, 2)
-     
-         amount = a.join('.');
-     
-         data = {
-           ...data,
-           amount,
-         }
-       }
-       
-       if(this.props.match.params.type === 'income'){
-        if(data.amount < 0 ) data.amount *= -1
-       }
-       else {
-        if(data.amount > 0 ) data.amount *= -1
-       }
+  handleSubmit = (ev, data) => {
+    ev.preventDefault();
+    this.props.handleChange(data)
+    if (data.type === 'expenses') data.amount *= -1;
+    TransactionsService.updateSingleTransaction(data);
+    this.toggleEdit();
+  }
 
-       this.props.handleChange(data)
-      // TransactionsService.updateSingleTransaction(data);
-      this.toggleEdit();
-   }
-
-   handleCancel = ev => {
-       ev.preventDefault();
-       this.toggleEdit();
-   }
+  handleCancel = ev => {
+    ev.preventDefault();
+    this.toggleEdit();
+  }
 
   renderTransaction = () => {
     const {name, date_created, amount, category, description } = this.props.transaction;

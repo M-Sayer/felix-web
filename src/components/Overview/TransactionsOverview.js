@@ -45,7 +45,7 @@ class TransactionsOverview extends Component {
     );
   }
 
-  async componentDidMount() {
+  async fetchData() {
     try {
       const { income, expenses } = await TransactionsService.getAllTransactions();
       const sortedTransactions = this.context.sortTransactions([...income, ...expenses], 'date_created');
@@ -54,7 +54,11 @@ class TransactionsOverview extends Component {
     catch(error) {
       this.context.setError(error);
     }
-  }
+  };
+
+  componentDidMount() {
+    this.fetchData()
+  };
 
   render() {
     const { transactions = [] } = this.context;

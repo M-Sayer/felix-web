@@ -26,8 +26,8 @@ const TransactionsService = {
             body : JSON.stringify(transaction)
         })
     },
-    deleteSingleTransaction(type,id){
-      return fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`,{
+    async deleteSingleTransaction(type,id) {
+      await fetch(`${config.API_ENDPOINT}/transactions/${type}/${id}`,{
         'method' : 'DELETE',
         'headers' : {
           'Authorization': `Bearer ${TokenService.getAuthToken(config.TOKEN_KEY)}`,
@@ -51,7 +51,6 @@ const TransactionsService = {
       const error = await response.json();
       return Promise.reject(error);
     }
-
     return response.json();
   },
 
