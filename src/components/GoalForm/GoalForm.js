@@ -1,14 +1,12 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-
-import GoalsContext from '../../contexts/GoalsContext';
-import GoalsService from '../../services/goals-service';
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+import GoalsService from '../../services/goals-service';
+
 const GoalForm = (props) => {
-  const { countNumberOfSundays, calculateContributionAmount } = useContext(GoalsContext);
   const [ error, setError ] = useState(null);
 
   // Extract form type and goal id (if any) from params
@@ -25,6 +23,49 @@ const GoalForm = (props) => {
   const [ goal, setGoal ] = useState({});
   const [ contributionAmount, setContributionAmount ] = useState(0);
   const [ goalAmount, setGoalAmount ] = useState(0);
+
+  const countNumberOfSundays = (daysFromCurrentDate) => {
+    let numberOfSundays = 0;
+
+    for(let i = 0; i <= daysFromCurrentDate; i++) {
+      if(moment().add(i, 'days').day() === 0) {
+        numberOfSundays += 1;
+      }
+    }
+
+    return numberOfSundays;
+  }
+
+  const calculateContributionAmount = (date, goalAmount) => {
+    let contribution_amount = 0;
+
+    // Form picks up date selected by user and sets state var date
+    // Use moment wrapper: native date object -> moment object
+    // For accuracy & consistency
+    const end_date = moment(date);
+    const currentDate = moment();
+
+    // Use moment method .diff to calculate number of days from current to end date
+    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
+
+    // Contribution amount is moved from allowance to goals every Sunday, 00:00 UTC
+    // Calculate number of Sundays (and not number of weeks)
+    // Consider the edge case when there are 3 Sundays but only 20 days
+    // Conclusion: Number of weeks from now is not a reliable measure given the above edge case
+    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
+
+    if(numberOfSundays <= 0) {
+      contribution_amount = Number(goalAmount);
+    } 
+    else {
+      contribution_amount = Math.ceil(((Number(goalAmount) / numberOfSundays) * 100) / 100);
+    }
+
+    return {
+      end_date,
+      contribution_amount
+    }
+  }
 
   useEffect(() => {
     if(type === 'edit') {
@@ -45,23 +86,19 @@ const GoalForm = (props) => {
   }, [type, id]);
 
   const handleChangeGoalAmount = (e) => {
-    setGoalAmount(e.target.value);
-    const end_date = moment(date);
-    const currentDate = moment();
-    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
-    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
-    const contribution_amount = calculateContributionAmount(Number(e.target.value), numberOfSundays);
+    setError(null);
+    const newGoalAmount = e.target.value;
+    const { contribution_amount } = calculateContributionAmount(date, newGoalAmount);
+
+    setGoalAmount(newGoalAmount);
     setContributionAmount(contribution_amount);
   }
 
   const handleChangeDate = (date) => {
     // Form picks up date selected by user and sets state var date
     setDate(date);
-    const end_date = moment(date);
-    const currentDate = moment();
-    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
-    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
-    const contribution_amount = calculateContributionAmount(Number(goalAmount), numberOfSundays);
+    
+    const { contribution_amount } = calculateContributionAmount(date, goalAmount);
     setContributionAmount(contribution_amount);
   }
 
@@ -71,22 +108,7 @@ const GoalForm = (props) => {
 
     const name = e.target['goal_name'].value;
     const goal_amount = e.target['goal_amount'].value;
-
-    // Form picks up date selected by user and sets state var date
-    // Use moment wrapper: native date object -> moment object
-    // For accuracy & consistency
-    const end_date = moment(date);
-    const currentDate = moment();
-
-    // Use moment method .diff to calculate number of days from current to end date
-    const daysFromCurrentDate =  end_date.diff(currentDate, 'days');
-
-    // Contribution amount is moved from allowance to goals every Sunday, 00:00 UTC
-    // Calculate number of Sundays (and not number of weeks)
-    // Consider the edge case when there are 3 Sundays but only 20 days
-    // Conclusion: Number of weeks from now is not a reliable measure given the above edge case
-    const numberOfSundays = countNumberOfSundays(daysFromCurrentDate);
-    const contribution_amount = calculateContributionAmount(Number(goal_amount), numberOfSundays);
+    const { end_date, contribution_amount } = calculateContributionAmount(date, goal_amount);
     
     const newGoal = {
       name,
