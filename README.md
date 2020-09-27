@@ -6,6 +6,16 @@
 
 **Link to gist: https://gist.github.com/mischkiey/9ddc21305d729f1507055e7d7519b94e**
 
+**Link to web repo: https://github.com/M-Sayer/felix-web**
+
+**Link to server repo: https://github.com/M-Sayer/felix-server**
+
+<p>&nbsp;</p>
+
+## Demo Credentials
+**Username: test**
+**Password: !AAAaaa000**
+
 <p>&nbsp;</p>
 
 ## Table of Contents
