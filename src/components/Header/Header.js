@@ -25,6 +25,9 @@ const Header = () => {
         >
           Dashboard
         </Link>
+        <Link to='/alerts'>
+          Alerts
+        </Link>
         <Link
           onClick={() => {
             handleUserLog();
